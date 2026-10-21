@@ -1,0 +1,120 @@
+# Incident INC-5105: Shipment tracking
+
+**Severity:** SEV2 · **Started:** 2026-10-12T16:27:04.027Z · **Resolved:** 2026-10-15T22:05:00Z · **Duration:** 4 hours
+
+## Summary
+
+Between 2026-10-12T16:27:04.027Z and 2026-10-15T22:05:00Z, requests to `gateway` on port `8443` failed with HTTP 504.
+The on-call engineer was paged after 4 minutes.
+
+## Impact
+
+- 6 users affected (~2% of traffic)
+- 3800 requests per second were rejected
+- Estimated revenue impact: $1200
+
+## Timeline
+
+| Time | Event |
+|---|---|
+| 2026-10-12T16:27:04.027Z | Alert fired: `HighErrorRate` on `gateway` |
+| 2026-10-12T16:27:04.027Z | On-call acknowledged the page |
+| 2026-10-12T16:27:04.027Z | Root cause identified: an unbounded retry loop amplified load during a partial outage |
+| 2026-10-12T16:27:04.027Z | Mitigation applied: rolled back the deploy and raised the pool limit |
+| 2026-10-12T16:27:04.027Z | Recovery confirmed, alerts silenced |
+
+## Root cause
+
+an unbounded retry loop amplified load during a partial outage
+
+The deploy at 2026-10-12T16:27:04.027Z increased the connection pool from 5 to 60, which
+exceeded the database limit of 50.
+
+## Action items
+
+- [ ] Add a pool-size alert below 70% saturation (owner: payments)
+- [ ] Add a load test that reproduces the saturation point (owner: sre)
+
+# Incident INC-1015: Order ingestion rewrite
+
+**Severity:** SEV2 · **Started:** 2026-10-12T00:16:36.111Z · **Resolved:** 2026-10-21T00:58:00Z · **Duration:** 12 minutes
+
+## Summary
+
+Between 2026-10-12T00:16:36.111Z and 2026-10-21T00:58:00Z, requests to `gateway` on port `8000` failed with HTTP 500.
+The on-call engineer was paged after 3 minutes.
+
+## Impact
+
+- 9 users affected (~2% of traffic)
+- 120 requests per second were rejected
+- Estimated revenue impact: $1200
+
+## Timeline
+
+| Time | Event |
+|---|---|
+| 2026-10-12T00:16:36.111Z | Alert fired: `HighErrorRate` on `gateway` |
+| 2026-10-12T00:16:36.111Z | On-call acknowledged the page |
+| 2026-10-12T00:16:36.111Z | Root cause identified: a schema migration locked a hot table for longer than the timeout |
+| 2026-10-12T00:16:36.111Z | Mitigation applied: rolled back the deploy and raised the pool limit |
+| 2026-10-12T00:16:36.111Z | Recovery confirmed, alerts silenced |
+
+## Root cause
+
+a schema migration locked a hot table for longer than the timeout
+
+The deploy at 2026-10-12T00:16:36.111Z increased the connection pool from 10 to 120, which
+exceeded the database limit of 50.
+
+## Action items
+
+- [ ] Add a pool-size alert below 70% saturation (owner: sre)
+- [ ] Add a load test that reproduces the saturation point (owner: orders)
+
+
+### section 2
+
+migration latency query circuit retry connection connection idempotency error rollback flag response latency retry pool warning query rollback deploy service schema schema warning database retry connection retry timeout rollback schema throughput query warning latency database timeout schema response backpressure connection query warning throughput latency retry circuit response latency feature query backpressure deploy connection deploy feature flag breaker flag request timeout idempotency deploy connection schema connection circuit service latency schema response warning rollback connection handler error rollback retry flag backpressure service saturation error response breaker query retry timeout flag latency deploy feature migration service backpressure service retry pool schema database pool request deploy backpressure latency rollback pool schema latency connection saturation retry handler timeout saturation service pool connection backpressure flag latency flag migration flag rollback latency warning rollback migration schema backpressure throughput circuit response timeout throughput
+
+# Incident INC-3515: Shipment tracking
+
+**Severity:** SEV1 · **Started:** 2026-10-13T16:34:28.671Z · **Resolved:** 2026-10-10T03:19:00Z · **Duration:** 4 hours
+
+## Summary
+
+Between 2026-10-13T16:34:28.671Z and 2026-10-10T03:19:00Z, requests to `billing-api` on port `8080` failed with HTTP 502.
+The on-call engineer was paged after 7 minutes.
+
+## Impact
+
+- 4 users affected (~23% of traffic)
+- 120 requests per second were rejected
+- Estimated revenue impact: $98000
+
+## Timeline
+
+| Time | Event |
+|---|---|
+| 2026-10-13T16:34:28.671Z | Alert fired: `HighErrorRate` on `billing-api` |
+| 2026-10-13T16:34:28.671Z | On-call acknowledged the page |
+| 2026-10-13T16:34:28.671Z | Root cause identified: an unbounded retry loop amplified load during a partial outage |
+| 2026-10-13T16:34:28.671Z | Mitigation applied: terminated the stuck queries and shed load |
+| 2026-10-13T16:34:28.671Z | Recovery confirmed, alerts silenced |
+
+## Root cause
+
+an unbounded retry loop amplified load during a partial outage
+
+The deploy at 2026-10-13T16:34:28.671Z increased the connection pool from 5 to 120, which
+exceeded the database limit of 100.
+
+## Action items
+
+- [ ] Add a pool-size alert below 70% saturation (owner: sre)
+- [ ] Add a load test that reproduces the saturation point (owner: sre)
+
+
+### section 4
+
+saturation database rollback migration query query circuit request idempotency throughput feature handler idempotency breaker schema handler deploy database feature idempotency deploy schema latency idempotency deploy migration pool latency handler pool connection backpressure flag backpressure circuit query response feature error throughput query connection saturation saturation migration warning backpressure migration warning feature query pool service backpressure schema migration idempotency query idempotency idempotency response backpressure timeout query idempotency backpressure feature backpressure breaker migration flag idempotency database query deploy deploy migration migration latency breaker request rollback deploy backpressure retry rollback deploy flag database circuit flag handler circuit schema flag migration throughput migration timeout flag query rollback idempotency schema pool handler connection rollback circuit service pool handler service service migration feature timeout feature feature rollback flag handler breaker schema throughput flag rollback request breaker handler breaker throughput handler pool timeout migration feature deploy latency pool feature deploy latency service pool flag throughput rollback migration backpressure saturation rollback circuit database deploy throughput migration latency feature breaker flag circuit request schema error idempotency request error timeout pool pool feature breaker flag saturation error response response retry breaker error retry breaker feature response idempotency query latency response schema error warning circuit

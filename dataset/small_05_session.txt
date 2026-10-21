@@ -1,0 +1,42 @@
+User: Why does the pool exhaust only under load?
+Assistant: rollback retry timeout latency connection connection pool database feature database feature retry latency latency schema circuit warning timeout retry saturation handler feature latency service breaker retry schema deploy deploy idempotency migration deploy flag deploy saturation request saturation schema request schema
+User: Can we do it in one step?
+Assistant: service timeout breaker breaker rollback connection service response migration handler query database warning idempotency feature latency warning request feature connection saturation response feature schema saturation warning breaker warning throughput error rollback saturation error handler pool latency rollback service handler error latency schema pool warning feature throughput throughput query timeout query
+User: And what about the legacy path?
+Assistant: circuit pool service warning migration rollback deploy pool latency schema response error response connection backpressure warning pool database rollback breaker latency service deploy circuit query rollback flag feature pool handler latency idempotency request database migration
+
+[decision] We will use a strangler fig for the orders implementation.
+[commitment] The orders migration must ship before Q1 2027.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+User: What is the safest order for these two deploys?
+Assistant: schema response migration backpressure backpressure connection circuit saturation database migration latency error pool saturation service latency timeout circuit idempotency warning breaker latency connection saturation backpressure flag feature latency circuit warning latency pool circuit throughput latency deploy idempotency request feature service
+User: Can we do it in one step?
+Assistant: response retry timeout error connection connection idempotency deploy idempotency query latency database service connection backpressure response handler schema migration saturation database saturation throughput error flag connection migration circuit database circuit query response schema service timeout warning request service circuit retry throughput throughput backpressure idempotency latency query error request connection retry
+User: And what about the legacy path?
+Assistant: feature timeout request rollback handler latency pool error backpressure backpressure latency idempotency circuit warning latency retry timeout circuit deploy service breaker feature latency handler service retry saturation warning retry retry pool circuit schema latency service
+
+[decision] We will use an expand-contract migration for the billing implementation.
+[commitment] The billing migration must ship before end of the quarter.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 2
+
+connection connection timeout throughput rollback retry database latency schema backpressure handler rollback response migration pool response feature deploy connection query error feature saturation schema breaker request handler throughput response throughput query rollback idempotency idempotency breaker migration error timeout schema throughput database latency
+
+User: How do I migrate the schema without downtime?
+Assistant: warning schema response deploy throughput latency circuit circuit backpressure database request migration saturation backpressure response migration flag breaker deploy throughput error rollback deploy service throughput throughput breaker latency flag deploy circuit flag error response latency saturation handler latency rollback handler
+User: What is the rollback?
+Assistant: latency migration service response saturation response retry idempotency pool idempotency response connection idempotency request feature backpressure flag handler saturation service connection handler query schema handler latency warning rollback rollback retry response flag retry throughput query rollback warning database query saturation request database idempotency latency deploy latency latency service schema backpressure
+User: Who owns that?
+Assistant: connection backpressure warning service error schema rollback service saturation flag timeout idempotency circuit schema connection migration feature handler retry service throughput connection retry schema migration handler schema response throughput query rollback saturation saturation handler deploy
+
+[decision] We will use a blue/green cutover for the orders implementation.
+[commitment] The orders migration must ship before Q1 2027.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 4
+
+database migration service timeout latency latency latency feature latency error retry timeout pool circuit retry handler flag connection throughput response timeout idempotency pool latency connection deploy backpressure flag flag request schema connection latency rollback circuit saturation throughput warning response warning flag timeout response migration schema backpressure latency feature database breaker request query handler retry handler latency feature schema service retry backpressure breaker retry retry retry response breaker warning response timeout pool throughput idempotency migration rollback rollback backpressure database latency latency pool database latency connection warning warning response rollback response timeout backpressure flag database database query throughput query query migration response request saturation service response idempotency warning warning breaker deploy rollback warning latency schema response feature flag deploy breaker feature query breaker retry latency query service deploy feature rollback warning schema rollback query idempotency request error feature database timeout deploy latency deploy saturation backpressure service schema deploy rollback timeout backpressure retry pool throughput connection request query timeout retry error schema request connection warning migration connection retry timeout migration deploy retry request latency query saturation circuit query circuit connection idempotency flag timeout throughput latency throughput

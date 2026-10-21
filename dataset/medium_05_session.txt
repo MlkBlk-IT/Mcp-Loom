@@ -1,0 +1,682 @@
+User: What is the safest order for these two deploys?
+Assistant: circuit schema feature database latency error handler breaker timeout schema circuit request query flag throughput rollback latency latency pool retry feature pool retry circuit idempotency timeout warning rollback migration timeout throughput throughput backpressure latency timeout saturation deploy idempotency schema service
+User: Can we do it in one step?
+Assistant: error service idempotency backpressure migration saturation deploy flag schema backpressure circuit latency breaker response rollback connection response flag timeout deploy handler throughput throughput throughput saturation idempotency warning circuit query connection breaker rollback warning circuit warning latency service backpressure latency connection timeout response migration latency throughput rollback handler database idempotency migration
+User: Who owns that?
+Assistant: feature latency feature breaker circuit handler flag backpressure saturation response rollback flag connection request latency connection response warning request latency backpressure error latency feature circuit deploy warning warning rollback handler pool latency latency backpressure saturation
+
+[decision] We will use an expand-contract migration for the billing implementation.
+[commitment] The billing migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+User: What is the safest order for these two deploys?
+Assistant: retry throughput connection saturation timeout throughput response latency breaker retry latency connection saturation idempotency database breaker handler deploy service throughput query flag response breaker response deploy error saturation timeout pool flag retry response breaker connection deploy idempotency error flag handler
+User: Can we do it in one step?
+Assistant: circuit connection deploy deploy flag database saturation schema flag saturation latency backpressure retry schema service retry flag retry service database query timeout retry throughput latency feature backpressure warning retry feature deploy latency query circuit warning schema latency backpressure feature latency latency latency service idempotency request timeout deploy saturation retry warning
+User: Who owns that?
+Assistant: connection feature request latency query pool idempotency idempotency idempotency service latency query deploy connection pool error service backpressure latency pool feature service deploy database timeout service timeout idempotency timeout latency retry schema request saturation rollback
+
+[decision] We will use a strangler fig for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 2
+
+throughput migration circuit pool handler warning migration database migration circuit deploy rollback database latency migration feature response query retry retry throughput migration throughput saturation rollback throughput query service pool breaker deploy breaker rollback database migration idempotency timeout handler rollback saturation query retry handler error breaker flag query retry warning feature handler migration error backpressure timeout query retry circuit service database handler idempotency error circuit warning flag retry saturation handler request migration error schema circuit saturation migration pool schema throughput retry idempotency rollback migration circuit idempotency throughput idempotency feature latency warning
+
+User: How do I migrate the schema without downtime?
+Assistant: rollback latency warning rollback feature breaker feature idempotency request saturation latency feature warning rollback retry backpressure warning feature latency migration latency deploy circuit service feature feature idempotency backpressure request handler database retry deploy pool throughput rollback request throughput schema timeout
+User: Can we do it in one step?
+Assistant: warning query handler error service flag request request circuit latency query service latency rollback deploy schema deploy flag timeout deploy breaker latency query circuit flag idempotency query service database pool request pool error connection rollback pool service query retry throughput saturation query handler backpressure migration latency handler rollback breaker flag
+User: Who owns that?
+Assistant: error request connection rollback flag database latency handler handler idempotency feature service breaker deploy connection idempotency idempotency latency latency timeout response backpressure request query rollback error backpressure response database backpressure deploy error feature query database
+
+[decision] We will use an expand-contract migration for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 4
+
+database query feature response connection timeout request timeout pool service backpressure schema latency backpressure timeout service backpressure deploy schema throughput connection migration pool pool latency schema schema feature error service error latency database backpressure flag feature migration connection response pool service deploy response rollback query flag throughput response request handler service pool database schema deploy handler schema flag rollback response breaker
+
+User: Why does the pool exhaust only under load?
+Assistant: response pool error throughput error latency deploy flag breaker saturation circuit retry circuit throughput database warning request flag feature latency circuit flag flag warning response response response feature response handler rollback idempotency rollback idempotency migration migration backpressure feature throughput error
+User: Can we do it in one step?
+Assistant: schema query schema database flag warning breaker circuit service idempotency throughput pool breaker pool connection service pool feature query idempotency breaker breaker latency idempotency error connection query connection query latency timeout connection latency request saturation request latency feature service timeout pool query pool request query saturation retry response backpressure request
+User: And what about the legacy path?
+Assistant: warning latency connection latency backpressure throughput throughput database saturation timeout rollback backpressure breaker circuit deploy request schema warning throughput connection feature request query idempotency latency backpressure timeout response retry idempotency database connection query latency circuit
+
+[decision] We will use an expand-contract migration for the sessions implementation.
+[commitment] The sessions migration must ship before end of the quarter.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 6
+
+rollback database warning service request idempotency pool feature backpressure warning deploy circuit idempotency query saturation response throughput retry migration schema schema retry timeout latency saturation service error breaker latency handler response backpressure latency database idempotency feature deploy query idempotency latency handler timeout circuit response rollback handler circuit throughput schema service query latency connection feature response schema retry error warning request rollback latency latency schema flag request warning database error warning retry breaker error feature database latency request latency flag breaker migration query connection latency error circuit request breaker query response circuit database migration rollback response idempotency throughput rollback throughput warning connection circuit warning error database latency retry throughput feature latency rollback pool migration rollback breaker saturation error error feature response idempotency query deploy migration warning response timeout latency circuit circuit breaker migration flag connection rollback schema connection backpressure error feature database query query timeout error idempotency idempotency response warning backpressure saturation warning feature throughput throughput query service retry rollback query schema retry error handler schema migration database pool pool latency saturation connection database throughput retry migration throughput warning migration throughput schema latency query response backpressure breaker
+
+User: Why does the pool exhaust only under load?
+Assistant: schema latency response database warning retry latency migration latency rollback latency pool rollback response throughput response query feature latency service feature rollback feature rollback timeout backpressure feature rollback feature database backpressure migration response latency pool rollback query timeout retry idempotency
+User: Can we do it in one step?
+Assistant: breaker response response migration retry service throughput timeout rollback breaker backpressure migration latency schema pool retry deploy rollback saturation database schema backpressure response schema flag response service response database error database deploy circuit backpressure idempotency request migration schema breaker response migration breaker migration migration backpressure pool request service timeout migration
+User: Who owns that?
+Assistant: error idempotency database schema handler error feature schema query saturation query database timeout service feature migration latency deploy retry database request saturation query handler latency database latency warning schema saturation response rollback schema handler migration
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 8
+
+request rollback timeout schema migration throughput throughput error idempotency request warning request breaker feature saturation pool breaker deploy schema backpressure latency query schema feature response timeout response feature pool response query response response retry latency schema latency request database schema rollback circuit deploy idempotency migration migration latency feature request backpressure saturation feature flag database idempotency query service connection service response breaker database backpressure warning error saturation error pool error deploy schema service circuit idempotency latency breaker throughput migration query error throughput idempotency schema throughput retry latency throughput breaker breaker
+
+User: What is the safest order for these two deploys?
+Assistant: schema deploy schema backpressure handler migration latency retry handler request retry request feature latency idempotency request latency connection retry saturation circuit saturation timeout latency pool connection feature deploy schema schema circuit request service warning database breaker retry connection error flag
+User: Can we do it in one step?
+Assistant: backpressure backpressure service connection schema service flag backpressure throughput service connection response latency flag pool query retry service warning pool timeout latency breaker timeout warning warning service response migration circuit warning query connection query latency schema handler backpressure latency timeout latency warning flag rollback connection rollback rollback query breaker deploy
+User: Who owns that?
+Assistant: retry migration deploy pool request retry flag flag pool rollback latency backpressure flag query warning backpressure breaker response latency feature breaker schema error database deploy migration query feature connection connection saturation handler deploy error error
+
+[decision] We will use a blue/green cutover for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 10
+
+pool retry deploy request circuit circuit query database schema deploy timeout flag throughput handler schema handler throughput migration throughput latency response throughput response response handler handler pool throughput latency handler connection request connection warning backpressure breaker breaker backpressure breaker database migration latency request saturation handler response error schema connection saturation pool backpressure deploy service pool database error breaker deploy schema schema flag latency flag handler breaker idempotency latency latency service schema schema error schema idempotency flag retry idempotency query pool rollback throughput error rollback response flag circuit flag latency service pool latency schema saturation migration request database request saturation idempotency backpressure service timeout schema rollback idempotency request idempotency circuit feature saturation service feature request database saturation flag timeout deploy latency circuit breaker throughput timeout pool pool migration pool feature idempotency circuit handler pool retry handler pool schema feature migration backpressure response query handler error response pool deploy pool idempotency service circuit connection rollback
+
+User: What is the safest order for these two deploys?
+Assistant: circuit warning feature query connection saturation query connection timeout circuit breaker backpressure migration deploy saturation feature pool saturation timeout connection pool handler retry error error migration circuit database deploy response connection retry saturation rollback error service request rollback response connection
+User: What is the rollback?
+Assistant: request rollback query backpressure service error deploy handler service timeout service breaker retry handler retry connection throughput connection handler idempotency throughput feature schema feature warning pool warning flag request schema retry response saturation throughput database flag breaker error error timeout idempotency deploy warning warning feature handler backpressure pool schema breaker
+User: And what about the legacy path?
+Assistant: pool feature request pool handler latency saturation query retry migration request flag circuit response latency schema connection error schema latency retry retry error rollback error response rollback migration database rollback saturation migration service deploy flag
+
+[decision] We will use a strangler fig for the sessions implementation.
+[commitment] The sessions migration must ship before end of the quarter.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 12
+
+schema retry latency handler latency schema deploy connection warning retry request deploy breaker deploy latency database idempotency warning backpressure circuit error latency feature latency retry flag retry flag deploy idempotency saturation retry query latency schema latency saturation idempotency request backpressure circuit latency timeout error query throughput query pool rollback flag query database retry feature latency query saturation latency warning flag response handler migration deploy backpressure retry backpressure idempotency database breaker schema saturation pool error flag request pool backpressure latency connection retry timeout breaker deploy service pool retry latency deploy feature pool deploy timeout idempotency feature latency breaker feature breaker request idempotency backpressure service deploy deploy connection schema breaker service migration connection circuit error database idempotency migration flag error retry backpressure throughput connection handler flag query warning feature warning service pool connection latency retry rollback saturation deploy flag idempotency service circuit migration breaker response response throughput circuit handler query query pool backpressure pool latency deploy service feature backpressure breaker backpressure error feature breaker throughput database handler rollback request request latency circuit backpressure
+
+User: Why does the pool exhaust only under load?
+Assistant: service service throughput rollback service idempotency circuit error flag throughput idempotency circuit pool latency handler latency throughput feature rollback flag throughput migration idempotency saturation handler throughput throughput pool flag deploy schema flag backpressure backpressure latency warning timeout backpressure throughput pool
+User: What is the rollback?
+Assistant: schema request query rollback service request query circuit backpressure latency request response rollback latency throughput warning retry migration schema service circuit warning deploy connection idempotency warning migration deploy rollback throughput idempotency migration throughput throughput pool migration feature error rollback deploy error query rollback rollback query response query feature service warning
+User: Who owns that?
+Assistant: retry throughput warning breaker response pool service database retry warning migration response retry flag connection handler latency idempotency timeout latency backpressure latency latency service response timeout database backpressure latency timeout warning saturation service circuit service
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 14
+
+service feature backpressure feature circuit handler breaker flag deploy latency timeout schema request feature query saturation handler latency service connection latency throughput circuit warning circuit retry retry feature migration warning breaker flag latency throughput service circuit flag query schema circuit response circuit service request breaker idempotency schema request service query database latency feature circuit timeout migration idempotency breaker latency timeout retry feature connection service handler throughput latency feature latency warning pool service database deploy handler database latency request throughput service idempotency pool warning response feature database latency service idempotency circuit service
+
+User: How do I migrate the schema without downtime?
+Assistant: circuit backpressure rollback throughput circuit feature flag handler feature saturation database idempotency handler warning saturation service pool circuit migration pool service retry handler saturation latency latency timeout database timeout response deploy query request idempotency flag latency rollback latency pool retry
+User: Can we do it in one step?
+Assistant: latency flag retry warning response migration error error feature schema rollback response error error warning timeout error error response pool warning warning flag schema database flag feature throughput latency latency warning idempotency deploy timeout flag query timeout query retry rollback latency query database flag warning retry flag circuit deploy circuit
+User: Who owns that?
+Assistant: circuit idempotency warning retry warning schema latency warning response rollback connection latency rollback latency schema deploy connection idempotency circuit pool breaker error connection breaker latency idempotency breaker request database error latency latency throughput retry latency
+
+[decision] We will use an expand-contract migration for the sessions implementation.
+[commitment] The sessions migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 16
+
+throughput timeout database rollback deploy deploy handler idempotency migration breaker connection error flag service service error backpressure timeout rollback circuit handler idempotency backpressure retry idempotency circuit latency service pool request query request database latency handler response latency latency flag deploy query saturation schema timeout service flag error error deploy latency flag service backpressure response schema saturation connection migration idempotency circuit database request deploy saturation migration retry throughput flag breaker saturation deploy connection timeout error feature warning timeout response retry database feature schema deploy service timeout handler response error connection pool retry handler service circuit feature circuit schema idempotency feature migration timeout latency breaker throughput pool throughput retry handler timeout timeout breaker migration query backpressure rollback database deploy backpressure saturation idempotency warning response migration latency flag timeout rollback latency idempotency breaker retry feature error timeout pool migration flag throughput pool handler latency warning circuit connection schema idempotency error circuit query flag breaker latency warning database schema error throughput retry latency rollback breaker handler schema request pool
+
+User: How do I migrate the schema without downtime?
+Assistant: pool idempotency response circuit retry latency response backpressure breaker deploy rollback migration service response breaker throughput backpressure schema service latency warning database latency rollback latency warning latency connection pool timeout circuit schema pool latency flag circuit request retry flag flag
+User: Can we do it in one step?
+Assistant: request feature timeout flag throughput query response idempotency warning latency deploy schema saturation feature rollback query warning handler flag error warning warning database schema error handler latency deploy timeout retry rollback handler backpressure timeout retry latency latency retry breaker idempotency handler latency schema timeout feature request query circuit handler feature
+User: And what about the legacy path?
+Assistant: idempotency database latency backpressure throughput database schema saturation error schema backpressure latency response throughput error response breaker connection handler service database response request rollback timeout database service query retry retry handler response throughput flag response
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 18
+
+flag schema breaker query response latency rollback circuit rollback deploy saturation retry migration database saturation rollback retry circuit deploy schema service breaker connection database schema saturation warning schema response saturation saturation request pool feature response rollback database rollback breaker flag database request pool circuit schema request feature response saturation latency latency warning throughput warning latency rollback schema backpressure connection latency retry latency circuit feature retry latency timeout request warning deploy warning timeout database backpressure timeout saturation flag schema backpressure service rollback flag warning response request circuit query handler migration deploy latency pool warning
+
+User: Why does the pool exhaust only under load?
+Assistant: retry latency latency query timeout latency handler deploy circuit request warning pool handler response query feature breaker request database latency service saturation error response schema schema pool query circuit pool pool schema rollback breaker breaker error latency deploy migration feature
+User: Can we do it in one step?
+Assistant: saturation service error error latency feature pool schema migration feature backpressure rollback throughput query throughput throughput flag error timeout rollback deploy latency service feature retry migration idempotency saturation query latency rollback idempotency handler breaker retry backpressure feature throughput feature latency schema error error rollback idempotency error flag throughput circuit response
+User: Who owns that?
+Assistant: latency schema timeout rollback deploy latency circuit migration rollback timeout rollback handler schema breaker schema handler flag idempotency warning schema idempotency query timeout saturation saturation latency idempotency circuit retry request circuit circuit feature throughput request
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 20
+
+breaker circuit retry pool error saturation retry rollback database timeout saturation breaker handler schema saturation request timeout request idempotency request flag circuit flag latency breaker timeout pool service connection throughput request deploy migration error latency service saturation feature flag feature request latency migration query database backpressure timeout breaker deploy idempotency latency feature idempotency schema database latency retry handler pool request timeout service database response error connection error retry response migration throughput breaker rollback error idempotency breaker response idempotency connection backpressure latency request saturation schema saturation timeout warning latency query error response rollback flag circuit database response service warning circuit throughput timeout database pool database warning database rollback request circuit request service circuit backpressure feature feature latency timeout warning saturation request request service request backpressure idempotency connection database rollback migration rollback breaker rollback timeout handler database pool request throughput latency rollback pool request rollback service saturation error query timeout timeout error timeout pool throughput latency request migration latency error circuit rollback latency timeout handler latency idempotency response feature latency database schema throughput idempotency idempotency request flag feature rollback throughput request
+
+User: Why does the pool exhaust only under load?
+Assistant: latency response service timeout latency warning feature deploy migration saturation backpressure migration latency breaker saturation handler warning database error breaker latency circuit backpressure retry retry service error flag warning handler database latency pool circuit connection request warning pool feature query
+User: Can we do it in one step?
+Assistant: database saturation throughput rollback error schema pool flag idempotency rollback retry warning latency deploy timeout saturation flag latency saturation breaker retry retry rollback pool idempotency saturation response latency response latency saturation warning feature breaker service request saturation service flag response idempotency request deploy migration response latency query circuit service service
+User: Who owns that?
+Assistant: response breaker schema latency response breaker response response warning latency throughput rollback database throughput latency timeout deploy service timeout timeout retry request database breaker saturation saturation connection timeout latency retry pool saturation idempotency response throughput
+
+[decision] We will use an expand-contract migration for the sessions implementation.
+[commitment] The sessions migration must ship before Q1 2027.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 22
+
+saturation rollback pool rollback handler timeout latency handler circuit timeout response timeout retry latency retry rollback timeout feature saturation schema schema pool latency request feature connection rollback response request throughput pool error rollback warning circuit database connection retry latency connection breaker service request circuit timeout circuit saturation breaker migration response handler backpressure database request breaker database request breaker throughput migration idempotency query warning retry saturation pool feature rollback idempotency warning rollback idempotency response throughput service handler rollback saturation migration query backpressure migration warning deploy circuit query latency query connection retry request warning response schema deploy backpressure migration rollback warning retry latency rollback idempotency service circuit circuit breaker schema deploy rollback backpressure circuit connection circuit database breaker warning response schema timeout connection pool feature rollback idempotency backpressure idempotency throughput request query rollback latency response migration saturation saturation database backpressure connection schema circuit pool handler request circuit breaker saturation retry warning warning service deploy deploy database flag latency feature deploy breaker feature schema circuit handler throughput latency retry retry query latency migration service latency backpressure breaker service connection service deploy circuit backpressure rollback response
+
+User: Why does the pool exhaust only under load?
+Assistant: schema warning error breaker breaker error feature idempotency rollback throughput response timeout retry timeout service error response schema backpressure latency request latency deploy error retry deploy throughput circuit connection flag timeout deploy request latency warning service deploy deploy flag schema
+User: Can we do it in one step?
+Assistant: service backpressure error query deploy circuit latency error latency handler migration warning latency warning breaker flag retry database rollback response service flag service rollback warning throughput schema warning connection throughput warning timeout deploy backpressure circuit circuit latency warning deploy error idempotency rollback rollback deploy rollback throughput response breaker database saturation
+User: And what about the legacy path?
+Assistant: query schema idempotency migration rollback breaker saturation migration connection pool warning database throughput latency feature service deploy backpressure handler database saturation timeout migration warning warning migration query deploy breaker rollback feature request query migration feature
+
+[decision] We will use a blue/green cutover for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 24
+
+circuit handler idempotency connection deploy warning handler retry rollback migration saturation migration breaker connection query feature timeout service latency database saturation error error idempotency feature throughput rollback warning circuit backpressure circuit error response rollback warning saturation idempotency latency deploy circuit service service pool retry service schema response error request database breaker pool idempotency throughput deploy rollback feature warning connection warning timeout idempotency feature saturation idempotency query latency latency
+
+User: How do I migrate the schema without downtime?
+Assistant: response circuit backpressure warning deploy latency database response saturation breaker idempotency response service request saturation timeout deploy latency pool schema query database pool circuit pool database handler breaker saturation query saturation timeout flag migration request pool error query handler deploy
+User: Can we do it in one step?
+Assistant: feature request idempotency circuit breaker query idempotency latency backpressure flag timeout idempotency deploy service feature request retry database schema error latency migration error breaker schema migration schema retry throughput service query deploy flag idempotency database schema deploy pool request latency saturation query migration database response flag error rollback handler query
+User: Who owns that?
+Assistant: flag warning backpressure breaker service connection latency connection circuit timeout breaker warning rollback request circuit request request saturation query flag flag handler flag backpressure backpressure error response migration rollback connection error timeout rollback breaker connection
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 26
+
+migration breaker latency timeout circuit breaker database rollback idempotency query feature saturation database circuit breaker flag warning rollback circuit flag breaker handler circuit latency circuit migration migration pool saturation migration handler feature circuit query circuit pool deploy timeout pool feature circuit pool warning rollback query schema schema saturation feature response handler deploy latency flag circuit connection handler saturation service saturation migration throughput deploy service latency idempotency deploy backpressure flag request saturation service retry breaker retry rollback pool backpressure saturation breaker database backpressure flag latency pool query connection warning request idempotency connection pool query latency deploy throughput service warning database error warning connection request database retry handler request backpressure error rollback database breaker flag pool feature breaker throughput service migration latency database migration circuit breaker flag
+
+User: What is the safest order for these two deploys?
+Assistant: deploy breaker query error retry breaker feature deploy circuit throughput rollback response request latency retry database response rollback pool latency latency flag query retry idempotency throughput pool error saturation request migration breaker flag rollback backpressure feature database deploy flag flag
+User: What is the rollback?
+Assistant: backpressure idempotency migration circuit warning rollback latency response feature response rollback request idempotency database timeout backpressure request latency timeout database deploy latency schema migration connection latency throughput service latency backpressure feature query handler timeout handler breaker response query latency throughput response schema breaker feature request service warning service throughput request
+User: And what about the legacy path?
+Assistant: latency idempotency pool throughput throughput query pool saturation migration request error request response retry throughput idempotency warning saturation latency timeout database latency rollback idempotency deploy pool schema latency error latency idempotency service throughput connection deploy
+
+[decision] We will use an expand-contract migration for the orders implementation.
+[commitment] The orders migration must ship before Q1 2027.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 28
+
+rollback latency request request handler latency rollback feature throughput deploy request query saturation latency retry rollback pool throughput latency idempotency schema service idempotency feature circuit schema pool migration database handler handler service migration query error latency error warning idempotency schema connection connection deploy latency query timeout deploy idempotency idempotency handler idempotency latency error pool schema connection rollback pool connection request
+
+User: What is the safest order for these two deploys?
+Assistant: deploy migration idempotency handler backpressure response handler migration saturation idempotency database throughput database timeout query deploy request request warning latency query timeout service retry warning migration feature timeout flag rollback pool latency warning request migration service retry query saturation backpressure
+User: What is the rollback?
+Assistant: connection idempotency connection rollback circuit latency rollback breaker error breaker schema throughput throughput breaker handler circuit warning retry schema timeout rollback breaker flag schema rollback saturation feature breaker deploy flag request database service query saturation timeout circuit query throughput pool request backpressure error pool database throughput idempotency breaker flag connection
+User: And what about the legacy path?
+Assistant: retry flag request schema flag rollback flag latency service migration handler idempotency deploy response service query throughput rollback error backpressure handler retry query circuit handler query service circuit schema warning service request timeout schema connection
+
+[decision] We will use a blue/green cutover for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 30
+
+rollback saturation schema idempotency breaker warning database service breaker pool latency flag error rollback rollback flag backpressure query warning idempotency rollback pool request retry latency database saturation latency timeout error flag pool request saturation service rollback handler circuit latency saturation response backpressure retry connection timeout warning response handler response idempotency migration schema flag saturation connection service saturation feature breaker backpressure latency flag response latency handler error saturation schema circuit response retry latency error rollback pool request timeout backpressure breaker timeout warning throughput retry saturation latency saturation pool backpressure request database backpressure error timeout database saturation timeout error feature retry handler service flag query circuit retry flag query feature circuit response throughput circuit rollback error latency schema saturation latency timeout flag database
+
+User: What is the safest order for these two deploys?
+Assistant: latency feature flag flag warning retry response idempotency migration error database warning query timeout handler saturation backpressure throughput timeout latency backpressure migration feature error saturation error retry query migration connection error backpressure request request handler breaker saturation throughput migration latency
+User: What is the rollback?
+Assistant: deploy deploy latency timeout handler deploy flag connection migration throughput flag warning flag idempotency feature latency schema throughput flag error breaker database idempotency circuit retry latency error pool saturation latency service feature rollback latency saturation timeout flag latency circuit latency response database schema flag warning request latency latency request flag
+User: And what about the legacy path?
+Assistant: database throughput connection retry saturation connection handler latency database deploy error error latency retry connection service error request response request schema connection connection breaker connection schema request schema pool flag latency idempotency idempotency connection circuit
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 32
+
+response handler error error connection query saturation throughput connection warning connection latency database deploy idempotency error latency latency request pool latency request flag service rollback timeout timeout timeout request throughput flag retry breaker timeout error circuit response saturation service retry backpressure latency error circuit database latency retry request flag warning schema idempotency schema throughput latency service flag idempotency pool handler feature circuit schema latency schema breaker saturation latency connection migration rollback flag database flag latency flag idempotency handler idempotency retry feature request rollback response breaker handler schema deploy latency retry breaker feature connection deploy throughput feature migration flag
+
+User: What is the safest order for these two deploys?
+Assistant: schema feature breaker query schema error connection retry latency service rollback migration throughput rollback circuit flag backpressure service breaker pool handler latency latency timeout latency error timeout rollback request deploy warning database throughput flag pool migration rollback schema saturation pool
+User: What is the rollback?
+Assistant: service connection pool warning latency idempotency query database error schema breaker latency warning idempotency saturation timeout response backpressure service migration timeout request latency response flag database saturation rollback timeout timeout migration connection service latency feature database handler error query connection breaker service retry warning flag timeout latency schema warning latency
+User: And what about the legacy path?
+Assistant: circuit schema deploy retry request breaker query feature feature backpressure flag rollback database request backpressure service latency timeout service latency retry flag request error saturation service error idempotency retry warning deploy latency saturation handler database
+
+[decision] We will use an expand-contract migration for the sessions implementation.
+[commitment] The sessions migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 34
+
+feature database latency feature latency breaker database idempotency deploy latency warning database circuit retry feature query warning feature timeout pool feature schema error request error migration query deploy latency connection saturation schema circuit schema backpressure feature request deploy schema latency response breaker circuit backpressure pool
+
+User: What is the safest order for these two deploys?
+Assistant: flag feature query query saturation saturation circuit response rollback feature feature warning database rollback timeout breaker response backpressure saturation error query query timeout throughput database rollback saturation schema service latency handler response service latency rollback rollback handler pool handler breaker
+User: Can we do it in one step?
+Assistant: latency warning feature query schema retry latency latency error idempotency flag warning deploy schema throughput warning service request error backpressure warning latency warning response latency breaker flag pool retry rollback database rollback circuit service latency request saturation database warning query query circuit timeout migration circuit query response latency breaker throughput
+User: Who owns that?
+Assistant: breaker deploy migration pool database circuit deploy request rollback handler schema schema service warning service handler migration idempotency pool timeout breaker handler backpressure query query migration query handler query database backpressure handler throughput migration idempotency
+
+[decision] We will use a blue/green cutover for the sessions implementation.
+[commitment] The sessions migration must ship before Q1 2027.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 36
+
+error backpressure migration warning idempotency handler throughput timeout backpressure circuit timeout service latency breaker error backpressure schema deploy error saturation schema timeout backpressure latency backpressure idempotency breaker pool saturation handler saturation migration schema timeout latency deploy schema handler pool backpressure request connection throughput response error retry request circuit response latency pool feature error request backpressure warning throughput saturation throughput query breaker flag database latency feature
+
+User: What is the safest order for these two deploys?
+Assistant: flag flag rollback pool feature latency breaker rollback migration database rollback handler flag connection service connection handler service response idempotency backpressure schema schema timeout feature backpressure deploy throughput breaker database request deploy pool breaker database error retry timeout database retry
+User: What is the rollback?
+Assistant: backpressure deploy backpressure service migration retry service query timeout warning circuit migration saturation retry feature service connection circuit timeout deploy handler feature warning error migration breaker timeout warning service response warning database query connection warning timeout rollback database idempotency response request idempotency schema circuit latency warning latency latency service response
+User: And what about the legacy path?
+Assistant: pool retry warning timeout rollback handler handler retry circuit breaker response feature migration connection circuit pool migration idempotency retry retry breaker migration migration retry response latency error database request retry pool database migration deploy circuit
+
+[decision] We will use a strangler fig for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 38
+
+idempotency timeout pool latency latency throughput feature query pool migration request schema connection error latency database pool handler schema connection circuit warning rollback feature timeout handler retry database request database request deploy connection database idempotency timeout deploy query service circuit response database warning service idempotency migration connection pool handler error throughput request backpressure request response idempotency handler schema error handler query request schema latency backpressure breaker feature database rollback latency handler flag service response backpressure retry latency schema latency schema retry migration latency rollback latency feature deploy warning rollback service service saturation response pool connection idempotency saturation error migration deploy breaker latency request retry handler schema rollback pool
+
+User: How do I migrate the schema without downtime?
+Assistant: pool feature retry migration request latency schema error request schema breaker database response flag pool request backpressure migration request circuit feature warning error request retry throughput error latency backpressure deploy deploy throughput request circuit backpressure throughput timeout warning idempotency circuit
+User: Can we do it in one step?
+Assistant: circuit error deploy connection database response backpressure migration handler schema connection query latency warning flag deploy deploy request request deploy migration response saturation idempotency response idempotency deploy latency connection migration connection response warning latency migration backpressure flag schema handler retry rollback database database throughput throughput breaker service service timeout latency
+User: Who owns that?
+Assistant: deploy latency throughput backpressure pool response latency rollback response connection breaker backpressure circuit circuit throughput feature database pool feature feature retry rollback breaker breaker deploy warning flag rollback handler connection feature migration response connection error
+
+[decision] We will use a strangler fig for the sessions implementation.
+[commitment] The sessions migration must ship before Q1 2027.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 40
+
+retry circuit latency breaker request error connection handler rollback warning breaker throughput connection idempotency latency deploy migration deploy breaker pool idempotency saturation pool deploy feature flag flag database latency service backpressure handler backpressure latency flag service error error throughput rollback service request response saturation timeout timeout feature retry migration saturation rollback backpressure query retry flag schema timeout retry backpressure warning error migration connection saturation request response breaker flag request request handler timeout latency connection feature throughput connection breaker error database database connection retry deploy warning feature latency saturation idempotency retry schema timeout request pool schema throughput idempotency schema query response backpressure rollback idempotency latency backpressure request query handler service feature feature feature feature service connection error backpressure latency backpressure rollback handler retry migration rollback handler saturation response timeout flag timeout rollback backpressure database feature warning circuit warning rollback idempotency error schema query pool timeout timeout migration query response breaker pool timeout feature latency pool handler pool flag rollback
+
+User: What is the safest order for these two deploys?
+Assistant: throughput backpressure query latency connection latency timeout rollback connection schema handler error timeout latency timeout schema service rollback response migration migration idempotency error response rollback timeout idempotency request idempotency warning retry latency database warning response rollback latency feature request backpressure
+User: What is the rollback?
+Assistant: query feature database error schema schema latency deploy flag handler rollback idempotency connection migration pool latency pool request rollback saturation handler deploy service throughput timeout error request idempotency service backpressure migration retry flag saturation backpressure idempotency database breaker feature schema timeout database latency connection query pool throughput idempotency backpressure response
+User: And what about the legacy path?
+Assistant: latency database schema rollback request circuit database warning feature saturation deploy timeout retry breaker throughput throughput deploy feature circuit latency request warning latency pool error request database handler idempotency response response idempotency error database error
+
+[decision] We will use an expand-contract migration for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 42
+
+query breaker backpressure feature feature retry flag breaker backpressure rollback connection schema connection latency throughput backpressure latency request flag retry pool retry database rollback timeout flag schema timeout saturation circuit flag database circuit latency throughput flag pool request pool warning feature service retry database pool deploy throughput throughput flag circuit saturation rollback pool timeout backpressure connection migration request feature service feature deploy warning query response migration circuit response rollback deploy query feature rollback schema request service saturation backpressure throughput query
+
+User: What is the safest order for these two deploys?
+Assistant: circuit handler service flag breaker circuit throughput connection backpressure request warning schema warning latency idempotency migration throughput flag query migration schema service retry idempotency breaker saturation timeout database response request circuit timeout saturation request saturation timeout retry connection rollback pool
+User: What is the rollback?
+Assistant: pool schema deploy query throughput throughput query warning service query query latency circuit response timeout idempotency warning retry warning timeout service throughput flag service retry idempotency schema idempotency idempotency backpressure schema migration saturation pool latency deploy deploy backpressure latency backpressure schema database response deploy retry breaker timeout throughput database flag
+User: Who owns that?
+Assistant: error latency idempotency latency flag flag deploy timeout service deploy breaker circuit query service deploy rollback handler database saturation service throughput feature throughput latency timeout latency rollback schema warning retry warning breaker latency deploy rollback
+
+[decision] We will use a strangler fig for the sessions implementation.
+[commitment] The sessions migration must ship before Q1 2027.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 44
+
+connection deploy circuit deploy idempotency feature warning handler saturation throughput request pool flag schema rollback database throughput deploy handler timeout pool feature warning request pool response service flag breaker response feature service latency feature response migration error breaker saturation service breaker circuit schema request latency circuit backpressure latency migration breaker migration response handler latency database throughput latency connection service pool breaker migration connection query database pool handler idempotency backpressure idempotency warning schema rollback connection error database connection feature warning service pool
+
+User: What is the safest order for these two deploys?
+Assistant: request throughput saturation throughput retry latency error saturation warning throughput response migration latency request pool pool flag pool request latency saturation latency feature service response error query circuit warning error service query pool response breaker connection feature connection timeout saturation
+User: What is the rollback?
+Assistant: latency connection throughput latency rollback breaker throughput retry warning response latency pool database throughput retry response flag schema saturation deploy service breaker warning breaker request deploy throughput idempotency timeout service response latency timeout response backpressure retry timeout schema breaker error breaker throughput retry idempotency timeout query latency backpressure query circuit
+User: Who owns that?
+Assistant: migration latency backpressure schema deploy pool feature throughput flag circuit pool error connection response flag retry deploy backpressure latency latency circuit migration warning handler migration latency retry warning service service query breaker retry deploy throughput
+
+[decision] We will use a strangler fig for the billing implementation.
+[commitment] The billing migration must ship before Q1 2027.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 46
+
+request request latency retry throughput circuit deploy circuit schema throughput database response deploy error rollback pool pool query backpressure throughput pool response connection connection latency request flag handler schema handler throughput handler latency latency breaker query warning throughput feature service warning latency request throughput latency response latency schema throughput feature service handler saturation rollback pool request idempotency
+
+User: How do I migrate the schema without downtime?
+Assistant: flag throughput warning latency migration schema query warning error handler migration response breaker database circuit circuit migration feature backpressure request latency feature breaker latency service connection query deploy migration warning saturation throughput latency schema timeout database pool timeout connection saturation
+User: Can we do it in one step?
+Assistant: schema query connection deploy warning migration latency service retry saturation backpressure migration backpressure service feature saturation migration error deploy throughput service circuit pool feature migration database latency migration request deploy request retry circuit breaker database warning breaker schema connection response connection migration connection feature latency timeout connection response handler throughput
+User: Who owns that?
+Assistant: schema migration latency idempotency service warning response database throughput flag breaker handler warning error backpressure error latency pool pool response breaker warning pool deploy warning query warning circuit request latency latency feature query schema query
+
+[decision] We will use a strangler fig for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 48
+
+error flag service service flag query database deploy database pool warning error warning deploy query throughput timeout feature database flag schema pool retry pool throughput schema response pool feature handler database feature latency circuit pool response backpressure warning saturation migration handler timeout breaker deploy latency breaker connection database connection connection warning idempotency latency migration database idempotency warning request latency deploy rollback retry migration timeout circuit backpressure saturation flag database database error feature database latency migration warning pool error schema request circuit rollback database feature backpressure service throughput latency error request feature request service query deploy response throughput timeout warning idempotency idempotency saturation schema schema pool request rollback latency connection breaker error latency error connection breaker feature latency service flag request backpressure timeout deploy
+
+User: How do I migrate the schema without downtime?
+Assistant: retry retry pool request service pool throughput handler idempotency schema retry backpressure warning service saturation latency query retry warning warning timeout breaker retry retry retry throughput service warning handler saturation circuit service retry service response idempotency latency latency database request
+User: Can we do it in one step?
+Assistant: idempotency latency pool database timeout request backpressure deploy connection flag error request connection flag breaker pool latency response pool schema migration breaker latency feature backpressure warning circuit flag error migration handler saturation error schema latency service latency retry rollback handler schema feature schema retry service timeout query backpressure response saturation
+User: Who owns that?
+Assistant: timeout error circuit feature latency migration retry response error warning latency backpressure pool breaker warning database request circuit pool migration deploy pool latency request migration backpressure latency error backpressure service schema connection pool response query
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 50
+
+idempotency schema database breaker saturation feature schema error rollback query flag idempotency latency breaker service pool migration error latency latency breaker request saturation response schema warning pool flag circuit deploy breaker rollback connection backpressure flag service retry request response latency error breaker breaker latency latency backpressure backpressure response warning throughput throughput retry latency rollback retry timeout connection deploy backpressure migration deploy latency throughput connection database
+
+User: How do I migrate the schema without downtime?
+Assistant: backpressure timeout saturation latency throughput flag deploy timeout idempotency deploy saturation response breaker warning breaker saturation circuit query latency circuit database idempotency connection retry retry response idempotency schema latency idempotency rollback response circuit backpressure saturation breaker retry migration response error
+User: Can we do it in one step?
+Assistant: deploy service connection error feature connection response pool flag connection breaker backpressure deploy warning database handler service handler migration handler backpressure query pool migration feature pool rollback handler pool latency throughput request response flag circuit service connection flag request database saturation handler warning query deploy response saturation handler error throughput
+User: Who owns that?
+Assistant: breaker migration request rollback circuit deploy error query latency deploy backpressure flag error throughput database connection circuit response feature service backpressure schema latency response feature request latency throughput connection schema error deploy query deploy saturation
+
+[decision] We will use a strangler fig for the billing implementation.
+[commitment] The billing migration must ship before Q1 2027.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 52
+
+backpressure latency query handler warning migration response breaker response latency response handler schema flag circuit deploy database backpressure idempotency timeout rollback service saturation circuit backpressure latency retry feature deploy latency throughput latency request schema connection pool backpressure breaker latency response flag database timeout latency throughput latency migration connection deploy backpressure pool migration migration schema breaker latency latency backpressure migration latency response circuit throughput retry idempotency query latency rollback request deploy migration response throughput saturation feature saturation database handler request feature retry flag request feature service warning circuit pool latency pool handler timeout rollback rollback query flag deploy rollback breaker timeout error warning flag handler circuit flag flag database error handler latency circuit feature migration idempotency pool deploy timeout response latency breaker response idempotency warning latency pool database query service response idempotency pool rollback throughput request query request throughput latency deploy request warning feature flag error breaker timeout request rollback response circuit service warning query error handler feature service rollback error connection retry schema
+
+User: How do I migrate the schema without downtime?
+Assistant: latency deploy schema feature backpressure idempotency query schema latency feature saturation latency timeout saturation deploy backpressure saturation request timeout warning circuit timeout backpressure breaker warning flag flag response service pool idempotency saturation throughput retry retry connection feature latency retry rollback
+User: Can we do it in one step?
+Assistant: latency latency breaker throughput backpressure migration rollback rollback request timeout backpressure latency latency pool error backpressure latency connection request timeout request response database service handler breaker backpressure service deploy feature pool circuit saturation retry handler query rollback retry idempotency breaker deploy flag idempotency saturation latency rollback rollback latency idempotency latency
+User: And what about the legacy path?
+Assistant: request schema retry service flag circuit retry error throughput flag backpressure request query query latency warning warning service response migration error handler migration backpressure database saturation throughput timeout idempotency throughput timeout warning database migration warning
+
+[decision] We will use a blue/green cutover for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 54
+
+latency saturation service rollback migration timeout query timeout throughput handler flag latency rollback warning idempotency throughput retry deploy request request migration service service schema deploy flag connection idempotency retry migration latency handler deploy response connection error rollback database request backpressure saturation flag circuit latency handler database circuit connection deploy throughput feature timeout deploy feature backpressure breaker database timeout database error rollback deploy deploy connection service migration latency migration request latency backpressure retry retry breaker saturation feature rollback latency query database deploy pool timeout feature connection database database request handler response flag pool deploy feature database throughput warning throughput warning schema database retry query idempotency request pool timeout warning throughput schema deploy retry rollback latency handler flag throughput pool backpressure retry breaker circuit pool idempotency error latency flag flag circuit retry service pool schema flag connection backpressure deploy latency feature error circuit flag timeout migration idempotency retry database timeout flag handler rollback rollback connection
+
+User: Why does the pool exhaust only under load?
+Assistant: idempotency latency schema latency pool circuit backpressure deploy service circuit timeout idempotency query response connection backpressure saturation breaker rollback latency service backpressure retry timeout rollback migration backpressure rollback deploy retry latency saturation breaker backpressure warning rollback error latency retry rollback
+User: What is the rollback?
+Assistant: idempotency latency database schema circuit idempotency connection query error rollback latency service latency connection throughput breaker service error flag pool warning breaker retry database database migration migration retry latency request warning latency circuit service circuit breaker latency latency service connection warning throughput response circuit deploy latency deploy latency latency migration
+User: And what about the legacy path?
+Assistant: rollback backpressure request response pool connection retry saturation query warning idempotency error deploy query error pool query database feature saturation timeout feature schema backpressure throughput throughput timeout backpressure connection connection schema handler breaker service request
+
+[decision] We will use a blue/green cutover for the billing implementation.
+[commitment] The billing migration must ship before end of the quarter.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 56
+
+query retry saturation feature backpressure deploy migration backpressure error warning response flag request flag idempotency rollback saturation warning breaker deploy idempotency connection service latency migration request response warning query database database retry throughput retry schema error deploy throughput latency saturation rollback pool connection saturation backpressure saturation request feature query query error latency flag idempotency breaker backpressure service database schema error retry retry query backpressure warning retry circuit retry pool backpressure warning feature response latency flag connection latency
+
+User: What is the safest order for these two deploys?
+Assistant: migration request throughput handler backpressure deploy idempotency handler circuit latency breaker idempotency request throughput pool circuit feature throughput latency connection circuit query migration handler pool saturation request database rollback database database backpressure latency latency flag request database idempotency connection query
+User: What is the rollback?
+Assistant: handler retry handler saturation migration service retry pool backpressure circuit deploy warning latency latency idempotency saturation connection pool retry handler pool latency connection timeout connection feature retry timeout database warning deploy error saturation service latency rollback schema pool database warning service pool flag deploy latency schema request saturation saturation saturation
+User: Who owns that?
+Assistant: warning connection connection rollback feature circuit throughput idempotency throughput saturation timeout connection pool saturation schema saturation throughput breaker backpressure query feature flag saturation idempotency pool deploy rollback throughput idempotency breaker backpressure warning throughput handler error
+
+[decision] We will use a strangler fig for the orders implementation.
+[commitment] The orders migration must ship before Q1 2027.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 58
+
+service pool handler service request feature retry warning flag timeout error breaker error idempotency backpressure connection timeout request breaker timeout query warning retry flag pool warning flag saturation retry handler connection error idempotency idempotency saturation migration circuit saturation warning response deploy response pool timeout error retry connection query handler schema migration migration connection feature backpressure error database feature saturation request request circuit handler breaker deploy migration flag idempotency query latency database feature idempotency warning service timeout deploy feature throughput latency connection breaker flag pool latency error circuit flag retry latency saturation flag warning timeout rollback throughput pool feature backpressure query backpressure rollback feature migration schema schema database deploy connection latency feature database connection circuit handler rollback latency feature throughput service service error breaker warning handler latency latency circuit connection latency warning timeout throughput flag warning flag service backpressure database warning
+
+User: How do I migrate the schema without downtime?
+Assistant: deploy request backpressure latency idempotency warning database warning rollback latency query latency handler saturation pool pool timeout warning flag flag retry latency flag throughput pool throughput throughput handler latency feature deploy response flag deploy response connection request saturation circuit service
+User: What is the rollback?
+Assistant: database deploy feature error throughput backpressure response warning deploy deploy migration migration migration latency service response circuit latency response throughput query breaker query rollback error response response migration flag idempotency circuit database pool connection latency query idempotency breaker saturation retry backpressure latency service connection warning query circuit retry latency query
+User: Who owns that?
+Assistant: backpressure schema handler response retry request backpressure latency handler response warning feature feature connection warning migration rollback error circuit service pool flag pool latency flag rollback feature connection query response timeout breaker error rollback throughput
+
+[decision] We will use a strangler fig for the billing implementation.
+[commitment] The billing migration must ship before end of the quarter.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 60
+
+saturation circuit handler query deploy throughput retry latency breaker query retry response migration throughput schema flag latency circuit warning service circuit backpressure backpressure feature flag latency saturation rollback timeout circuit migration schema warning breaker saturation throughput latency throughput saturation breaker deploy throughput connection saturation circuit database latency deploy error warning feature deploy connection request response pool handler pool breaker pool rollback idempotency warning rollback warning warning response timeout retry response migration query service feature error service backpressure pool request schema retry pool database service warning service feature latency rollback latency retry idempotency warning latency backpressure handler response
+
+User: Why does the pool exhaust only under load?
+Assistant: feature database error retry service latency schema flag query warning response error retry connection breaker connection backpressure pool request backpressure migration migration flag backpressure warning service deploy error service response saturation retry warning timeout feature throughput migration request backpressure error
+User: Can we do it in one step?
+Assistant: breaker error deploy timeout warning connection query handler request breaker connection handler connection latency connection timeout retry error pool service timeout pool retry warning saturation breaker rollback idempotency backpressure error saturation response pool schema pool connection warning breaker deploy pool pool idempotency flag throughput deploy connection service retry query response
+User: And what about the legacy path?
+Assistant: migration retry saturation response backpressure breaker service feature retry rollback throughput database latency database error latency connection breaker request retry circuit connection backpressure pool warning circuit saturation response idempotency deploy response migration warning idempotency pool
+
+[decision] We will use an expand-contract migration for the sessions implementation.
+[commitment] The sessions migration must ship before Q1 2027.
+[open] Nobody has confirmed whether sessions works on the legacy path.
+
+
+### section 62
+
+pool deploy throughput pool saturation error handler rollback timeout schema feature throughput retry retry timeout query throughput migration service timeout query latency pool connection timeout throughput saturation latency latency saturation latency query deploy handler connection database backpressure feature retry breaker connection circuit warning retry latency saturation backpressure flag breaker schema service rollback backpressure timeout latency response flag idempotency backpressure warning rollback flag query handler backpressure pool rollback service timeout response timeout query deploy saturation feature pool response pool feature connection handler warning response breaker backpressure backpressure throughput circuit saturation warning rollback database request deploy handler pool flag latency latency timeout service saturation connection deploy rollback
+
+User: What is the safest order for these two deploys?
+Assistant: throughput warning flag migration rollback warning deploy pool warning rollback idempotency connection timeout backpressure deploy backpressure rollback handler breaker latency latency database circuit database timeout circuit service latency warning error circuit circuit retry deploy idempotency service schema schema service flag
+User: What is the rollback?
+Assistant: deploy warning flag migration saturation feature schema latency warning flag deploy timeout deploy database timeout breaker database error connection idempotency deploy timeout feature response backpressure handler backpressure rollback throughput latency handler saturation circuit retry connection retry migration throughput deploy timeout saturation latency circuit deploy schema retry query retry backpressure handler
+User: Who owns that?
+Assistant: saturation feature latency database circuit deploy latency error database error rollback throughput pool deploy idempotency warning response warning retry schema feature handler query warning latency retry throughput request latency query breaker schema saturation throughput flag
+
+[decision] We will use a strangler fig for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 64
+
+rollback schema rollback flag feature throughput database breaker error pool warning rollback deploy error schema latency pool connection flag saturation breaker backpressure pool idempotency database throughput migration circuit idempotency flag feature connection rollback database response request throughput pool breaker service request schema query throughput service connection
+
+User: What is the safest order for these two deploys?
+Assistant: rollback rollback warning throughput backpressure flag breaker response schema feature latency throughput query rollback flag flag error rollback migration migration saturation pool latency query throughput latency database migration database circuit request error saturation warning query migration error throughput response throughput
+User: What is the rollback?
+Assistant: migration flag breaker handler backpressure throughput saturation pool rollback breaker request saturation retry latency migration throughput warning retry service schema response idempotency migration database idempotency retry migration response timeout response backpressure feature service retry migration idempotency latency retry request circuit backpressure rollback latency timeout idempotency latency connection breaker feature breaker
+User: And what about the legacy path?
+Assistant: idempotency handler flag timeout retry feature retry idempotency latency schema breaker service handler backpressure throughput connection circuit connection saturation feature database flag timeout throughput deploy rollback saturation latency query latency deploy latency feature rollback saturation
+
+[decision] We will use a blue/green cutover for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 66
+
+deploy connection migration warning error pool service latency connection idempotency database idempotency rollback error timeout feature service saturation rollback response warning query warning idempotency request latency saturation idempotency backpressure connection connection retry retry error database backpressure feature service service handler latency circuit saturation feature schema feature retry warning latency query handler database database query retry pool query database rollback service connection idempotency feature schema connection circuit latency query backpressure breaker breaker backpressure deploy schema response query idempotency service feature idempotency timeout error warning schema warning retry database connection feature rollback breaker warning saturation warning backpressure connection connection flag breaker migration service response migration error response latency warning saturation feature connection backpressure idempotency deploy timeout query retry query request migration request response feature feature throughput pool throughput rollback warning saturation deploy latency idempotency timeout timeout latency latency connection schema request query backpressure rollback idempotency request request rollback idempotency deploy rollback request circuit idempotency timeout
+
+User: What is the safest order for these two deploys?
+Assistant: throughput latency pool request response throughput idempotency service rollback connection database idempotency migration circuit latency throughput error backpressure latency saturation response idempotency timeout warning warning schema response backpressure deploy idempotency error connection feature latency flag throughput feature rollback error breaker
+User: What is the rollback?
+Assistant: request query latency breaker throughput idempotency circuit timeout response database schema error timeout connection query warning latency rollback pool rollback retry connection timeout latency request query query request database deploy schema backpressure timeout handler migration schema handler service database request timeout saturation idempotency query backpressure saturation breaker query backpressure throughput
+User: Who owns that?
+Assistant: timeout migration pool flag idempotency connection flag throughput retry response connection response flag flag saturation warning latency retry backpressure breaker flag rollback circuit response query request schema retry backpressure breaker pool rollback flag latency error
+
+[decision] We will use a strangler fig for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 68
+
+query saturation saturation warning timeout throughput migration database handler timeout retry backpressure request backpressure query request throughput schema throughput feature idempotency response throughput pool saturation response timeout pool rollback response pool handler error saturation saturation circuit database feature schema pool idempotency schema rollback idempotency connection saturation migration rollback saturation saturation latency feature breaker pool backpressure latency
+
+User: How do I migrate the schema without downtime?
+Assistant: retry circuit handler response latency breaker saturation throughput latency feature connection request saturation handler breaker request rollback throughput backpressure service breaker circuit service throughput latency migration connection response rollback latency warning throughput deploy feature saturation idempotency latency deploy latency flag
+User: What is the rollback?
+Assistant: query flag database feature deploy latency query flag backpressure database migration circuit saturation circuit throughput saturation saturation circuit error query handler idempotency throughput response timeout connection breaker deploy response service handler timeout retry connection handler request flag schema backpressure schema request migration error pool service rollback timeout flag idempotency query
+User: Who owns that?
+Assistant: flag timeout service breaker handler feature warning schema latency circuit service latency handler retry response flag latency flag response breaker timeout query deploy connection deploy circuit rollback response response retry warning handler backpressure deploy response
+
+[decision] We will use a blue/green cutover for the orders implementation.
+[commitment] The orders migration must ship before Q1 2027.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 70
+
+idempotency query request service breaker throughput pool pool flag handler saturation idempotency latency latency error database breaker throughput saturation query warning service retry saturation latency rollback flag saturation flag response service schema backpressure service request query saturation retry query query handler deploy request throughput latency retry handler schema service connection latency breaker saturation latency deploy handler
+
+User: Why does the pool exhaust only under load?
+Assistant: latency rollback backpressure query flag timeout response response circuit feature request idempotency flag breaker rollback deploy pool deploy error timeout deploy throughput service backpressure timeout deploy query feature query error migration schema request error flag breaker idempotency service circuit handler
+User: What is the rollback?
+Assistant: request schema circuit timeout deploy retry latency connection service database idempotency warning flag latency schema backpressure saturation service pool pool saturation latency request handler connection flag error saturation feature latency circuit flag rollback request handler schema database latency schema breaker timeout breaker warning latency request connection latency flag schema flag
+User: And what about the legacy path?
+Assistant: request service query warning latency migration service warning warning throughput throughput error feature database migration timeout warning query query deploy migration error retry latency database database pool latency timeout warning rollback error backpressure circuit error
+
+[decision] We will use a blue/green cutover for the orders implementation.
+[commitment] The orders migration must ship before end of the quarter.
+[open] Nobody has confirmed whether orders works on the legacy path.
+
+
+### section 72
+
+service timeout retry response deploy error timeout idempotency latency latency schema flag service retry flag schema circuit idempotency circuit error latency response deploy deploy feature response database connection pool feature idempotency response query connection circuit warning feature query connection deploy saturation service handler rollback latency schema database response warning migration latency breaker throughput idempotency timeout latency circuit circuit circuit request latency flag schema migration query service breaker throughput request idempotency handler deploy latency request circuit backpressure error migration connection flag migration request backpressure throughput breaker breaker backpressure response flag deploy backpressure request breaker handler latency feature error breaker throughput backpressure throughput query latency deploy feature backpressure flag latency circuit response circuit backpressure service saturation handler backpressure deploy throughput breaker response latency database flag latency throughput deploy response idempotency retry circuit saturation retry pool feature throughput breaker rollback feature backpressure warning breaker throughput saturation backpressure idempotency connection latency query connection retry saturation breaker request retry breaker latency error error service rollback pool throughput idempotency query query timeout error retry backpressure latency query service latency saturation warning latency
+
+User: Why does the pool exhaust only under load?
+Assistant: circuit request latency idempotency connection backpressure retry schema throughput throughput deploy feature saturation throughput flag service handler latency database warning timeout timeout schema warning response error database schema timeout breaker warning migration saturation latency throughput circuit timeout breaker query flag
+User: Can we do it in one step?
+Assistant: saturation migration latency breaker latency query deploy pool circuit feature saturation warning connection latency error database timeout query idempotency deploy latency warning response service latency latency database pool idempotency latency saturation service service response pool deploy timeout migration response idempotency migration rollback migration breaker service deploy service retry throughput circuit
+User: Who owns that?
+Assistant: flag backpressure retry connection breaker retry retry idempotency query response circuit service throughput deploy breaker schema error deploy retry flag query breaker error timeout breaker pool retry circuit latency feature error pool response timeout handler
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 74
+
+backpressure timeout flag feature circuit database database latency query warning backpressure request connection database request error idempotency deploy warning rollback schema retry pool pool latency warning backpressure feature throughput latency backpressure deploy pool handler backpressure request query error breaker migration connection retry query timeout backpressure timeout database feature migration deploy latency schema query query pool schema throughput retry feature deploy pool connection handler breaker flag handler query idempotency rollback rollback response handler query handler saturation breaker latency response latency database retry schema rollback service throughput database deploy connection rollback retry service latency feature schema error connection latency feature throughput deploy flag retry breaker deploy database migration latency connection connection deploy pool handler feature rollback schema connection throughput handler connection query breaker service handler warning flag connection circuit breaker query migration feature rollback backpressure rollback connection query timeout handler connection timeout connection pool rollback migration feature connection latency schema retry warning warning latency timeout feature throughput flag error schema handler idempotency query latency breaker saturation rollback schema
+
+User: Why does the pool exhaust only under load?
+Assistant: breaker rollback connection error query backpressure error breaker connection latency warning deploy query rollback circuit latency latency pool latency response feature saturation idempotency query timeout error latency request throughput handler throughput connection backpressure idempotency latency retry saturation backpressure request throughput
+User: What is the rollback?
+Assistant: retry handler response error breaker saturation backpressure timeout deploy handler query throughput flag connection breaker pool error idempotency connection rollback query timeout saturation retry query handler error handler backpressure connection query warning request timeout connection backpressure latency breaker feature saturation retry schema saturation handler schema feature throughput response handler circuit
+User: And what about the legacy path?
+Assistant: response flag latency request breaker warning rollback service pool idempotency flag backpressure request connection deploy deploy query migration pool response database latency latency breaker rollback request connection request latency handler query idempotency query flag breaker
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before end of the quarter.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 76
+
+migration breaker retry feature timeout saturation error throughput service query latency latency latency rollback retry flag timeout error query error backpressure request saturation circuit database breaker saturation warning request connection rollback timeout schema error latency connection connection response latency request warning breaker breaker retry handler feature timeout backpressure retry query saturation pool latency schema database flag saturation migration connection response database retry timeout latency throughput feature breaker saturation pool throughput connection rollback pool query circuit throughput circuit backpressure handler backpressure retry schema flag idempotency database deploy idempotency backpressure backpressure breaker feature warning idempotency flag deploy backpressure connection pool request database warning latency circuit request circuit timeout pool rollback timeout retry query service deploy throughput feature saturation schema query timeout saturation connection error flag latency retry schema idempotency handler latency schema latency deploy saturation latency error service timeout latency timeout error rollback
+
+User: What is the safest order for these two deploys?
+Assistant: pool handler feature rollback retry warning latency timeout saturation warning request breaker service query schema saturation query pool migration schema latency retry backpressure saturation idempotency service throughput retry pool feature migration schema throughput feature rollback response request service breaker rollback
+User: Can we do it in one step?
+Assistant: rollback backpressure breaker response latency database saturation backpressure schema latency schema feature feature connection schema rollback feature pool saturation flag request response warning circuit schema timeout connection backpressure circuit error idempotency schema rollback throughput request throughput query service query warning query retry deploy connection error request idempotency retry feature schema
+User: Who owns that?
+Assistant: deploy connection feature schema retry breaker timeout warning retry connection service rollback saturation feature idempotency latency flag database circuit circuit error pool throughput backpressure saturation warning service flag throughput feature service request error flag latency
+
+[decision] We will use a strangler fig for the billing implementation.
+[commitment] The billing migration must ship before Q1 2027.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 78
+
+flag throughput rollback response flag idempotency handler query schema handler response timeout pool flag timeout idempotency handler flag circuit feature request service saturation query request breaker database idempotency feature backpressure backpressure schema timeout database latency throughput feature database handler pool database flag idempotency flag query latency connection error query timeout latency feature throughput database connection breaker database idempotency latency feature deploy migration timeout database retry connection retry idempotency handler database connection service throughput flag response timeout warning throughput schema warning schema query error breaker retry retry breaker error latency database warning latency circuit database saturation query deploy error backpressure rollback latency handler service pool breaker warning idempotency rollback retry backpressure saturation error query throughput feature timeout backpressure query circuit warning rollback breaker deploy saturation rollback throughput retry deploy latency flag warning pool idempotency warning feature response schema rollback migration latency latency pool feature flag request deploy service backpressure rollback saturation service circuit idempotency latency
+
+User: What is the safest order for these two deploys?
+Assistant: migration response request backpressure idempotency flag request response retry migration latency idempotency rollback breaker saturation handler query backpressure breaker circuit migration feature deploy schema service pool service warning database idempotency warning connection latency circuit latency error feature request warning connection
+User: Can we do it in one step?
+Assistant: rollback idempotency rollback idempotency timeout warning throughput migration pool service service backpressure latency breaker response handler request response rollback breaker connection database idempotency request latency connection deploy latency circuit query database database service pool request flag latency error database latency error backpressure migration query throughput warning breaker breaker idempotency request
+User: And what about the legacy path?
+Assistant: breaker response rollback flag database connection idempotency service circuit request circuit rollback breaker migration backpressure service pool breaker handler throughput flag error latency service migration saturation service timeout throughput timeout response migration database rollback pool
+
+[decision] We will use an expand-contract migration for the catalog implementation.
+[commitment] The catalog migration must ship before 2026-11-15.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 80
+
+latency deploy error error feature warning error request service breaker error throughput migration request response throughput retry circuit breaker request idempotency latency latency warning latency deploy feature database timeout pool timeout deploy backpressure timeout circuit migration rollback deploy error database timeout retry feature error latency idempotency retry request throughput retry request error breaker idempotency throughput database feature idempotency latency breaker latency pool saturation service handler error service schema saturation saturation deploy deploy deploy query service timeout schema warning deploy breaker connection breaker feature response feature rollback error service connection idempotency breaker query throughput deploy rollback feature retry handler response latency feature rollback query saturation error circuit pool schema flag response error schema warning retry breaker schema request feature schema saturation request pool database service handler schema migration feature saturation throughput backpressure backpressure schema saturation saturation pool idempotency error migration timeout timeout throughput warning service flag feature error saturation deploy migration breaker throughput migration idempotency connection pool query query breaker timeout pool backpressure rollback warning feature migration latency query throughput rollback breaker connection handler schema throughput migration database idempotency circuit database flag schema rollback throughput service flag migration rollback pool schema idempotency backpressure handler migration schema latency throughput request rollback query error
+
+User: How do I migrate the schema without downtime?
+Assistant: breaker query request breaker breaker query breaker flag query latency database idempotency request throughput circuit request warning deploy deploy retry handler idempotency circuit deploy response request response rollback service backpressure feature timeout warning response request schema schema error latency service
+User: Can we do it in one step?
+Assistant: saturation latency retry service query warning database request circuit circuit latency flag database timeout rollback breaker query rollback breaker idempotency service service throughput migration schema rollback throughput saturation circuit query response latency request throughput retry request breaker breaker retry schema schema response circuit saturation deploy flag breaker service throughput warning
+User: And what about the legacy path?
+Assistant: schema idempotency backpressure query throughput database schema connection breaker circuit database idempotency rollback handler throughput response timeout error migration pool idempotency circuit latency handler saturation handler schema idempotency response service flag feature pool timeout schema
+
+[decision] We will use a strangler fig for the billing implementation.
+[commitment] The billing migration must ship before end of the quarter.
+[open] Nobody has confirmed whether billing works on the legacy path.
+
+
+### section 82
+
+circuit feature throughput database error breaker handler connection feature response response rollback retry throughput request schema schema idempotency query request response idempotency database idempotency flag service latency retry request throughput circuit retry pool idempotency service migration request schema backpressure backpressure throughput latency backpressure warning warning deploy rollback service retry saturation warning connection request connection latency throughput flag latency retry database throughput query database database response flag backpressure latency backpressure breaker error timeout rollback throughput database flag saturation throughput response service schema flag response query pool timeout breaker saturation timeout warning warning retry pool schema saturation feature request response error query deploy throughput idempotency schema rollback retry idempotency retry flag idempotency pool throughput pool handler latency idempotency response request schema connection circuit deploy latency throughput retry error migration latency handler backpressure request latency query pool warning schema retry rollback pool service handler retry breaker latency error handler error service backpressure pool flag backpressure rollback throughput feature migration rollback response error flag circuit migration latency feature deploy breaker service pool migration migration flag schema idempotency breaker query response database circuit database error schema service throughput backpressure warning connection circuit feature handler feature breaker retry database breaker handler database saturation handler backpressure schema schema rollback
+
+User: How do I migrate the schema without downtime?
+Assistant: flag pool database retry idempotency flag latency breaker timeout warning schema handler breaker handler service breaker latency backpressure deploy response throughput response pool rollback pool circuit response latency breaker feature deploy error saturation latency retry circuit backpressure error handler deploy
+User: What is the rollback?
+Assistant: timeout throughput connection saturation backpressure throughput handler idempotency request error pool pool latency pool deploy migration flag timeout latency timeout idempotency migration breaker response throughput database request warning database request request connection migration backpressure service latency rollback response breaker connection connection database saturation query backpressure deploy circuit response flag latency
+User: And what about the legacy path?
+Assistant: migration connection flag idempotency database rollback breaker query latency connection handler breaker latency throughput retry feature flag latency rollback request request latency breaker schema error error response connection handler rollback circuit migration warning warning database
+
+[decision] We will use a strangler fig for the catalog implementation.
+[commitment] The catalog migration must ship before Q1 2027.
+[open] Nobody has confirmed whether catalog works on the legacy path.
+
+
+### section 84
+
+database idempotency request throughput latency service deploy throughput flag flag rollback rollback saturation connection flag database breaker rollback retry handler backpressure pool throughput request query backpressure rollback migration rollback throughput idempotency rollback database response breaker latency timeout flag feature backpressure saturation saturation pool latency throughput circuit service query timeout warning migration saturation deploy pool handler retry schema backpressure warning latency feature latency circuit handler migration throughput schema migration feature saturation latency rollback handler handler backpressure latency response response migration flag circuit handler response breaker circuit connection migration handler latency retry error timeout breaker pool service service handler latency timeout handler saturation flag handler error migration idempotency warning rollback latency deploy warning flag connection query

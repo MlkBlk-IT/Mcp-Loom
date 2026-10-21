@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "loom": {
+      "command": "uvx",
+      "args": ["loom-mcp"],
+      "env": {
+        "LOOM_LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

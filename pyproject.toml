@@ -1,0 +1,48 @@
+[project]
+name = "loom-mcp"
+version = "0.1.0"
+description = "Portable MCP server: weave LLM context without cutting a thread."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Malik Belkacemi" }]
+keywords = ["mcp", "llm", "context", "tokens", "optimization", "cache"]
+
+dependencies = [
+    "mcp>=1.2.0",
+    "fastmcp>=2.0.0",
+    "tiktoken>=0.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.5.0",
+]
+
+[project.scripts]
+loom-mcp = "loom.server:main"
+
+[project.urls]
+Homepage = "https://github.com/MlkBlk-IT/Loom"
+Repository = "https://github.com/MlkBlk-IT/Loom"
+Issues = "https://github.com/MlkBlk-IT/Loom/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/loom"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

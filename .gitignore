@@ -1,0 +1,35 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.db
+*.db-journal
+data/
+store/
+.DS_Store
+Thumbs.db
+
+# Sauvegardes d'édition (artefacts de travail, pas des livrables)
+*.bak_p3
+*.new
+*.orig
+*.rej
+
+# Scripts de patch one-shot (outillage d'agent, hors périmètre du projet)
+patch_server*.py
+patch_all_tools.py
+
+# Fichiers temporaires agents / Hermes
+.hermes-tmp*
+scripts/.hermes-tmp*
+
+# Scratch de réparation
+_repair/

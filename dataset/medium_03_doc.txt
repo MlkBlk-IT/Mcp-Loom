@@ -1,0 +1,1798 @@
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides flag latency error response retry backpressure response request response pool. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==8.4.0
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://internal.example.com/v3")
+result = client.fetch_create("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v3` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides request deploy database warning backpressure rollback handler handler database idempotency. It is used by 3 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==0.14.1
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://internal.example.com/v2")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v2` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 2
+
+query error database schema response circuit backpressure request feature deploy connection deploy flag feature saturation service query migration warning latency error error saturation warning idempotency retry request retry feature service retry migration deploy retry latency latency latency query error handler timeout deploy rollback backpressure latency backpressure database connection error feature deploy latency query pool idempotency query idempotency latency connection saturation latency flag latency throughput retry error database response warning migration rollback latency query flag retry warning breaker circuit schema database error latency breaker backpressure timeout migration handler latency schema migration throughput migration database pool error query schema saturation timeout throughput feature latency saturation service migration rollback handler pool query latency warning request circuit database saturation throughput database handler error breaker service feature pool latency latency handler error handler service latency saturation flag retry request service migration handler breaker database migration connection breaker response request error throughput backpressure pool backpressure error query circuit breaker deploy connection rollback warning timeout pool deploy feature flag connection deploy response handler flag query error saturation rollback database deploy deploy service backpressure database rollback deploy saturation schema feature saturation throughput circuit throughput rollback backpressure migration circuit migration latency throughput latency latency rollback idempotency schema breaker backpressure latency warning feature request query backpressure latency backpressure latency connection handler breaker request
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides latency idempotency retry request handler request service handler connection flag. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==3.15.0
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://api.example.com/v4")
+result = client.fetch_update("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `3000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 4
+
+pool latency retry rollback database saturation warning database backpressure pool query service request response circuit pool circuit error throughput idempotency schema query schema breaker handler saturation error timeout request request pool pool backpressure throughput response latency saturation saturation circuit idempotency timeout service feature retry idempotency connection rollback retry backpressure rollback database service latency handler connection response connection circuit response query deploy connection schema response pool handler timeout idempotency timeout warning query backpressure response deploy rollback flag connection error timeout feature query idempotency database latency migration handler database feature service timeout breaker deploy warning error idempotency retry backpressure feature warning connection migration pool rollback database warning warning pool timeout saturation timeout saturation handler idempotency
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides latency warning pool breaker schema schema query request circuit saturation. It is used by 6 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==4.9.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://internal.example.com/v3")
+result = client.fetch_create("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v3` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 6
+
+latency latency circuit flag idempotency breaker latency migration deploy database migration saturation breaker request error circuit database warning throughput schema deploy retry latency rollback warning flag latency warning saturation timeout latency deploy saturation throughput request retry query connection query breaker flag feature response deploy latency throughput timeout rollback migration connection pool
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides rollback latency throughput database deploy response backpressure schema backpressure rollback. It is used by 3 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==4.19.6
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://api.example.com/v2")
+result = client.fetch_update("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v2` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 8
+
+query saturation saturation connection saturation response saturation idempotency connection idempotency schema idempotency warning rollback query latency flag deploy feature flag idempotency rollback idempotency retry saturation query deploy service connection circuit feature connection schema breaker breaker deploy request migration saturation flag pool latency connection throughput saturation latency idempotency connection timeout database migration schema warning flag pool error feature circuit response retry saturation rollback circuit pool rollback flag throughput handler response rollback flag retry breaker connection rollback circuit retry feature migration request warning latency timeout pool idempotency timeout database connection service circuit latency breaker saturation database migration connection flag pool request backpressure schema throughput backpressure migration throughput pool database error backpressure latency connection timeout timeout connection connection latency pool idempotency throughput pool saturation request schema
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides handler timeout feature warning latency flag query idempotency query database. It is used by 7 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==4.17.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://edge.example.com/v4")
+result = client.fetch_get("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v4` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 10
+
+connection flag feature retry retry schema migration feature flag response saturation pool latency throughput query feature saturation response timeout latency request rollback throughput idempotency timeout retry throughput breaker circuit request latency connection request breaker idempotency query handler response idempotency schema deploy timeout latency throughput latency warning connection rollback deploy breaker flag latency latency throughput request deploy request rollback rollback warning query response saturation handler
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides retry service retry flag retry warning deploy idempotency idempotency breaker. It is used by 6 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==3.17.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://edge.example.com/v1")
+result = client.fetch_create("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v1` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 12
+
+latency rollback rollback flag warning idempotency query feature error error throughput database rollback request throughput circuit migration pool deploy service latency response migration error circuit throughput request circuit timeout warning pool circuit retry breaker backpressure request database saturation timeout warning breaker circuit connection throughput connection breaker idempotency handler handler rollback deploy breaker rollback database handler error flag retry feature query request database connection saturation idempotency backpressure backpressure flag retry idempotency handler warning retry backpressure backpressure flag service request rollback rollback service idempotency throughput backpressure query migration deploy rollback query schema response error saturation error rollback pool migration circuit pool latency flag
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides query breaker service feature database migration latency latency error rollback. It is used by 5 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==4.11.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://internal.example.com/v3")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v3` | Service endpoint |
+| `timeout` | `10` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 14
+
+warning schema deploy handler breaker deploy throughput latency connection idempotency connection latency deploy error throughput request feature flag feature request service throughput database handler response saturation service idempotency feature feature rollback retry saturation saturation migration handler timeout error idempotency retry handler request latency handler warning feature circuit pool latency feature warning rollback idempotency deploy latency rollback latency idempotency pool backpressure connection handler feature database handler latency timeout latency retry backpressure query service pool rollback saturation schema schema deploy breaker response query flag migration service timeout backpressure handler breaker breaker timeout retry connection rollback request breaker circuit latency connection connection handler feature circuit saturation error request database database
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides deploy deploy database handler flag timeout circuit query error migration. It is used by 9 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==8.18.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Catalog
+
+client = Catalog(base_url="https://edge.example.com/v3")
+result = client.fetch_create("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `10` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 16
+
+warning schema retry request error retry deploy breaker handler schema rollback service retry retry timeout error latency query request service schema connection warning error schema flag database deploy saturation deploy breaker idempotency retry database feature breaker response feature idempotency handler pool feature breaker query breaker retry database database breaker query service schema request latency query request retry idempotency handler request feature retry timeout latency breaker response feature service database rollback breaker timeout latency query deploy retry warning breaker flag deploy database idempotency schema connection migration circuit latency pool circuit throughput response throughput throughput latency handler request service pool idempotency error throughput request service latency response timeout backpressure error timeout service migration deploy database circuit warning rollback flag query idempotency handler retry response warning handler error backpressure latency throughput connection response connection throughput latency circuit
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides error saturation saturation feature query deploy handler idempotency latency latency. It is used by 8 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==2.3.1
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://api.example.com/v1")
+result = client.fetch_update("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v1` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 18
+
+throughput latency backpressure handler circuit schema throughput latency throughput handler rollback saturation latency timeout query saturation feature rollback saturation response response latency response connection database schema handler service response warning retry latency throughput throughput feature rollback timeout flag saturation connection database migration retry handler breaker service request response handler error connection retry migration schema schema query circuit schema migration circuit schema backpressure deploy latency throughput timeout rollback response request latency timeout latency backpressure breaker response idempotency deploy query circuit connection saturation warning response migration connection schema retry connection pool warning saturation database service timeout timeout service timeout pool request backpressure response database backpressure retry timeout service breaker latency saturation deploy migration latency latency latency backpressure timeout latency handler deploy latency error handler
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides throughput pool backpressure breaker response handler warning request latency service. It is used by 4 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==6.10.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://edge.example.com/v4")
+result = client.fetch_get("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v4` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 20
+
+feature request flag deploy idempotency throughput query query latency flag saturation warning deploy request feature pool warning circuit latency latency idempotency timeout breaker request rollback handler throughput query idempotency database schema response migration query warning breaker migration circuit rollback response migration rollback handler timeout saturation idempotency schema flag error handler breaker handler error feature query service deploy connection query response database warning throughput rollback latency request circuit migration connection latency error request connection breaker deploy feature flag warning feature timeout idempotency warning throughput timeout error service retry idempotency connection pool service timeout response warning idempotency warning timeout migration migration backpressure throughput latency flag service latency response pool circuit request latency latency retry rollback latency throughput request error response connection timeout request saturation backpressure
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides idempotency retry warning backpressure breaker pool connection timeout latency feature. It is used by 3 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==4.5.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://internal.example.com/v2")
+result = client.fetch_update("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v2` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 22
+
+retry service throughput response feature warning retry pool migration rollback warning latency migration feature latency handler saturation throughput circuit request feature migration request latency circuit backpressure migration connection breaker response circuit breaker migration saturation rollback database request saturation throughput migration handler throughput throughput circuit connection query deploy service retry connection migration service database schema pool throughput connection breaker error service idempotency latency idempotency breaker throughput warning pool deploy warning handler backpressure request migration error schema pool circuit timeout connection retry handler pool query pool latency migration schema latency error warning warning database backpressure flag warning pool pool response query breaker circuit retry breaker service latency error rollback feature circuit schema warning saturation rollback service warning service circuit connection retry breaker retry throughput backpressure deploy latency latency schema retry latency idempotency warning response warning backpressure latency circuit database response circuit saturation pool retry idempotency backpressure latency query handler
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides feature latency response timeout pool service rollback warning handler request. It is used by 6 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==1.15.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v3")
+result = client.fetch_delete("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 24
+
+throughput query migration service circuit pool idempotency deploy throughput saturation feature breaker timeout database service service retry migration flag connection feature backpressure query latency service handler latency error schema response circuit throughput request schema feature warning deploy error response latency request circuit error flag query breaker retry timeout retry retry circuit backpressure connection schema flag flag service breaker rollback latency idempotency flag response backpressure circuit query breaker request breaker retry
+
+# Session store consolidation
+
+## Overview
+
+Session store consolidation provides handler flag request migration flag flag warning feature connection connection. It is used by 2 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==3.4.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v1")
+result = client.fetch_get("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v1` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `3000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 26
+
+request warning latency request query query request saturation flag pool warning service request latency connection migration schema retry breaker flag feature response throughput rollback backpressure rollback response idempotency migration pool error saturation timeout saturation latency pool idempotency migration service saturation deploy query feature request connection circuit backpressure flag timeout throughput throughput circuit saturation backpressure rollback response backpressure latency breaker idempotency saturation flag migration request handler request feature request error flag response migration backpressure retry retry retry connection breaker schema database migration retry migration timeout query flag circuit pool request idempotency throughput breaker rollback latency saturation flag feature schema handler database latency breaker retry circuit handler warning error warning timeout error migration timeout service breaker pool latency backpressure handler timeout throughput rollback request warning query warning pool timeout connection breaker error breaker retry request deploy pool latency breaker pool timeout request rollback schema service breaker deploy warning database rollback warning deploy warning timeout schema warning connection service feature response pool warning idempotency timeout rollback rollback feature feature retry request response circuit request idempotency warning schema throughput throughput latency query rollback feature circuit warning retry timeout migration rollback database flag backpressure throughput request throughput warning idempotency rollback pool throughput breaker breaker timeout latency connection
+
+# Order ingestion rewrite
+
+## Overview
+
+Order ingestion rewrite provides timeout backpressure error handler latency service schema rollback migration flag. It is used by 2 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==2.14.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://api.example.com/v4")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 28
+
+connection pool flag deploy feature retry migration error request retry pool rollback flag service database circuit feature schema migration timeout pool request service handler deploy saturation saturation database timeout query breaker migration migration migration migration retry warning warning warning saturation backpressure connection response latency warning rollback latency pool feature latency flag error breaker latency latency database rollback circuit throughput migration warning retry flag connection latency latency backpressure retry timeout rollback migration connection handler flag throughput latency handler request flag deploy circuit latency saturation pool rollback pool request backpressure pool response service throughput latency
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides saturation feature service deploy rollback circuit retry service timeout service. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==2.15.2
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://internal.example.com/v4")
+result = client.fetch_delete("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v4` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `3000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 30
+
+schema schema service latency backpressure saturation retry latency backpressure feature migration timeout deploy response timeout timeout service connection response service timeout breaker query throughput latency deploy warning timeout timeout timeout breaker throughput flag handler flag retry breaker latency database response latency query timeout connection retry latency migration query latency throughput rollback saturation response schema connection latency feature request response feature response request circuit timeout handler circuit connection connection deploy request circuit handler latency timeout service query timeout migration request rollback error rollback circuit latency service idempotency query query connection handler schema throughput timeout throughput circuit breaker latency backpressure error pool latency timeout rollback query latency retry request throughput flag response migration connection warning database service database latency service circuit connection idempotency deploy migration circuit breaker retry breaker service breaker retry migration retry schema rollback rollback rollback throughput response response request retry connection
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides warning circuit handler idempotency throughput warning saturation latency retry handler. It is used by 8 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==1.17.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://api.example.com/v1")
+result = client.fetch_delete("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v1` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 32
+
+error request schema saturation handler deploy response response throughput handler idempotency service response schema timeout schema retry warning migration feature latency warning latency query request latency latency throughput schema retry flag timeout flag retry schema circuit retry saturation error retry response database pool service saturation schema timeout database response retry query idempotency circuit query backpressure pool handler timeout circuit service throughput service retry migration service response retry handler deploy request saturation circuit timeout deploy throughput connection rollback backpressure handler response error rollback retry deploy circuit timeout latency schema latency latency service database breaker latency backpressure retry error flag latency error retry circuit breaker warning handler timeout flag handler schema latency throughput deploy database
+
+# Session store consolidation
+
+## Overview
+
+Session store consolidation provides response pool throughput service migration service error schema retry warning. It is used by 2 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==7.0.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://edge.example.com/v1")
+result = client.fetch_update("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v1` | Service endpoint |
+| `timeout` | `10` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 34
+
+latency database error handler throughput schema migration feature rollback deploy deploy saturation service idempotency latency response response database response query feature feature backpressure migration breaker database service schema pool retry warning feature error feature deploy warning migration migration request backpressure saturation request idempotency feature idempotency latency throughput breaker deploy latency circuit service handler breaker service warning timeout flag handler backpressure saturation flag rollback latency retry service saturation circuit circuit pool handler circuit connection request breaker latency circuit service schema service feature saturation schema breaker feature feature response query deploy database error feature pool database timeout timeout pool database retry migration warning handler schema handler idempotency latency connection feature
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides handler database latency query idempotency circuit handler feature response circuit. It is used by 5 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==3.2.5
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://edge.example.com/v4")
+result = client.fetch_delete("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v4` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 36
+
+feature idempotency migration idempotency backpressure request rollback pool query warning flag warning warning deploy query handler request deploy rollback query service service breaker throughput breaker timeout query migration flag query rollback pool database migration rollback error timeout service latency service backpressure deploy handler
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides handler error latency database warning throughput connection database request latency. It is used by 9 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==2.17.6
+```
+
+## Usage
+
+```python
+from loom_sdk import Catalog
+
+client = Catalog(base_url="https://api.example.com/v4")
+result = client.fetch_delete("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 38
+
+throughput connection handler migration backpressure retry flag latency throughput request breaker query pool response schema request request breaker retry throughput breaker migration database deploy latency migration timeout latency database breaker breaker feature response breaker backpressure handler handler query latency schema connection idempotency database query saturation timeout warning service feature service connection response feature connection error latency pool request deploy latency circuit feature backpressure rollback service timeout feature breaker schema warning warning breaker query response migration response handler response circuit latency service migration request breaker idempotency timeout warning warning feature deploy latency pool backpressure query error circuit timeout feature rollback handler retry rollback deploy circuit latency timeout deploy migration response latency breaker error flag rollback feature backpressure schema backpressure deploy error query rollback idempotency warning response handler throughput error deploy idempotency backpressure pool latency retry rollback service query saturation warning migration backpressure idempotency request handler backpressure response rollback error latency response service retry breaker latency connection latency latency migration query retry deploy migration service service timeout pool latency rollback handler throughput saturation retry circuit throughput breaker backpressure deploy database handler flag feature rollback connection rollback backpressure deploy flag flag request database response latency latency response warning circuit pool response database retry breaker flag migration
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides idempotency warning flag query handler pool latency circuit pool breaker. It is used by 2 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==1.7.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://api.example.com/v3")
+result = client.fetch_create("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v3` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `3000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 40
+
+saturation flag query saturation breaker warning breaker warning request backpressure service deploy idempotency handler latency connection throughput timeout latency latency latency handler latency service retry pool latency migration timeout latency latency rollback idempotency query connection circuit connection error pool database query timeout breaker feature latency circuit idempotency breaker connection rollback schema query retry feature circuit rollback pool throughput retry pool idempotency circuit flag query error request
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides request throughput circuit query rollback pool connection connection warning flag. It is used by 9 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==7.18.5
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://internal.example.com/v4")
+result = client.fetch_create("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v4` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 42
+
+response feature feature query breaker rollback flag latency circuit response breaker response throughput query query service error backpressure response warning connection flag connection rollback deploy circuit latency connection idempotency migration query database handler handler retry database circuit database feature warning migration saturation deploy pool backpressure rollback flag deploy pool rollback deploy error error saturation circuit feature handler warning throughput response connection retry service feature retry circuit throughput database flag breaker rollback request pool latency response feature service backpressure saturation saturation pool circuit service connection saturation migration timeout flag feature circuit saturation flag idempotency latency backpressure latency warning saturation service pool deploy rollback backpressure response idempotency feature error retry latency feature retry handler deploy breaker timeout migration backpressure saturation request timeout error pool feature service latency saturation circuit deploy connection idempotency response latency schema service circuit schema feature connection latency timeout error query error connection migration throughput service latency handler timeout saturation pool breaker schema migration
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides flag deploy rollback query latency database timeout request timeout latency. It is used by 2 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==5.11.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://api.example.com/v1")
+result = client.fetch_update("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v1` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 44
+
+throughput deploy breaker feature throughput migration response response latency circuit breaker warning latency request timeout timeout handler request error feature feature response migration error query query migration feature circuit database circuit request schema deploy connection schema request handler error database database database throughput latency pool service schema handler timeout retry deploy idempotency connection rollback retry flag pool breaker breaker pool migration retry idempotency backpressure rollback throughput database connection deploy schema timeout warning migration deploy service error saturation error query request throughput idempotency breaker query circuit request throughput warning handler flag backpressure retry warning breaker database latency feature pool connection connection warning pool breaker idempotency schema schema schema warning timeout response migration breaker query latency warning connection error circuit pool timeout latency retry rollback saturation query request connection deploy throughput breaker error response timeout breaker response warning response error pool deploy migration circuit response flag connection connection pool migration query
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides database warning timeout query migration idempotency response warning circuit breaker. It is used by 7 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==4.18.1
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://api.example.com/v2")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v2` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 46
+
+error request latency migration latency retry latency feature query deploy flag error latency retry idempotency request schema circuit latency throughput deploy handler retry deploy throughput migration response latency throughput response feature service rollback service service backpressure feature service feature handler idempotency connection connection error saturation feature retry retry latency migration query warning error database feature breaker handler pool handler circuit flag saturation rollback flag feature database error latency request error schema latency latency idempotency retry idempotency idempotency timeout timeout response pool latency warning timeout warning request handler latency feature warning error handler feature request pool handler flag request retry saturation saturation saturation feature schema feature response rollback throughput migration circuit schema
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides service schema error retry flag flag connection rollback service pool. It is used by 5 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==8.11.8
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://api.example.com/v2")
+result = client.fetch_create("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v2` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 48
+
+timeout warning throughput warning response deploy throughput response deploy timeout database circuit rollback migration idempotency connection latency warning service retry idempotency warning pool response request retry migration latency saturation warning database retry error retry rollback flag error query breaker latency
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides rollback database breaker backpressure request breaker throughput flag idempotency migration. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==0.20.0
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://api.example.com/v3")
+result = client.fetch_get("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v3` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `3000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 50
+
+latency schema backpressure service latency feature retry request deploy circuit response warning flag query latency idempotency error pool latency idempotency response database error error connection service saturation database connection connection request throughput backpressure error pool idempotency response throughput breaker schema service warning backpressure query rollback pool circuit schema error migration backpressure rollback response database connection circuit idempotency circuit deploy schema circuit rollback connection service feature query schema query breaker schema saturation flag backpressure feature retry schema database flag latency handler error handler breaker flag rollback migration database request warning request request connection timeout idempotency idempotency breaker latency connection feature latency backpressure migration handler error retry backpressure handler feature latency timeout pool database timeout flag feature latency connection query handler query pool latency idempotency rollback migration response error latency throughput response feature deploy breaker latency circuit migration handler handler latency circuit retry database migration
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides query response deploy error pool idempotency pool feature query retry. It is used by 5 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==6.10.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://edge.example.com/v1")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v1` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 52
+
+throughput throughput idempotency saturation latency handler latency query pool schema saturation throughput flag deploy saturation circuit backpressure connection request service warning handler warning latency warning database timeout throughput circuit idempotency flag latency timeout response connection handler throughput handler latency handler feature idempotency pool error connection pool request circuit timeout schema database retry response migration latency circuit timeout response latency database retry connection deploy connection pool saturation rollback request query latency rollback retry error rollback idempotency breaker database circuit deploy pool idempotency pool handler migration backpressure deploy pool breaker timeout flag rollback deploy pool
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides connection pool idempotency response database idempotency timeout migration request breaker. It is used by 3 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==0.16.7
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://internal.example.com/v4")
+result = client.fetch_update("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v4` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 54
+
+backpressure warning migration flag idempotency request circuit deploy query handler latency feature flag throughput circuit flag feature latency database breaker rollback latency handler schema throughput throughput response service saturation handler idempotency handler circuit breaker connection idempotency idempotency schema rollback circuit response timeout warning error service query latency circuit timeout circuit circuit query idempotency throughput saturation request service error query idempotency pool flag latency saturation idempotency connection latency schema query error circuit rollback feature schema request migration warning rollback breaker database request warning error flag circuit service retry feature warning backpressure database circuit error rollback database query deploy deploy saturation saturation retry feature deploy schema latency rollback flag breaker breaker connection feature throughput retry backpressure handler migration timeout service latency warning request circuit handler warning warning latency query service breaker flag
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides idempotency latency service breaker schema saturation error timeout latency backpressure. It is used by 9 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==3.12.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://internal.example.com/v4")
+result = client.fetch_update("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v4` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 56
+
+retry latency idempotency migration breaker rollback circuit flag idempotency warning breaker retry latency saturation idempotency service connection idempotency schema feature flag rollback rollback schema rollback database error request breaker handler rollback request latency timeout request throughput connection migration breaker latency service rollback circuit deploy handler query warning deploy connection handler retry deploy rollback warning request feature feature warning request database saturation migration migration saturation latency
+
+# Order ingestion rewrite
+
+## Overview
+
+Order ingestion rewrite provides error service breaker query flag connection throughput request connection breaker. It is used by 4 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==6.15.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://api.example.com/v3")
+result = client.fetch_get("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v3` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 58
+
+feature breaker backpressure breaker circuit schema circuit rollback response flag latency response service circuit schema latency query retry latency rollback latency flag backpressure breaker service deploy latency schema pool deploy feature breaker rollback connection rollback error query saturation error backpressure connection timeout query migration breaker service retry connection latency warning schema breaker query response query saturation pool latency response warning timeout handler service backpressure warning error query pool handler timeout migration retry connection circuit query response warning migration pool schema warning deploy throughput throughput error retry warning request rollback error idempotency latency latency connection idempotency response error deploy retry query error request service backpressure breaker circuit breaker migration latency latency schema circuit saturation flag latency rollback flag service retry latency schema service error throughput timeout warning response breaker query pool database request retry backpressure handler circuit retry request warning pool query schema database connection throughput error handler latency flag query timeout circuit throughput latency feature handler error circuit error warning idempotency flag database timeout pool connection latency latency warning idempotency timeout latency rollback throughput connection database request handler latency query latency circuit connection schema database feature retry connection pool service handler handler response deploy idempotency retry response retry request migration schema query feature service
+
+# Order ingestion rewrite
+
+## Overview
+
+Order ingestion rewrite provides schema timeout deploy pool feature retry error migration timeout error. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==2.10.2
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v3")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 60
+
+throughput migration retry latency database request migration rollback schema breaker handler circuit throughput handler response database backpressure service request timeout retry error rollback latency backpressure database service request handler retry idempotency connection saturation retry saturation flag feature error error saturation circuit latency idempotency query feature connection rollback idempotency throughput schema migration saturation flag idempotency service schema timeout backpressure retry handler service query error database saturation saturation schema backpressure idempotency circuit timeout circuit throughput request latency circuit warning latency query deploy backpressure circuit circuit throughput retry response backpressure timeout schema handler retry timeout warning saturation backpressure error query response saturation pool timeout retry circuit response database query feature idempotency pool latency saturation throughput timeout breaker query circuit breaker database saturation retry idempotency error retry query migration query idempotency warning latency timeout latency migration latency retry migration rollback request flag feature throughput circuit saturation breaker backpressure query schema database migration error retry saturation request breaker request feature migration circuit retry feature database service warning latency feature connection request database latency query timeout latency circuit latency backpressure warning handler
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides rollback idempotency idempotency pool database flag pool migration connection timeout. It is used by 6 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==8.12.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://internal.example.com/v1")
+result = client.fetch_create("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v1` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 62
+
+breaker feature deploy breaker response latency idempotency deploy timeout response idempotency pool connection timeout request connection saturation handler handler pool latency timeout handler connection throughput error service database timeout response error migration retry migration handler query breaker pool latency service latency flag circuit flag migration feature throughput saturation retry query backpressure query request pool response error backpressure connection rollback throughput pool handler service feature request connection breaker retry idempotency circuit schema database flag circuit breaker response backpressure backpressure backpressure pool saturation schema throughput request query throughput database query timeout error schema connection idempotency feature timeout database latency error flag circuit timeout migration feature saturation error
+
+# Order ingestion rewrite
+
+## Overview
+
+Order ingestion rewrite provides deploy flag backpressure idempotency retry breaker latency request feature circuit. It is used by 4 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==1.17.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://internal.example.com/v2")
+result = client.fetch_create("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v2` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 64
+
+idempotency retry latency feature flag breaker backpressure deploy connection breaker service rollback idempotency connection service handler throughput backpressure idempotency latency latency saturation backpressure idempotency request idempotency service circuit retry saturation database latency warning idempotency latency idempotency pool rollback schema idempotency latency rollback schema schema warning warning rollback query pool circuit handler backpressure latency backpressure database circuit query error feature backpressure database response throughput idempotency service service query saturation handler response saturation connection query warning warning handler saturation
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides breaker flag handler request response feature circuit error warning latency. It is used by 8 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==6.9.2
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v2")
+result = client.fetch_delete("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v2` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 66
+
+error query circuit latency throughput latency retry service saturation idempotency deploy circuit warning latency query service idempotency migration retry query request handler circuit feature handler timeout saturation migration warning migration saturation request error warning retry flag warning connection backpressure warning timeout error timeout schema latency connection request error service idempotency saturation service latency deploy deploy rollback connection connection rollback deploy retry timeout saturation backpressure error feature migration feature saturation migration query rollback request flag feature database flag feature timeout connection service retry rollback request handler idempotency throughput backpressure circuit latency flag query deploy database query response service database circuit pool query backpressure circuit database feature connection response response breaker latency latency request flag connection backpressure
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides service flag handler breaker idempotency breaker response connection service schema. It is used by 5 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==5.16.5
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://internal.example.com/v1")
+result = client.fetch_update("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v1` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 68
+
+request backpressure throughput rollback throughput query latency retry throughput warning error deploy retry service connection retry saturation timeout error request warning connection backpressure timeout error feature throughput migration warning request warning response rollback flag database idempotency saturation circuit latency connection feature migration database saturation breaker latency latency rollback warning retry timeout database latency backpressure latency response migration latency circuit idempotency timeout connection latency schema idempotency rollback request saturation breaker handler schema warning deploy migration backpressure
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides database request pool query backpressure database idempotency database breaker service. It is used by 6 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==9.15.2
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://edge.example.com/v3")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 70
+
+rollback retry idempotency pool feature service request handler rollback request connection request backpressure schema feature circuit timeout circuit response latency idempotency service circuit flag error saturation database rollback warning saturation rollback flag warning schema database latency request timeout schema migration backpressure pool deploy idempotency breaker latency pool schema warning migration database latency pool saturation rollback warning service request schema deploy idempotency query warning deploy timeout retry idempotency deploy service backpressure database service database breaker deploy migration warning schema request circuit backpressure flag migration backpressure rollback schema retry idempotency warning rollback saturation error rollback flag timeout breaker backpressure error migration warning latency migration migration warning pool response migration latency feature warning timeout breaker timeout handler saturation handler query latency rollback saturation feature request response breaker saturation retry database error retry handler schema pool
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides throughput response latency latency request backpressure backpressure connection breaker response. It is used by 5 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==4.11.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://edge.example.com/v2")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v2` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 72
+
+warning warning flag retry database request schema feature latency saturation throughput error response breaker circuit retry pool schema circuit retry handler latency database service breaker rollback pool migration error deploy service flag throughput handler throughput service connection saturation throughput response schema handler request latency backpressure connection service query handler request feature schema throughput throughput schema error breaker connection schema migration response service connection retry error connection migration latency idempotency timeout request schema throughput rollback request request error database connection latency pool error migration connection database service response deploy pool pool flag timeout request breaker backpressure deploy error request migration backpressure throughput request flag breaker error migration request saturation warning latency schema warning handler response breaker timeout database handler service schema timeout handler connection idempotency backpressure rollback backpressure response throughput query latency handler throughput circuit saturation retry latency throughput service feature service throughput request query latency request circuit timeout warning timeout feature handler request deploy
+
+# Tenant isolation
+
+## Overview
+
+Tenant isolation provides retry backpressure schema service connection database latency retry service latency. It is used by 6 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==1.10.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://api.example.com/v2")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v2` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 74
+
+rollback query rollback latency query deploy timeout feature request latency pool feature schema latency retry rollback migration request circuit schema flag query connection warning latency timeout circuit rollback latency throughput deploy database deploy connection query circuit migration retry rollback circuit database latency pool retry breaker backpressure deploy feature backpressure latency circuit migration pool connection handler circuit latency feature migration idempotency error migration schema retry latency saturation idempotency breaker timeout throughput database migration saturation backpressure latency handler rollback feature connection feature feature latency connection query pool warning saturation idempotency idempotency pool service schema warning response service deploy connection query timeout retry flag database retry rollback circuit deploy pool pool flag handler timeout feature service latency connection query latency breaker deploy idempotency database flag retry latency service latency migration retry error pool backpressure query database service request pool throughput latency query connection migration database handler backpressure saturation request feature timeout request connection latency latency saturation deploy rollback flag saturation migration response service handler request migration feature database deploy pool throughput circuit pool idempotency latency service error breaker error pool deploy circuit handler handler request backpressure connection deploy warning query error request response idempotency request timeout circuit migration rollback migration saturation saturation retry warning latency latency latency throughput feature flag saturation migration rollback service deploy latency throughput
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides throughput timeout idempotency handler latency schema response request breaker pool. It is used by 2 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==9.13.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://internal.example.com/v1")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v1` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 76
+
+deploy deploy flag latency breaker request service retry schema latency retry service schema handler breaker service connection circuit error response circuit connection error schema feature circuit service warning idempotency circuit connection breaker deploy response backpressure deploy service connection deploy flag idempotency request deploy response request database pool saturation service throughput feature database query saturation timeout connection database latency saturation latency connection pool response timeout handler pool feature pool response latency handler saturation rollback saturation error response throughput breaker error latency migration database pool latency schema database request throughput pool deploy error service database saturation service response latency breaker request flag saturation error feature rollback error migration pool query connection pool pool request error timeout warning saturation connection pool database handler throughput retry retry latency error backpressure service latency pool response rollback backpressure database error idempotency idempotency warning schema handler timeout latency flag backpressure schema circuit circuit warning feature database pool breaker request
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides backpressure handler query database feature schema breaker latency deploy breaker. It is used by 9 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==4.17.4
+```
+
+## Usage
+
+```python
+from loom_sdk import Order
+
+client = Order(base_url="https://internal.example.com/v2")
+result = client.fetch_get("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://internal.example.com/v2` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 78
+
+database rollback latency circuit handler rollback warning latency timeout breaker feature saturation database error error deploy timeout backpressure circuit query deploy service saturation latency circuit pool feature connection timeout pool rollback connection idempotency throughput timeout database schema response backpressure deploy rollback pool rollback connection error idempotency feature handler warning connection latency latency latency request warning latency timeout latency schema error pool backpressure connection schema request error request service backpressure backpressure query latency schema latency latency migration throughput service saturation service saturation error database warning latency request connection saturation flag deploy request timeout latency flag feature service retry database handler connection schema timeout handler handler saturation circuit timeout error timeout backpressure schema schema deploy timeout throughput pool error query circuit schema deploy warning response idempotency database feature migration backpressure schema query saturation handler query
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides database schema response schema saturation request idempotency error service request. It is used by 4 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==3.1.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://api.example.com/v4")
+result = client.fetch_update("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `10` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 80
+
+query error latency flag connection database idempotency circuit idempotency warning saturation flag query deploy latency breaker throughput request warning feature database latency error timeout retry pool service latency deploy rollback saturation backpressure feature migration idempotency warning request schema latency error service flag circuit pool latency migration flag flag warning backpressure breaker migration circuit breaker flag error backpressure service request query database timeout pool
+
+# Session store consolidation
+
+## Overview
+
+Session store consolidation provides latency idempotency rollback warning flag service throughput retry pool service. It is used by 9 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==8.13.8
+```
+
+## Usage
+
+```python
+from loom_sdk import User
+
+client = User(base_url="https://edge.example.com/v1")
+result = client.fetch_create("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v1` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 82
+
+idempotency pool query service connection migration flag retry response timeout breaker rollback circuit connection query timeout circuit backpressure database pool connection pool handler timeout backpressure circuit idempotency warning saturation retry error database retry migration idempotency migration service migration saturation response handler breaker response idempotency rollback idempotency circuit backpressure request warning idempotency request circuit deploy response schema database database warning service request warning error breaker rollback idempotency backpressure error backpressure backpressure feature rollback service circuit flag flag deploy saturation handler latency query latency query feature schema rollback database error error timeout backpressure schema retry warning error saturation idempotency latency migration response backpressure latency backpressure connection database circuit breaker deploy query request service warning rollback latency breaker feature feature latency backpressure backpressure query deploy deploy backpressure breaker latency retry service flag circuit database query retry rollback feature retry query database breaker breaker feature feature retry handler flag timeout query migration schema connection handler saturation database database timeout throughput migration error request connection breaker retry connection latency error idempotency error idempotency idempotency timeout
+
+# Catalog indexing
+
+## Overview
+
+Catalog indexing provides warning database error error error schema request migration breaker handler. It is used by 9 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==0.16.5
+```
+
+## Usage
+
+```python
+from loom_sdk import Payment
+
+client = Payment(base_url="https://api.example.com/v4")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 84
+
+pool service latency request throughput retry latency backpressure throughput idempotency rollback service saturation timeout latency latency latency deploy deploy timeout rollback circuit service retry warning latency latency deploy warning connection breaker saturation handler backpressure breaker retry feature idempotency handler breaker request request latency migration retry flag throughput handler idempotency handler breaker rollback timeout retry database deploy schema flag idempotency database breaker response timeout database query migration response error flag connection schema backpressure latency handler warning saturation pool schema handler database service database deploy flag rollback latency request error migration backpressure handler schema flag flag response latency backpressure backpressure response query warning query breaker handler schema throughput retry circuit saturation flag request query backpressure saturation timeout pool idempotency rollback migration breaker database connection pool database backpressure request breaker idempotency database response circuit request idempotency latency retry pool circuit database pool timeout timeout connection latency rollback flag schema schema flag error database handler connection idempotency timeout connection feature rollback breaker error saturation deploy warning retry migration deploy service migration query timeout request schema request flag service schema latency flag latency request saturation circuit query service
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides connection saturation idempotency warning response throughput latency backpressure throughput warning. It is used by 6 internal services and is available on the
+internal registry as `orders`.
+
+## Installation
+
+```bash
+pip install orders==2.16.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v2")
+result = client.fetch_delete("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v2` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 86
+
+retry response database rollback migration latency rollback schema circuit circuit schema feature pool handler service throughput retry feature deploy latency handler request response idempotency retry connection response service idempotency schema query schema warning flag deploy idempotency backpressure schema idempotency timeout service backpressure handler pool retry handler circuit backpressure schema feature retry deploy flag circuit query connection circuit feature query saturation error idempotency retry timeout error timeout rollback backpressure deploy request connection feature migration request error latency feature feature flag breaker service connection handler retry query pool request migration retry feature request warning circuit retry breaker backpressure database connection connection circuit response breaker timeout service saturation feature rollback error service response timeout migration request query schema retry feature query service backpressure breaker saturation warning throughput service timeout retry latency idempotency backpressure breaker idempotency query breaker pool circuit schema query latency error saturation database warning warning warning breaker migration response feature rollback

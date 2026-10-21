@@ -1,0 +1,240 @@
+# Session store consolidation
+
+## Overview
+
+Session store consolidation provides error schema feature schema idempotency pool latency database feature error. It is used by 7 internal services and is available on the
+internal registry as `billing`.
+
+## Installation
+
+```bash
+pip install billing==9.12.7
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://edge.example.com/v3")
+result = client.fetch_update("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `60` | Request timeout in seconds |
+| `retries` | `3` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides latency deploy idempotency idempotency retry service error request migration service. It is used by 9 internal services and is available on the
+internal registry as `platform`.
+
+## Installation
+
+```bash
+pip install platform==9.20.0
+```
+
+## Usage
+
+```python
+from loom_sdk import Shipment
+
+client = Shipment(base_url="https://api.example.com/v3")
+result = client.fetch_delete("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v3` | Service endpoint |
+| `timeout` | `15` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8080` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 2
+
+rollback timeout schema deploy handler request circuit throughput feature deploy response latency handler flag error warning error rollback circuit feature idempotency error migration deploy latency connection request rollback timeout circuit flag feature handler circuit schema response schema throughput retry schema latency error latency latency connection idempotency warning handler latency migration schema feature query handler throughput warning service query warning saturation request latency latency feature breaker schema query response breaker deploy breaker saturation throughput idempotency response deploy idempotency rollback backpressure latency service query throughput idempotency request response handler idempotency idempotency migration latency warning timeout response warning service backpressure rollback backpressure pool schema backpressure pool database retry schema database connection migration error feature migration circuit rollback deploy query timeout
+
+# Shipment tracking
+
+## Overview
+
+Shipment tracking provides handler migration throughput retry query handler feature retry feature feature. It is used by 9 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==8.0.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Session
+
+client = Session(base_url="https://edge.example.com/v3")
+result = client.fetch_delete("slug")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v3` | Service endpoint |
+| `timeout` | `5` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `5000` in staging and `7000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 4
+
+flag query query service response latency connection backpressure database response response feature deploy idempotency pool breaker timeout migration migration handler query breaker breaker database timeout schema idempotency flag latency service breaker throughput backpressure retry backpressure timeout query connection response connection retry request breaker pool service request idempotency request schema latency feature connection circuit saturation database feature migration migration error connection breaker deploy retry rollback latency timeout warning idempotency feature flag deploy migration backpressure pool migration query latency throughput circuit database query connection pool migration query circuit request rollback request deploy timeout pool breaker error retry timeout schema deploy idempotency retry request breaker migration pool error breaker throughput backpressure idempotency request timeout saturation pool handler schema throughput feature response idempotency pool backpressure circuit error throughput latency feature feature error handler saturation database query deploy error timeout latency service backpressure rollback deploy query circuit rollback circuit feature latency deploy timeout backpressure flag service request migration rollback flag flag retry error backpressure deploy retry flag connection backpressure handler request retry deploy idempotency query query migration connection rollback warning feature warning rollback schema warning migration query database migration request pool response
+
+# Order ingestion rewrite
+
+## Overview
+
+Order ingestion rewrite provides request circuit breaker backpressure throughput throughput retry warning breaker warning. It is used by 7 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==2.12.8
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://edge.example.com/v2")
+result = client.fetch_get("ref")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://edge.example.com/v2` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `2` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8443` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 6
+
+schema timeout breaker throughput latency response latency service schema timeout latency error deploy latency deploy request circuit idempotency retry flag rollback deploy throughput retry throughput saturation database backpressure idempotency retry response pool latency handler error deploy flag backpressure error breaker backpressure rollback connection database request saturation warning warning handler database response database latency saturation timeout latency retry rollback throughput backpressure latency breaker latency request connection latency handler query flag circuit feature error deploy warning query backpressure schema feature breaker backpressure flag retry handler query connection pool warning latency migration deploy breaker connection rollback deploy database deploy feature retry handler schema throughput deploy circuit flag timeout error breaker rollback throughput throughput migration circuit retry backpressure deploy service request database query schema warning deploy latency flag deploy latency migration latency rollback saturation feature saturation database timeout rollback connection database feature deploy retry request rollback schema latency error query rollback breaker backpressure request error handler service request feature query backpressure response timeout breaker throughput backpressure request backpressure latency feature breaker breaker request idempotency response idempotency throughput idempotency response latency idempotency handler timeout breaker saturation feature throughput backpressure handler latency latency circuit circuit
+
+# Payments service migration
+
+## Overview
+
+Payments service migration provides saturation throughput circuit latency flag latency latency backpressure latency timeout. It is used by 5 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==1.14.3
+```
+
+## Usage
+
+```python
+from loom_sdk import Invoice
+
+client = Invoice(base_url="https://api.example.com/v4")
+result = client.fetch_create("id")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `30` | Request timeout in seconds |
+| `retries` | `5` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9000` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 8
+
+handler request feature feature handler retry saturation saturation retry pool pool handler backpressure schema circuit circuit feature query flag latency service query deploy saturation connection backpressure latency request flag warning handler connection schema timeout deploy idempotency deploy request latency handler saturation throughput query pool pool throughput latency backpressure warning warning idempotency flag throughput error breaker saturation pool latency error warning retry feature migration idempotency service latency backpressure breaker pool database circuit handler deploy database request query breaker pool migration rollback backpressure throughput throughput response service rollback rollback query connection service deploy warning response connection service response warning pool idempotency service throughput warning schema feature request database pool response connection saturation rollback saturation warning database handler flag response response service throughput breaker schema warning connection retry pool query backpressure request throughput retry deploy throughput timeout request connection feature request connection breaker rollback request idempotency request warning backpressure backpressure deploy response throughput handler idempotency
+
+# Session store consolidation
+
+## Overview
+
+Session store consolidation provides pool error idempotency saturation service request handler breaker response request. It is used by 6 internal services and is available on the
+internal registry as `core`.
+
+## Installation
+
+```bash
+pip install core==7.2.9
+```
+
+## Usage
+
+```python
+from loom_sdk import Tenant
+
+client = Tenant(base_url="https://api.example.com/v4")
+result = client.fetch_create("uuid")
+```
+
+## Configuration
+
+| Option | Default | Description |
+|---|---|---|
+| `base_url` | `https://api.example.com/v4` | Service endpoint |
+| `timeout` | `10` | Request timeout in seconds |
+| `retries` | `4` | Number of retry attempts |
+
+## Notes
+
+- Never send credentials in the query string; use the `Authorization` header.
+- The `port` must be `8000` in staging and `9090` in production.
+- Migration from v1 to v2 is **not** reversible; take a snapshot first.
+
+
+### section 10
+
+request feature schema feature backpressure request service circuit error circuit error breaker throughput throughput idempotency connection migration timeout flag idempotency schema response flag service breaker warning latency flag service breaker handler latency pool breaker rollback throughput schema deploy saturation circuit service error breaker backpressure service backpressure connection breaker warning response warning service throughput response deploy query handler handler service timeout flag schema query saturation circuit service migration rollback breaker request feature database latency schema warning request database service error database breaker pool error query retry request request error handler idempotency timeout error backpressure latency circuit breaker backpressure schema flag query deploy saturation service saturation request timeout latency query service retry throughput pool query saturation breaker database throughput request backpressure migration circuit warning latency deploy flag pool idempotency query breaker error rollback throughput latency latency database warning service feature response latency connection latency handler migration retry breaker migration request error handler backpressure warning breaker request latency handler idempotency service response warning throughput flag retry query feature idempotency error deploy schema warning handler request

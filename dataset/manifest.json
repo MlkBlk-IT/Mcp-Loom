@@ -1,0 +1,173 @@
+{
+  "seed": 20261021,
+  "samples": [
+    {
+      "file": "small_00_code_review.txt",
+      "size": "small",
+      "kind": "code_review",
+      "prompt": "Find the security flaws in this handler. Ignore style.",
+      "chars": 9798,
+      "lines": 117
+    },
+    {
+      "file": "small_01_config.txt",
+      "size": "small",
+      "kind": "config",
+      "prompt": "Which settings in this config would break a cold start on a 2-core machine?",
+      "chars": 11690,
+      "lines": 195
+    },
+    {
+      "file": "small_02_incident.txt",
+      "size": "small",
+      "kind": "incident",
+      "prompt": "Diagnose the root cause of this repeated timeout and propose a fix.",
+      "chars": 10662,
+      "lines": 205
+    },
+    {
+      "file": "small_03_doc.txt",
+      "size": "small",
+      "kind": "doc",
+      "prompt": "Summarize this design doc for the engineering all-hands.",
+      "chars": 12390,
+      "lines": 241
+    },
+    {
+      "file": "small_04_analysis.txt",
+      "size": "small",
+      "kind": "analysis",
+      "prompt": "Compare these three approaches and recommend one, with trade-offs.",
+      "chars": 10249,
+      "lines": 241
+    },
+    {
+      "file": "small_05_session.txt",
+      "size": "small",
+      "kind": "session",
+      "prompt": "Continue this conversation from where it left off, keeping the tone.",
+      "chars": 6157,
+      "lines": 43
+    },
+    {
+      "file": "small_06_migration.txt",
+      "size": "small",
+      "kind": "migration",
+      "prompt": "Write the step-by-step migration plan from v2 to v3 of this schema.",
+      "chars": 6616,
+      "lines": 121
+    },
+    {
+      "file": "medium_00_code_review.txt",
+      "size": "medium",
+      "kind": "code_review",
+      "prompt": "Find the security flaws in this handler. Ignore style.",
+      "chars": 129016,
+      "lines": 1469
+    },
+    {
+      "file": "medium_01_config.txt",
+      "size": "medium",
+      "kind": "config",
+      "prompt": "Summarize this deployment configuration and flag the values that differ from staging.",
+      "chars": 155448,
+      "lines": 3085
+    },
+    {
+      "file": "medium_02_incident.txt",
+      "size": "medium",
+      "kind": "incident",
+      "prompt": "Turn these alerts into a customer-facing status update.",
+      "chars": 71208,
+      "lines": 1297
+    },
+    {
+      "file": "medium_03_doc.txt",
+      "size": "medium",
+      "kind": "doc",
+      "prompt": "Summarize this design doc for the engineering all-hands.",
+      "chars": 85013,
+      "lines": 1799
+    },
+    {
+      "file": "medium_04_analysis.txt",
+      "size": "medium",
+      "kind": "analysis",
+      "prompt": "What are the hidden costs of this architecture at 10x scale?",
+      "chars": 146147,
+      "lines": 3070
+    },
+    {
+      "file": "medium_05_session.txt",
+      "size": "medium",
+      "kind": "session",
+      "prompt": "Summarize the decisions made in this thread and list the open questions.",
+      "chars": 102053,
+      "lines": 683
+    },
+    {
+      "file": "medium_06_migration.txt",
+      "size": "medium",
+      "kind": "migration",
+      "prompt": "Write the step-by-step migration plan from v2 to v3 of this schema.",
+      "chars": 157959,
+      "lines": 2725
+    },
+    {
+      "file": "large_00_code_review.txt",
+      "size": "large",
+      "kind": "code_review",
+      "prompt": "Audit this async code for resource leaks and cancellation bugs. Be concrete.",
+      "chars": 814598,
+      "lines": 9693
+    },
+    {
+      "file": "large_01_config.txt",
+      "size": "large",
+      "kind": "config",
+      "prompt": "Summarize this deployment configuration and flag the values that differ from staging.",
+      "chars": 784321,
+      "lines": 15770
+    },
+    {
+      "file": "large_02_incident.txt",
+      "size": "large",
+      "kind": "incident",
+      "prompt": "Diagnose the root cause of this repeated timeout and propose a fix.",
+      "chars": 1187387,
+      "lines": 20953
+    },
+    {
+      "file": "large_03_doc.txt",
+      "size": "large",
+      "kind": "doc",
+      "prompt": "Write an onboarding guide for new contributors to this repository.",
+      "chars": 768361,
+      "lines": 15493
+    },
+    {
+      "file": "large_04_analysis.txt",
+      "size": "large",
+      "kind": "analysis",
+      "prompt": "Break down this dataset's characteristics and its implications for modeling.",
+      "chars": 503727,
+      "lines": 10327
+    },
+    {
+      "file": "large_05_session.txt",
+      "size": "large",
+      "kind": "session",
+      "prompt": "Rewrite this exchange more concisely without losing any commitment.",
+      "chars": 783967,
+      "lines": 5051
+    },
+    {
+      "file": "large_06_migration.txt",
+      "size": "large",
+      "kind": "migration",
+      "prompt": "Give me the rollback procedure for this database migration.",
+      "chars": 1166505,
+      "lines": 20659
+    }
+  ]
+}

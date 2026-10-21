@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.py    text diff=python
+*.md    text
+*.json  text
+*.txt   text
+*.toml  text
+*.yml   text
+*.yaml  text
+
+# Corpus de benchmark : gros fichiers texte, pas de normalisation de fin de ligne
+dataset/*.txt -text

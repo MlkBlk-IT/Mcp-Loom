@@ -25,9 +25,9 @@ dev = [
 loom-mcp = "loom.server:main"
 
 [project.urls]
-Homepage = "https://github.com/MlkBlk-IT/Loom"
-Repository = "https://github.com/MlkBlk-IT/Loom"
-Issues = "https://github.com/MlkBlk-IT/Loom/issues"
+Homepage = "https://github.com/MlkBlk-IT/Mcp-Loom"
+Repository = "https://github.com/MlkBlk-IT/Mcp-Loom"
+Issues = "https://github.com/MlkBlk-IT/Mcp-Loom/issues"
 
 [build-system]
 requires = ["hatchling"]

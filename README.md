@@ -1,3 +1,9 @@
+> ## ⚠️ WORK IN PROGRESS — PAS PRÊT (2026-10-22)
+> Loom est en cours de réparation et de mesure. **Ne pas utiliser en production.**
+> - **Aucune économie de tokens n'est démontrée à ce jour.** Les anciens chiffres (`saved_pct` 94–99 %, `bench-report.json`, `bench_results.json`, `REPORT_FINAL.md`) mesuraient la taille de l'ancre seule: ils sont **invalides**.
+> - Mesure réelle actuelle (LM Studio, petits modèles locaux, petits documents): Loom coûte **plus** de tokens que le baseline (surcoût fixe ancre + schémas d'outils). Le test sur un gros contexte avec un modèle cloud n'est pas encore fait.
+> - Critère de décision figé avant bench: même succès avec ≥ 35 % de tokens totaux (in+out) en moins, retrieval et tool tax inclus. Sinon: pivot ou arrêt.
+> - État du code: 72 tests passent. `verify`, `redact`, `audit` et `sandbox` restent à réécrire. README, outils listés et `dist/` peuvent être périmés.
 # 🧵 Loom — Serveur MCP de contexte portable
 
 > **« Tisser le contexte sans couper le fil. »**

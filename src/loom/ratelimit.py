@@ -80,7 +80,7 @@ def get_rate_limiter() -> RateLimiter:
     global _rate_limiter
     if _rate_limiter is None:
         enabled = os.environ.get("LOOM_RATE_LIMIT", "1") not in ("0", "false", "False", "")
-        rpm = int(os.environ.get("LOOM_RPM", os.environ.get("LOOM_RATE_LIMIT", "60")))
-        burst = int(os.environ.get("LOOM_BURST", "10"))
+        rpm = int(os.environ.get("LOOM_RPM", "60"))
+        burst = int(os.environ.get("LOOM_BURST", "100"))
         _rate_limiter = RateLimiter(requests_per_minute=rpm, burst_size=burst, enabled=enabled)
     return _rate_limiter

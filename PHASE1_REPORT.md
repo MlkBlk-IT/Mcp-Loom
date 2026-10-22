@@ -1,3 +1,4 @@
+> **ERRATA (2026-10-22): ce rapport est périmé et partiellement contredit.** Les affirmations de succès, de nombre de tests et de modules terminés (`redact`, `verify`) n'ont pas été re-vérifiées; la réparation en cours montre que plusieurs étaient fausses ou incomplètes. Les chiffres de `saved_pct` mesuraient l'ancre seule. Voir `README.md` (bandeau WIP) et `PROJECT_STORY.md`.
 # Loom — Phase 1 Rapport de completion
 
 ## Phase 1 — Production Hardening

@@ -5,6 +5,7 @@ Business logic lives in the sibling modules; this file only exposes it as MCP to
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import os
 import time
@@ -99,12 +100,20 @@ def ctx_store(content: str, session_id: str = "default", label: str = "") -> dic
     tokens_before = count_tokens(content)
     anchor, chunks = compress.build_anchor(content, profile=profile)
     anchor_tokens = count_tokens(anchor)
-    ids = store.save_chunks(resolved_session, label, chunks)
-    store.save_anchor(resolved_session, label, anchor)
     invariants = anchor_mod.extract(content)
-    store.save_invariants(
-        resolved_session, [(i.kind, i.value, i.priority) for i in invariants]
+    saved = store.save_all(
+        resolved_session,
+        label,
+        chunks,
+        anchor,
+        [(i.kind, i.value, i.priority) for i in invariants],
+        source_meta={
+            "tokens_before": tokens_before,
+            "anchor_tokens": anchor_tokens,
+            "redactions": redaction_count,
+        },
     )
+    ids = saved["chunk_ids"]
     # Touch session updated_at
     session.touch_session(resolved_session)
 
@@ -183,6 +192,7 @@ def ctx_check(session_id: str = "default") -> dict:
         return rl
     resolved_session = session.resolve_session_id(session_id)
     result = verify.check_session(resolved_session)
+    result["source_identity"] = "voir ctx_verify"
     _audit_call("ctx_check", resolved_session, start, "success")
     return result
 
@@ -393,8 +403,31 @@ def ctx_store_file(path: str, session_id: str = "default", label: str = "") -> d
     import os as _os
     if not label:
         label = _os.path.basename(path)
-    with open(path, "r", encoding="utf-8", errors="replace") as f:
-        content = f.read()
+
+    max_mb = float(_os.environ.get("LOOM_MAX_FILE_MB", "50"))
+    allowed = _os.environ.get("LOOM_ALLOWED_DIRS")
+    resolved = _os.path.abspath(path)
+    if allowed:
+        dirs = [d for d in allowed.split(";;") if d]
+        if not any(resolved.startswith(_os.path.abspath(d)) for d in dirs):
+            return {"error": f"path outside allowed dirs: {resolved}"}
+
+    try:
+        size = _os.path.getsize(resolved)
+    except OSError as exc:
+        return {"error": str(exc)}
+    if size > max_mb * 1024 * 1024:
+        return {"error": f"file too large: {size} bytes (limit {max_mb} MB)"}
+
+    try:
+        with open(resolved, "rb") as f:
+            raw = f.read()
+        content = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        return {"error": f"invalid utf-8: {exc}"}
+    except OSError as exc:
+        return {"error": str(exc)}
+
     _audit_call("ctx_store_file", session_id, start, "success")
     return ctx_store(content=content, session_id=session_id, label=label)
 
@@ -483,6 +516,58 @@ def ctx_search(query: str, limit: int = 5, session_id: str = "default") -> dict:
         "count": len(results),
     }
     _audit_call("ctx_search", session_id, start, "success")
+    return result
+
+
+@mcp.tool(
+    annotations=ToolAnnotations(
+        read_only_hint=True, destructive_hint=False, idempotent_hint=True, open_world_hint=False
+    )
+)
+def ctx_verify(session_id: str | None = None) -> dict:
+    """Verify source integrity by rebuilding each source from its chunks.
+
+    For every stored source, reconstructs the original bytes from its chunks
+    (in chunk-id order, through the normal read path) and compares SHA-256
+    to the value stored at ingest time.
+    """
+    start = time.perf_counter()
+    key = session_id or "default"
+    rl = _check_rate_limit(key)
+    if rl is not None:
+        _audit_call("ctx_verify", key, start, "error", rl["error"])
+        return rl
+    resolved = session.resolve_session_id(key) if session_id is not None else None
+    sources = store.load_sources(resolved)
+    out = []
+    all_ok = True
+    total_redactions = 0
+    for src in sources:
+        sid = src["session_id"]
+        first = src["first_chunk_id"]
+        last = src["last_chunk_id"]
+        # load chunks in id order via normal read path
+        chunks = []
+        if first is not None and last is not None:
+            for cid in range(first, last + 1):
+                ch = store.load_chunk(cid)
+                if ch is not None and ch.get("session_id") == sid:
+                    chunks.append(ch)
+        rebuilt = "".join(c["content"] for c in chunks)
+        sha_rebuilt = hashlib.sha256(rebuilt.encode("utf-8")).hexdigest()
+        ok = sha_rebuilt == src["sha256"]
+        all_ok = all_ok and ok
+        total_redactions += int(src.get("redactions", 0) or 0)
+        out.append({
+            "id": src["id"],
+            "label": src["label"],
+            "ok": ok,
+            "sha_stored": src["sha256"],
+            "sha_rebuilt": sha_rebuilt,
+            "bytes": int(src["bytes"]),
+        })
+    result = {"sources": out, "lossless": bool(all_ok and total_redactions == 0)}
+    _audit_call("ctx_verify", key, start, "success")
     return result
 
 

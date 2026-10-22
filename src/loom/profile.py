@@ -34,6 +34,13 @@ PROFILES: dict[str, Profile] = {
         keep_invariants=True,
         description="Move + tighter anchors. Still lossless.",
     ),
+    "lean": Profile(
+        name="lean",
+        max_anchor_chars=1500,
+        allow_lossy=False,
+        keep_invariants=True,
+        description="Move + minimal anchor. Still lossless.",
+    ),
     "aggressive": Profile(
         name="aggressive",
         max_anchor_chars=1200,
@@ -43,7 +50,9 @@ PROFILES: dict[str, Profile] = {
     ),
 }
 
-_ACTIVE: Profile = PROFILES["strict"]
+import os
+
+_ACTIVE: Profile = PROFILES[os.environ.get("LOOM_PROFILE", "strict")]
 
 
 def get_profile() -> Profile:

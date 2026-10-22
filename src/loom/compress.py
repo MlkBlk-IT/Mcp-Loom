@@ -47,7 +47,7 @@ CONSTRAINT_HINT = re.compile(
 )
 
 MAX_ANCHOR_LINES = 400
-LINES_PER_CHUNK = 40
+LINES_PER_CHUNK = 10
 MAX_CHUNK_BYTES = 16 * 1024  # 16 KiB — a retrieval unit must stay small enough to re-read
 MAX_INVARIANTS_IN_ANCHOR = 200
 

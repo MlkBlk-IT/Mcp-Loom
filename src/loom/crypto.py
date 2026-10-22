@@ -11,12 +11,12 @@ Two modes:
 Key derivation (Fernet mode)
 ----------------------------
 PBKDF2-HMAC-SHA256 with a random 16-byte salt, stored in the ``meta`` table of the
-drawer itself (``key='pbkdf2_salt'``, created on first use). The salt is not a
+ drawer itself (``key='pbkdf2_salt'``, created on first use). The salt is not a
 secret; it only makes the derived key unique per drawer.
 
 Iteration count: 600 000, per the OWASP Password Storage Cheat Sheet
 ("If FIPS-140 compliance is required, use PBKDF2 with a work factor of 600,000
-or more and set with an internal hash function of HMAC-SHA-256"),
+or more and set with an internal hash function of HMAC-SHA-256),
 https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html,
 consulted 2026-10-21. The same sheet lists Argon2id / scrypt as the preferred
 choices, but PBKDF2-HMAC-SHA256 is the option backed by a FIPS-140-validated
@@ -44,64 +44,47 @@ import sqlite3
 from pathlib import Path
 from typing import Optional
 
-# Optional dependency: full-database encryption.
 try:
-    import pysqlcipher3.dbapi2 as sqlcipher
-
+    import sqlcipher3.dbapi2 as sqlcipher
     _HAS_SQLCIPHER = True
-except ImportError:  # pragma: no cover - depends on the host
-    sqlcipher = None
+except ImportError:
     _HAS_SQLCIPHER = False
 
-# Application-level encryption.
 try:
     from cryptography.fernet import Fernet
-
     _HAS_FERNET = True
-except ImportError:  # pragma: no cover - depends on the host
-    Fernet = None
+except ImportError:
     _HAS_FERNET = False
 
+# -- constants --------------------------------------------------------------
 
-# --- Constants ---------------------------------------------------------------
-
-# OWASP Password Storage Cheat Sheet (consulted 2026-10-21).
 PBKDF2_ITERATIONS = 600_000
+PBKDF2_DKLEN = 32
 PBKDF2_SALT_BYTES = 16
 PBKDF2_SALT_KEY = "pbkdf2_salt"
-PBKDF2_DKLEN = 32  # Fernet key material (16 bytes AES-128 + 16 bytes HMAC)
 
-# Fernet tokens are base64url of 0x80 || timestamp || IV || HMAC || ciphertext,
-# so they always start with "gAAAA". Anything else is a legacy plaintext row.
 FERNET_TOKEN_PREFIX = "gAAAA"
 
 META_TABLE_SQL = """
-    CREATE TABLE IF NOT EXISTS meta (
-        key   TEXT PRIMARY KEY,
-        value TEXT NOT NULL
-    )
+CREATE TABLE IF NOT EXISTS meta (
+    key TEXT PRIMARY KEY,
+    value TEXT
+)
 """
 
+# -- caches -----------------------------------------------------------------
 
-# --- Caches ------------------------------------------------------------------
-# _KEY_CACHE: (password, salt) -> Fernet instance (avoids repeating PBKDF2).
-# _ENC_CACHE: (normalized drawer path, password) -> DatabaseEncryption instance.
-# Both are cleared by reset_caches(); no drawer content is ever cached.
-_KEY_CACHE: dict[tuple[str, bytes], "Fernet"] = {}
-_ENC_CACHE: dict[tuple[str, Optional[str]], "DatabaseEncryption"] = {}
+_KEY_CACHE: dict[tuple[str, bytes], Fernet] = {}
+
+# -- password handling --------------------------------------------------------
 
 _PASSWORD_OVERRIDE: Optional[str] = None
 
-
-def _db_key(db_path: Path | str) -> str:
-    """Normalize a drawer path into a stable cache key."""
-    return os.path.normcase(os.path.abspath(str(db_path)))
-
+# -- public API --------------------------------------------------------------
 
 def reset_caches() -> None:
     """Drop every cached key/instance (used by the test suite)."""
     _KEY_CACHE.clear()
-    _ENC_CACHE.clear()
 
 
 def _derive_fernet(password: str, salt: bytes) -> "Fernet":
@@ -136,7 +119,6 @@ def _ensure_salt(conn: sqlite3.Connection) -> bytes:
     )
     conn.commit()
     return salt
-
 
 class DatabaseEncryption:
     """Manages the encryption of a Loom drawer (SQLCipher or column-level Fernet)."""
@@ -265,14 +247,8 @@ def get_encryption(
 
         db_path = store.DB_PATH
     resolved = password if password is not None else _resolve_password()
-    key = (_db_key(db_path), resolved)
-    cached = _ENC_CACHE.get(key)
-    if cached is not None:
-        return cached
     instance = DatabaseEncryption(db_path, resolved)
-    _ENC_CACHE[key] = instance
     return instance
-
 
 def set_encryption_password(password: Optional[str]) -> None:
     """Force the password used by every drawer (call before the first DB access)."""

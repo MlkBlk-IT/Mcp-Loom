@@ -489,28 +489,53 @@ def ctx_store_cmd(cmd: str, session_id: str = "default", label: str = "") -> dic
         read_only_hint=True, destructive_hint=False, idempotent_hint=True, open_world_hint=False
     )
 )
-def ctx_search(query: str, limit: int = 5, session_id: str = "default") -> dict:
-    """Search stored chunks using FTS5 full-text search.
+def ctx_search(query: str, limit: int = 5, session_id: str = "default", semantic: bool = True) -> dict:
+    """Search stored chunks — semantic (embeddings) first, FTS5 fallback.
+
+    When ``semantic=True`` (default) and the embedding backend is available,
+    searches by *meaning* using FAISS HNSW. Falls back to FTS5 keyword search
+    if no backend, no index, or no semantic results.
 
     Args:
-        query: search query (FTS5 syntax)
+        query: search query (natural language or keywords)
         limit: max results (default 5)
-        session_id: session to search (default: all sessions)
+        session_id: session to search (default: all sessions when semantic, or "default")
+        semantic: use semantic search first (default True)
 
     Returns:
-        dict with matching chunks and their metadata.
+        dict with matching chunks, metadata, and ``mode`` ("semantic" or "fts").
     """
     start = time.perf_counter()
     rl = _check_rate_limit(session_id)
     if rl is not None:
         _audit_call("ctx_search", session_id, start, "error", rl["error"])
         return rl
-    results = store.search(query, limit=limit, session_id=session_id)
+
+    mode = "fts"
+    results: list[dict] = []
+
+    if semantic:
+        try:
+            from loom import vector_index
+            if vector_index.available():
+                sid = None if session_id == "default" else session_id
+                sem = store.search_semantic(query, session_id=sid, limit=limit)
+                if sem:
+                    mode = "semantic"
+                    results = sem
+        except Exception:
+            pass  # fall through to FTS
+
+    if not results:
+        results = store.search(query, limit=limit, session_id=session_id)
+
     result = {
         "query": query,
+        "mode": mode,
         "results": [
             {"chunk_id": r["id"], "label": r["label"], "content": r["content"][:500],
-             "session_id": r.get("session_id", "")}
+             "session_id": r.get("session_id", ""),
+             **({"score": r["score"]} if "score" in r else {})}
             for r in results
         ],
         "count": len(results),
@@ -569,6 +594,84 @@ def ctx_verify(session_id: str | None = None) -> dict:
     result = {"sources": out, "lossless": bool(all_ok and total_redactions == 0)}
     _audit_call("ctx_verify", key, start, "success")
     return result
+
+
+# =========================================================================
+# P2 — Cross-session transfer
+# =========================================================================
+
+@mcp.tool(
+    annotations=ToolAnnotations(
+        read_only_hint=False, destructive_hint=False, idempotent_hint=True, open_world_hint=False
+    )
+)
+def ctx_transfer(from_session: str, to_session: str, chunk_ids: list[int]) -> dict:
+    """Transfer chunks from one session to another (cross-session / multi-agent).
+
+    Creates a junction-table link so the chunks become visible in the target
+    session without duplicating data.  The original chunks remain in the source
+    session.
+
+    Args:
+        from_session: source session ID
+        to_session: target session ID
+        chunk_ids: list of chunk IDs to transfer
+
+    Returns:
+        dict with transferred count and any errors.
+    """
+    start = time.perf_counter()
+    rl = _check_rate_limit(to_session)
+    if rl is not None:
+        _audit_call("ctx_transfer", to_session, start, "error", rl["error"])
+        return rl
+    from loom import cross_session
+    result = cross_session.transfer(from_session, to_session, chunk_ids)
+    _audit_call("ctx_transfer", to_session, start, "success")
+    return result
+
+
+# =========================================================================
+# P1 — Vector index management
+# =========================================================================
+
+@mcp.tool(
+    annotations=ToolAnnotations(
+        read_only_hint=False, destructive_hint=False, idempotent_hint=True, open_world_hint=False
+    )
+)
+def ctx_rebuild_index() -> dict:
+    """Rebuild the FAISS HNSW vector index from all stored chunks.
+
+    Call this once after installing sentence-transformers, or when the index
+    is stale / corrupted.  Embeds every chunk in the DB and persists the
+    index to ``~/.loom/vectors/``.
+
+    Returns:
+        dict with chunk count, elapsed seconds, and index path.
+    """
+    start = time.perf_counter()
+    from loom import vector_index
+    from loom.store import DB_PATH
+    count = vector_index.rebuild_from_db(DB_PATH)
+    elapsed = round(time.perf_counter() - start, 2)
+    return {
+        "embedded": count,
+        "elapsed_s": elapsed,
+        "index_path": str(vector_index.INDEX_PATH),
+        "backend": vector_index._backend,
+    }
+
+
+@mcp.tool(
+    annotations=ToolAnnotations(
+        read_only_hint=True, destructive_hint=False, idempotent_hint=True, open_world_hint=False
+    )
+)
+def ctx_vector_stats() -> dict:
+    """Return vector index statistics (backend, model, dimension, vector count)."""
+    from loom import vector_index
+    return vector_index.stats()
 
 
 def main() -> None:

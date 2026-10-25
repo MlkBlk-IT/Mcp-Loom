@@ -339,6 +339,15 @@ def save_all(
     finally:
         conn.close()
 
+    # --- P1: embed chunks for semantic search (non-blocking) ---
+    try:
+        from loom import vector_index
+        if vector_index.available():
+            texts = [chunk["text"] for chunk in chunks]
+            vector_index.add_batch(ids, texts)
+    except Exception:
+        pass  # FTS still works; semantic is best-effort
+
     return {
         "chunk_ids": ids,
         "anchor_id": anchor_id,
@@ -346,6 +355,7 @@ def save_all(
         "sha256": sha256,
         "bytes": len(raw),
         "n_chunks": len(ids),
+        "embedded": len(ids),
     }
 
 
@@ -584,3 +594,55 @@ def search(
             item["ref"] = f"{source_sha[:12]}#{idx}"
         results.append(item)
     return results
+
+
+def search_semantic(
+    query: str, session_id: str | None = None, limit: int = 10
+) -> list[dict[str, Any]]:
+    """Semantic search via FAISS HNSW. Falls back to [] if no backend.
+
+    Returns the same shape as ``search()``: list of dicts with id, label,
+    session_id, content, snippet, plus ``score`` (cosine similarity).
+    """
+    from loom import vector_index
+
+    hits = vector_index.search(query, k=limit * 2)  # over-fetch, filter, trim
+    if not hits:
+        return []
+
+    # Load chunk content from DB for the matched IDs.
+    ids = [h["chunk_id"] for h in hits]
+    placeholders = ",".join("?" * len(ids))
+    sql = f"SELECT * FROM chunks WHERE id IN ({placeholders})"
+    conn = _connect()
+    try:
+        rows = {row["id"]: row for row in conn.execute(sql, ids).fetchall()}
+    finally:
+        conn.close()
+
+    crypto = _encryption()
+    results: list[dict[str, Any]] = []
+    for hit in hits:
+        cid = hit["chunk_id"]
+        row = rows.get(cid)
+        if row is None:
+            continue
+        if session_id is not None and row["session_id"] != session_id:
+            continue
+        content = crypto.decrypt_content(row["content"])
+        # Snippet: first 200 chars (semantic search doesn't produce FTS snippets)
+        snip = content[:200].replace("\n", " ") + ("…" if len(content) > 200 else "")
+        item: dict[str, Any] = {
+            "id": row["id"],
+            "label": row["label"],
+            "session_id": row["session_id"],
+            "content": content,
+            "snippet": snip,
+            "score": round(hit["score"], 4),
+        }
+        source_sha = row["source_sha"] if "source_sha" in row.keys() else None
+        idx = row["idx"] if "idx" in row.keys() else None
+        if source_sha and idx is not None:
+            item["ref"] = f"{source_sha[:12]}#{idx}"
+        results.append(item)
+    return results[:limit]

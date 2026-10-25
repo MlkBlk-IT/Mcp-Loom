@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loom Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="bar">
+      <div class="brand">
+        <div class="mark">L</div>
+        <div class="title">
+          <div class="name">Loom Dashboard</div>
+          <div class="sub">Context MCP · Read-only observability</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="icon-btn" title="Refresh"><span class="material-symbols-outlined">refresh</span></button>
+        <select class="select" id="db-select">
+          <option value="default">default</option>
+        </select>
+        <span class="pill pill--live" id="status-pill">LIVE</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- KPI ROW -->
+      <section class="kpi-row" id="kpi-row">
+        <!-- injected by JS -->
+      </section>
+
+      <!-- CHARTS ROW -->
+      <section class="charts-row" id="charts-row">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Appels par outil</h3>
+            <span class="chip chip--gray">15 min</span>
+          </div>
+          <div class="chart" id="chart-calls"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Latence p50 / p95</h3>
+            <span class="chip chip--gray">ms</span>
+          </div>
+          <div class="chart" id="chart-lat"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Issues par type</h3>
+            <span class="chip chip--gray">count</span>
+          </div>
+          <div class="chart" id="chart-issues"></div>
+        </div>
+      </section>
+
+      <!-- TABLES ROW -->
+      <section class="tables-row" id="tables-row">
+        <div class="panel full">
+          <div class="panel-head">
+            <h3>Derniers événements</h3>
+            <div class="table-search">
+              <span class="material-symbols-outlined">search</span>
+              <input type="text" id="event-search" placeholder="Filtrer les événements…" />
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="events-table">
+              <thead>
+                <tr>
+                  <th>Heure</th>
+                  <th>Outil</th>
+                  <th>Session</th>
+                  <th>Statut</th>
+                  <th>Durée</th>
+                  <th>Tokens</th>
+                  <th>Détail</th>
+                </tr>
+              </thead>
+              <tbody id="events-tbody">
+                <!-- injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-left">
+        <span id="last-update">—</span>
+        <span class="divider">·</span>
+        <span id="db-info">—</span>
+      </div>
+      <div class="foot-right">
+        <span class="version">v2.0 · loom-dash</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

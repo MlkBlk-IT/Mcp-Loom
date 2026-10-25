@@ -167,9 +167,9 @@ def test_rl_config_burst_explicit(monkeypatch):
 
 
 # ---------------------------------------------------------------------------
-# 8. Surface: 14 tools
+# 8. Surface: 17 tools (14 original + 3 upgrade: ctx_transfer, ctx_rebuild_index, ctx_vector_stats)
 # ---------------------------------------------------------------------------
-def test_surface_14_tools():
+def test_surface_17_tools():
     expected = {
         "ctx_store",
         "ctx_get",
@@ -185,6 +185,9 @@ def test_surface_14_tools():
         "ctx_store_cmd",
         "ctx_search",
         "ctx_verify",
+        "ctx_transfer",
+        "ctx_rebuild_index",
+        "ctx_vector_stats",
     }
     found = {
         name
@@ -192,4 +195,4 @@ def test_surface_14_tools():
         if name.startswith("ctx_") and callable(getattr(srv, name, None))
     }
     assert found == expected
-    assert len(expected) == 14
+    assert len(expected) == 17

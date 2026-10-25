@@ -1,0 +1,446 @@
+const SERIES_COLORS = ['#3FB68B','#6AA6FF','#E3B341','#F0616D','#CC79A7','#56B4E9','#E69F00','#009E73'];
+
+let lastEventTime = 0;
+let es = null;
+let reconnectTimer = null;
+let threeState = null;
+let threeEnabled = false;
+
+function $(id){ return document.getElementById(id); }
+
+function connect() {
+  if (es) { try { es.close(); } catch(e){} }
+  es = new EventSource('/api/stream');
+  es.onmessage = (e) => {
+    lastEventTime = Date.now();
+    $('stale-pill').style.display = 'none';
+    let snap;
+    try { snap = JSON.parse(e.data); } catch(err){ return; }
+    render(snap);
+  };
+  es.onerror = () => {
+    $('status-pill').className = 'status-pill err';
+    $('status-pill').textContent = 'disconnected';
+    scheduleReconnect();
+  };
+  es.onopen = () => {
+    $('status-pill').className = 'status-pill ok';
+    $('status-pill').textContent = 'live';
+  };
+}
+
+function scheduleReconnect() {
+  if (reconnectTimer) return;
+  reconnectTimer = setTimeout(() => { reconnectTimer = null; connect(); }, 1500);
+}
+
+setInterval(() => {
+  if (lastEventTime && Date.now() - lastEventTime > 5000) {
+    $('stale-pill').style.display = 'inline-flex';
+  }
+}, 1000);
+
+function render(snap) {
+  if (!snap) return;
+  $('last-update').textContent = new Date(snap.ts*1000).toLocaleTimeString();
+  $('demo-badge').style.display = snap.demo ? 'inline-block' : 'none';
+  const db = snap.db || {};
+  if (db.error) {
+    $('error-banner').style.display = 'block';
+    $('error-banner').textContent = 'DB: ' + db.error + (db.encrypted ? ' (encrypted)' : '');
+  } else {
+    $('error-banner').style.display = 'none';
+  }
+  renderKpis(snap);
+  renderCharts(snap);
+  renderBars('invariants-bars', db.invariants_by_kind || [], 'kind', 'n', db.encrypted || db.error);
+  renderBars('hits-bars', db.hits_per_session || [], 'session_id', 'hits', false);
+  renderEvents(snap.audit || {});
+  render3DState(snap);
+  if (db.encrypted) {
+    $('status-pill').className = 'status-pill warn';
+    $('status-pill').textContent = 'encrypted';
+  } else if (db.error === 'missing') {
+    $('status-pill').className = 'status-pill warn';
+    $('status-pill').textContent = 'no db';
+  } else if (db.error) {
+    $('status-pill').className = 'status-pill err';
+    $('status-pill').textContent = 'db error';
+  }
+}
+
+function kpi(label, value, sub) {
+  const d = document.createElement('div');
+  d.className = 'kpi-card';
+  d.innerHTML = '<div class="label">'+label+'</div><div class="value">'+value+'</div><div class="sub">'+(sub||'')+'</div>';
+  return d;
+}
+
+function renderKpis(snap) {
+  const db = snap.db || {};
+  const a = snap.audit || {};
+  const grid = $('kpi-grid');
+  grid.innerHTML = '';
+  const grey = (db.encrypted || db.error) ? ' greyed' : '';
+  const items = [
+    ['Sessions', db.sessions ?? '—', ''],
+    ['Chunks', db.chunks ?? '—', ''],
+    ['Sources', db.sources ?? '—', ''],
+    ['DB size', formatBytes(db.size_bytes), '+WAL'],
+    ['Calls/min', a.calls_per_min ?? 0, 'live'],
+    ['Error rate', ((a.error_rate||0)*100).toFixed(1)+'%', ''],
+    ['p50 ms', a.p50 ?? 0, ''],
+    ['p95 ms', a.p95 ?? 0, ''],
+    ['Saved ratio', ((db.saved_ratio||0)*100).toFixed(1)+'%', 'anchor only'],
+  ];
+  items.forEach(([l,v,s]) => {
+    const c = kpi(l, v, s);
+    if (grey) c.classList.add('greyed');
+    grid.appendChild(c);
+  });
+  $('saved-ratio').textContent = ((db.saved_ratio||0)*100).toFixed(1)+'%';
+}
+
+function formatBytes(b) {
+  if (b == null) return '—';
+  if (b < 1024) return b + ' B';
+  if (b < 1024*1024) return (b/1024).toFixed(1) + ' KB';
+  return (b/1024/1024).toFixed(1) + ' MB';
+}
+
+function clearSvg(id){ const s=$(id); while(s.firstChild) s.removeChild(s.firstChild); }
+
+function svgEl(tag, attrs) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+function drawGrid(svg, W, H, pad, maxV, ticks) {
+  ticks = ticks || 5;
+  for (let i=0; i<=ticks; i++) {
+    const y = H - pad - (i/ticks)*(H-2*pad);
+    svg.appendChild(svgEl('line', {x1:pad, y1:y, x2:W-pad, y2:y, stroke:'#263042', 'stroke-width':1, opacity:0.4}));
+    const t = svgEl('text', {x:pad-4, y:y+3, 'text-anchor':'end', 'font-size':9, fill:'#8B98A9'});
+    t.textContent = Math.round(maxV * i / ticks);
+    svg.appendChild(t);
+  }
+}
+
+function renderCharts(snap) {
+  const a = snap.audit || {};
+  const db = snap.db || {};
+  renderCallsChart(a);
+  renderLatChart(a);
+  renderOutcomesChart(a);
+  renderTokensChart(db);
+}
+
+function renderCallsChart(a) {
+  const svg = $('chart-calls');
+  clearSvg('chart-calls');
+  const labels = a.series_labels || [];
+  const tools = a.series_tools || [];
+  const counts = a.series_counts || {};
+  const n = labels.length || 1;
+  const W = 480, H = 220, pad = 36;
+  const maxV = Math.max(1, ...tools.flatMap(t => counts[t]||[]));
+  drawGrid(svg, W, H, pad, maxV);
+  labels.forEach((lab, i) => {
+    if (i % 3 !== 0 && i !== n-1) return;
+    const x = pad + (i/Math.max(1,n-1))*(W-2*pad);
+    const t = svgEl('text', {x:x, y:H-pad+14, 'text-anchor':'middle', 'font-size':9, fill:'#8B98A9'});
+    t.textContent = lab;
+    svg.appendChild(t);
+  });
+  const cum = Array.from({length:n}, () => 0);
+  tools.forEach((t, ti) => {
+    const arr = counts[t] || [];
+    const color = SERIES_COLORS[ti % SERIES_COLORS.length];
+    const top = [], bot = [];
+    for (let i=0;i<n;i++) {
+      const v = arr[i] || 0;
+      const x = pad + (i/Math.max(1,n-1))*(W-2*pad);
+      const yTop = H - pad - ((cum[i]+v)/maxV)*(H-2*pad);
+      const yBot = H - pad - (cum[i]/maxV)*(H-2*pad);
+      top.push([x,yTop]); bot.push([x,yBot]);
+      cum[i] += v;
+    }
+    const path = 'M ' + top.map(p=>p[0]+','+p[1]).join(' L ')
+      + ' L ' + bot.slice().reverse().map(p=>p[0]+','+p[1]).join(' L ') + ' Z';
+    svg.appendChild(svgEl('path', {d:path, fill:color, opacity:0.75, stroke:color, 'stroke-width':1}));
+  });
+  const leg = $('legend-calls');
+  leg.innerHTML = '';
+  tools.forEach((t, ti) => {
+    const d = document.createElement('span');
+    d.className = 'legend-item';
+    d.innerHTML = '<span class="legend-swatch" style="background:'+SERIES_COLORS[ti%SERIES_COLORS.length]+'"></span>'+t;
+    leg.appendChild(d);
+  });
+  if (tools.length===0) {
+    const t = svgEl('text', {x:W/2, y:H/2, 'text-anchor':'middle', fill:'#8B98A9'});
+    t.textContent = 'no data'; svg.appendChild(t);
+  }
+}
+
+function renderLatChart(a) {
+  const svg = $('chart-lat');
+  clearSvg('chart-lat');
+  const p50 = a.latency_p50_series || [];
+  const p95 = a.latency_p95_series || [];
+  const n = p50.length || 1;
+  const W = 480, H = 220, pad = 36;
+  const vals = p50.concat(p95).filter(v=>v!=null);
+  const maxV = Math.max(1, ...vals);
+  drawGrid(svg, W, H, pad, maxV);
+  function line(series, color) {
+    let pts = [];
+    for (let i=0;i<n;i++) {
+      if (series[i]==null) continue;
+      const x = pad + (i/Math.max(1,n-1))*(W-2*pad);
+      const y = H - pad - (series[i]/maxV)*(H-2*pad);
+      pts.push([x,y]);
+    }
+    if (pts.length < 2) return;
+    svg.appendChild(svgEl('polyline', {points:pts.map(p=>p[0]+','+p[1]).join(' '), fill:'none', stroke:color, 'stroke-width':2.5, 'stroke-linejoin':'round', 'stroke-linecap':'round'}));
+    pts.forEach(p => svg.appendChild(svgEl('circle', {cx:p[0], cy:p[1], r:3, fill:color})));
+  }
+  line(p50, '#6AA6FF');
+  line(p95, '#E3B341');
+  const leg = $('legend-lat');
+  leg.innerHTML = '<span class="legend-item"><span class="legend-swatch" style="background:#6AA6FF"></span>p50</span><span class="legend-item"><span class="legend-swatch" style="background:#E3B341"></span>p95</span>';
+}
+
+function renderOutcomesChart(a) {
+  const svg = $('chart-outcomes');
+  clearSvg('chart-outcomes');
+  const outcomes = a.outcomes || {};
+  const entries = Object.entries(outcomes);
+  const W = 480, H = 220, pad = 36;
+  if (entries.length===0) {
+    const t = svgEl('text', {x:W/2, y:H/2, 'text-anchor':'middle', fill:'#8B98A9'});
+    t.textContent = 'no data'; svg.appendChild(t); return;
+  }
+  const maxV = Math.max(1, ...entries.map(e=>e[1]));
+  drawGrid(svg, W, H, pad, maxV);
+  const bw = (W-2*pad)/entries.length;
+  entries.forEach(([k,v],i) => {
+    const h = (v/maxV)*(H-2*pad);
+    const x = pad + i*bw + 6;
+    const y = H - pad - h;
+    const color = String(k).toLowerCase().includes('err') ? '#F0616D' : '#3FB68B';
+    svg.appendChild(svgEl('rect', {x:x, y:y, width:bw-12, height:h, fill:color, rx:4}));
+    const t = svgEl('text', {x:x+bw/2-6, y:H-pad+14, 'text-anchor':'middle', 'font-size':10, fill:'#8B98A9'});
+    t.textContent = k; svg.appendChild(t);
+    const vtxt = svgEl('text', {x:x+bw/2-6, y:y-4, 'text-anchor':'middle', 'font-size':10, fill:'#E6EDF3'});
+    vtxt.textContent = v; svg.appendChild(vtxt);
+  });
+}
+
+function renderTokensChart(db) {
+  const svg = $('chart-tokens');
+  clearSvg('chart-tokens');
+  const stores = db.tokens_per_store || [];
+  const W = 480, H = 220, pad = 36;
+  if (stores.length===0) {
+    const t = svgEl('text', {x:W/2, y:H/2, 'text-anchor':'middle', fill:'#8B98A9'});
+    t.textContent = 'no data'; svg.appendChild(t); return;
+  }
+  const maxV = Math.max(1, ...stores.flatMap(s=>[s.tokens_before||0, s.anchor_tokens||0]));
+  drawGrid(svg, W, H, pad, maxV);
+  const bw = (W-2*pad)/stores.length;
+  stores.forEach((s,i) => {
+    const x = pad + i*bw;
+    const w = (bw/2) - 4;
+    const hb = ((s.tokens_before||0)/maxV)*(H-2*pad);
+    svg.appendChild(svgEl('rect', {x:x+2, y:H-pad-hb, width:w, height:hb, fill:'#8B98A9', rx:3}));
+    const ha = ((s.anchor_tokens||0)/maxV)*(H-2*pad);
+    svg.appendChild(svgEl('rect', {x:x+w+6, y:H-pad-ha, width:w, height:ha, fill:'#3FB68B', rx:3}));
+    const lab = svgEl('text', {x:x+bw/2, y:H-pad+14, 'text-anchor':'middle', 'font-size':9, fill:'#8B98A9'});
+    lab.textContent = (s.label||s.id||'').toString().slice(0,12);
+    svg.appendChild(lab);
+  });
+}
+
+function renderBars(containerId, items, keyField, valField, greyed) {
+  const c = $(containerId);
+  c.innerHTML = '';
+  if (greyed) {
+    c.innerHTML = '<div class="empty">n/a (encrypted or unavailable)</div>';
+    return;
+  }
+  if (!items || items.length===0) {
+    c.innerHTML = '<div class="empty">no data</div>';
+    return;
+  }
+  const maxV = Math.max(1, ...items.map(x=>x[valField]||0));
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    const fill = (item[valField]||0)/maxV*100;
+    row.innerHTML = '<div class="bar-label" title="'+item[keyField]+'">'+item[keyField]+'</div>'
+      + '<div class="bar-track"><div class="bar-fill" style="width:'+fill+'%"></div></div>'
+      + '<div class="bar-val">'+(item[valField]||0)+'</div>';
+    c.appendChild(row);
+  });
+}
+
+function renderEvents(a) {
+  const tbody = $('events-table').querySelector('tbody');
+  tbody.innerHTML = '';
+  const evs = a.recent_events || [];
+  evs.forEach(e => {
+    const tr = document.createElement('tr');
+    const outcome = (e.outcome||'').toLowerCase();
+    const cls = outcome.includes('err') ? 'err' : 'ok';
+    tr.innerHTML = '<td>'+ (e.tool||'') +'</td>'
+      + '<td>'+ (e.session_id||'') +'</td>'
+      + '<td><span class="status-pill '+cls+'" style="padding:0 6px;font-size:11px">'+ (e.outcome||'') +'</span></td>'
+      + '<td class="mono">'+ (e.latency_ms||0) +'</td>'
+      + '<td class="small">'+ (e.ts||'') +'</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+// threeEnabled declared above
+function render3DState(snap) {
+  const cm = db.chunk_map || [];
+  window.__chunkMap = cm;
+  if (threeEnabled) update3D(cm);
+  else renderScatter2D(cm);
+}
+
+function init3D() {
+  if (typeof THREE === 'undefined') {
+    $('webgl-status').textContent = 'three.js not loaded; using 2D scatter.';
+    return false;
+  }
+  const canvas = $('canvas-3d');
+  let gl;
+  try { gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'); } catch(e){ gl=null; }
+  if (!gl) {
+    $('webgl-status').textContent = 'WebGL unavailable; using 2D scatter fallback.';
+    return false;
+  }
+  $('webgl-status').textContent = 'WebGL available.';
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setSize(canvas.clientWidth || 600, canvas.clientHeight || 360);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, (canvas.clientWidth||600)/(canvas.clientHeight||360), 0.1, 1000);
+  camera.position.set(40, 40, 40);
+  let isDragging=false, lastX=0,lastY=0, rotX=0.4, rotY=0.6, zoom=1;
+  canvas.addEventListener('mousedown', e=>{ isDragging=true; lastX=e.clientX; lastY=e.clientY; });
+  window.addEventListener('mouseup', ()=>isDragging=false);
+  canvas.addEventListener('mousemove', e=>{
+    if(!isDragging) return;
+    rotY += (e.clientX-lastX)*0.008;
+    rotX += (e.clientY-lastY)*0.008;
+    lastX=e.clientX; lastY=e.clientY;
+  });
+  canvas.addEventListener('wheel', e=>{ zoom *= e.deltaY>0?1.08:0.93; zoom=Math.max(0.4,Math.min(2.5,zoom)); });
+  const geometry = new THREE.BufferGeometry();
+  const material = new THREE.PointsMaterial({ size: 3, vertexColors: true, sizeAttenuation: true });
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+  const grid = new THREE.GridHelper(60, 20, 0x263042, 0x1A2230);
+  scene.add(grid);
+  let raf = null, lastFrame = 0;
+  const FPS_CAP = 30, frameInterval = 1000/FPS_CAP;
+  function renderLoop(ts) {
+    if (document.hidden) { raf = requestAnimationFrame(renderLoop); return; }
+    if (ts - lastFrame < frameInterval) { raf = requestAnimationFrame(renderLoop); return; }
+    lastFrame = ts;
+    scene.rotation.y = rotY;
+    scene.rotation.x = rotX;
+    const d = 40*zoom;
+    camera.position.set(d, d*0.7, d);
+    camera.lookAt(0,0,0);
+    renderer.render(scene, camera);
+    raf = requestAnimationFrame(renderLoop);
+  }
+  threeState = { renderer, scene, camera, points, geometry, raf: null,
+    start: () => { if (!threeState.raf) threeState.raf = requestAnimationFrame(renderLoop); },
+    stop: () => { if (threeState.raf) { cancelAnimationFrame(threeState.raf); threeState.raf=null; } } };
+  const ro = new ResizeObserver(() => {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (w>0 && h>0) { renderer.setSize(w,h); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+  });
+  ro.observe(canvas);
+  return true;
+}
+
+function update3D(cm) {
+  if (!threeState) return;
+  const positions = [], colors = [];
+  const sessColor = {};
+  let ci = 0;
+  cm.forEach(p => { if (sessColor[p.session_id] === undefined) sessColor[p.session_id] = ci++; });
+  cm.forEach(p => {
+    positions.push(p.idx, p.source_idx*4, p.session_idx*4);
+    const cidx = sessColor[p.session_id] % SERIES_COLORS.length;
+    const hex = SERIES_COLORS[cidx];
+    colors.push(parseInt(hex.slice(1,3),16)/255, parseInt(hex.slice(3,5),16)/255, parseInt(hex.slice(5,7),16)/255);
+  });
+  const geo = threeState.geometry;
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  geo.computeBoundingSphere();
+  threeState.start();
+}
+
+function renderScatter2D(cm) {
+  const container = $('scatter-2d');
+  if (threeEnabled) { container.innerHTML = ''; return; }
+  if (!container.querySelector('canvas')) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 600; canvas.height = 260;
+    canvas.style.width = '100%';
+    container.appendChild(canvas);
+  }
+  const canvas = container.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.fillStyle = '#121821'; ctx.fillRect(0,0,W,H);
+  if (!cm || cm.length===0) return;
+  const xs = cm.map(p=>p.idx), ys = cm.map(p=>p.source_idx);
+  const minx=Math.min(...xs), maxx=Math.max(...xs, minx+1);
+  const miny=Math.min(...ys), maxy=Math.max(...ys, miny+1);
+  cm.forEach(p => {
+    const x = 20 + (p.idx-minx)/(maxx-minx)*(W-40);
+    const y = H-20 - (p.source_idx-miny)/(maxy-miny)*(H-40);
+    ctx.fillStyle = SERIES_COLORS[(p.session_idx||0) % SERIES_COLORS.length];
+    ctx.beginPath();
+    ctx.arc(x,y, 2 + Math.min(6,(p.hits||0)*0.5), 0, Math.PI*2);
+    ctx.fill();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cb = $('toggle-3d');
+  cb.addEventListener('change', () => {
+    threeEnabled = cb.checked;
+    const canvas = $('canvas-3d');
+    if (threeEnabled) {
+      canvas.style.display = 'block';
+      $('scatter-2d').innerHTML = '';
+      if (!threeState) {
+        const ok = init3D();
+        if (!ok) { threeEnabled = false; cb.checked = false; canvas.style.display='none'; return; }
+      }
+      if (window.__chunkMap) update3D(window.__chunkMap);
+      threeState.start();
+    } else {
+      canvas.style.display = 'none';
+      if (threeState) threeState.stop();
+      if (window.__chunkMap) renderScatter2D(window.__chunkMap);
+    }
+  });
+  connect();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && threeState) threeState.stop();
+  else if (threeEnabled && threeState) threeState.start();
+});

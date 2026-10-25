@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loom Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- ===== Sidebar ===== -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="logo-orb"></div>
+    <div class="brand-txt">
+      <span class="brand-name">Loom</span>
+      <span class="brand-sub">Context Cache</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <button class="nav-item active" data-section="overview"><span class="nav-ico">▣</span> Overview</button>
+    <button class="nav-item" data-section="storage"><span class="nav-ico">▤</span> Storage</button>
+    <button class="nav-item" data-section="audit"><span class="nav-ico">⚡</span> Audit Live</button>
+    <button class="nav-item" data-section="tools"><span class="nav-ico">⛏</span> Outils</button>
+    <button class="nav-item" data-section="invariants"><span class="nav-ico">◆</span> Invariants</button>
+    <button class="nav-item" data-section="sessions"><span class="nav-ico">⟡</span> Sessions</button>
+    <button class="nav-item" data-section="upgrade"><span class="nav-ico">⚡</span> Upgrade P1-P3</button>
+  </nav>
+
+  <div class="sidebar-spacer"></div>
+
+  <div class="sb-status">
+    <div class="ss-row"><span class="ss-label">DB</span><span class="ss-val mono" id="ss-db">—</span></div>
+    <div class="ss-row"><span class="ss-label">Events</span><span class="ss-val" id="ss-events">0</span></div>
+    <div class="ss-row"><span class="ss-label">Updated</span><span class="ss-val" id="ss-updated">—</span></div>
+  </div>
+
+  <div class="sb-actions">
+    <button class="sb-btn" id="btn-pause"><span id="pause-ico">⏸</span> <span id="pause-txt">Pause</span></button>
+    <button class="sb-btn" id="btn-refresh">↻ Refresh</button>
+    <button class="sb-btn" id="btn-reconnect">⟳ Reconnect</button>
+    <button class="sb-btn" id="btn-export">⬇ Export</button>
+    <button class="sb-btn" id="btn-expand">⛶ Expand</button>
+    <button class="sb-btn" id="btn-compact">⊟ Compact</button>
+  </div>
+
+  <div class="sb-stream">
+    <span class="ss-dot live" id="stream-dot"></span>
+    <span id="stream-state">connecting…</span>
+  </div>
+</aside>
+
+<!-- ===== Main ===== -->
+<main class="main">
+  <!-- Toolbar -->
+  <header class="toolbar">
+    <div class="tb-left">
+      <h1 class="tb-title" id="tb-title">Overview</h1>
+      <p class="tb-sub" id="tb-sub">Real-time context cache observability</p>
+    </div>
+    <div class="tb-right">
+      <div class="pill" id="status-pill"><span id="pill-txt">…</span></div>
+      <span class="rate-pill" id="rate-pill">0 evt/min</span>
+      <span class="tb-evt" id="tb-evcount">0 events</span>
+    </div>
+  </header>
+
+  <!-- Control bar -->
+  <div class="control-bar">
+    <div class="ctrl-group">
+      <span class="ctrl-label">Range</span>
+      <button class="tr-btn" data-range="5">5m</button>
+      <button class="tr-btn on" data-range="15">15m</button>
+      <button class="tr-btn" data-range="30">30m</button>
+      <button class="tr-btn" data-range="60">60m</button>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Mode</span>
+      <button class="cm-btn on" data-mode="area">Area</button>
+      <button class="cm-btn" data-mode="bar">Bars</button>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Theme</span>
+      <button class="accent-btn on" data-theme="sky">●</button>
+      <button class="accent-btn" data-theme="violet">●</button>
+      <button class="accent-btn" data-theme="emerald">●</button>
+      <button class="accent-btn" data-theme="rose">●</button>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-toggle on" id="btn-autoscale">Auto-scale</button>
+    </div>
+  </div>
+
+  <!-- ===== Views ===== -->
+
+  <!-- OVERVIEW -->
+  <section class="view view-active" id="view-overview">
+    <div class="kpi-grid" id="kpi-grid"></div>
+    <div class="chart-row">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Appels / minute</h3><span class="chip" id="calls-total">0</span></div>
+        <canvas id="chart-calls"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Latence p50 / p95</h3><span class="chip" id="lat-max">—</span></div>
+        <canvas id="chart-lat"></canvas>
+      </div>
+      <div class="panel chart-panel gauge-panel">
+        <div class="panel-head"><h3>Économie tokens</h3></div>
+        <canvas id="chart-gauge"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Événements récents</h3>
+        <input type="text" class="search-input" id="event-search" placeholder="Filtrer (tool, session, outcome)…">
+      </div>
+      <table class="data-table">
+        <thead><tr>
+          <th class="sort-th" data-sort="ts">Timestamp ⇅</th>
+          <th class="sort-th" data-sort="tool">Outil ⇅</th>
+          <th class="sort-th" data-sort="session_id">Session ⇅</th>
+          <th class="sort-th" data-sort="outcome">Outcome ⇅</th>
+          <th class="sort-th" data-sort="latency_ms">Latence ⇅</th>
+        </tr></thead>
+        <tbody id="events-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STORAGE -->
+  <section class="view" id="view-storage">
+    <div class="kpi-grid" id="store-kpi"></div>
+    <div class="chart-row">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Tokens par source</h3><span class="chip" id="saved-chip">—</span></div>
+        <canvas id="chart-tokens"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Chunk heatmap</h3><span class="chip" id="chunks-chip">—</span></div>
+        <canvas id="chart-chunkmap"></canvas>
+      </div>
+      <div class="panel chart-panel gauge-panel">
+        <div class="panel-head"><h3>Économie</h3></div>
+        <canvas id="chart-gauge2"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Sources <span class="chip" id="src-count">0</span></h3></div>
+      <table class="data-table">
+        <thead><tr><th>ID</th><th>Label</th><th>Avant</th><th>Ancré</th><th>Économie</th></tr></thead>
+        <tbody id="sources-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- AUDIT -->
+  <section class="view" id="view-audit">
+    <div class="kpi-grid" id="audit-kpi"></div>
+    <div class="chart-row chart-row-2x">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Appels / minute</h3><span class="chip" id="calls-total">0</span></div>
+        <canvas id="chart-calls2"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Latence p50 / p95</h3><span class="chip" id="lat2-chip">—</span></div>
+        <canvas id="chart-lat2"></canvas>
+      </div>
+    </div>
+    <div class="chart-row chart-row-2x">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Outcomes</h3></div>
+        <canvas id="chart-outcomes"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Throughput</h3></div>
+        <canvas id="chart-throughput"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Flux d'événements</h3>
+        <input type="text" class="search-input" id="audit-search" placeholder="Filtrer…">
+      </div>
+      <table class="data-table">
+        <thead><tr>
+          <th class="sort-th" data-sort="ts">Timestamp ⇅</th>
+          <th class="sort-th" data-sort="tool">Outil ⇅</th>
+          <th class="sort-th" data-sort="session_id">Session ⇅</th>
+          <th class="sort-th" data-sort="outcome">Outcome ⇅</th>
+          <th class="sort-th" data-sort="latency_ms">Latence ⇅</th>
+        </tr></thead>
+        <tbody id="audit-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="view" id="view-tools">
+    <div class="kpi-grid" id="tools-kpi"></div>
+    <div class="chart-row chart-row-2x">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Distribution par outil</h3><span class="chip" id="tools-chip">—</span></div>
+        <canvas id="chart-pie"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Appels par outil</h3></div>
+        <canvas id="chart-tools-bar"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Détail par outil</h3></div>
+      <table class="data-table">
+        <thead><tr><th>Outil</th><th>Calls</th><th>Distribution</th><th>Ratio</th></tr></thead>
+        <tbody id="tools-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- INVARIANTS -->
+  <section class="view" id="view-invariants">
+    <div class="kpi-grid" id="inv-kpi"></div>
+    <div class="chart-row chart-row-2x">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Par type</h3><span class="chip" id="inv-total">0</span></div>
+        <canvas id="chart-inv"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Invariants détectés</h3></div>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Count</th><th>Couverture</th></tr></thead>
+        <tbody id="inv-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section class="view" id="view-sessions">
+    <div class="kpi-grid" id="sess-kpi"></div>
+    <div class="chart-row chart-row-2x">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Hits par session</h3><span class="chip" id="sess-chip">—</span></div>
+        <canvas id="chart-sessions"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Sessions</h3></div>
+      <table class="data-table">
+        <thead><tr><th>Session ID</th><th>Hits</th></tr></thead>
+        <tbody id="sess-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- UPGRADE P1-P3 -->
+  <section class="view" id="view-upgrade">
+    <div class="kpi-grid" id="upg-kpi"></div>
+    <div class="chart-row">
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Vector Index (HNSW)</h3><span class="chip" id="vec-chip">—</span></div>
+        <canvas id="chart-vector"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Cross-Session Transfers</h3><span class="chip" id="xfer-chip">—</span></div>
+        <canvas id="chart-xfer"></canvas>
+      </div>
+      <div class="panel chart-panel">
+        <div class="panel-head"><h3>Auto-Store Hits</h3><span class="chip" id="auto-chip">—</span></div>
+        <canvas id="chart-autostore"></canvas>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="panel">
+        <div class="panel-head"><h3>P1 — Semantic Search</h3><span class="tag tag-green" id="p1-status">Active</span></div>
+        <div class="upgrade-detail" id="p1-detail">
+          <div class="ud-row"><span class="ud-label">Backend</span><span class="ud-val mono" id="p1-backend">—</span></div>
+          <div class="ud-row"><span class="ud-label">Modèle</span><span class="ud-val mono" id="p1-model">—</span></div>
+          <div class="ud-row"><span class="ud-label">Dimensions</span><span class="ud-val mono" id="p1-dim">—</span></div>
+          <div class="ud-row"><span class="ud-label">Vectors</span><span class="ud-val mono" id="p1-vecs">—</span></div>
+          <div class="ud-row"><span class="ud-label">Index size</span><span class="ud-val mono" id="p1-size">—</span></div>
+          <div class="ud-row"><span class="ud-label">Coverage</span><span class="ud-val mono" id="p1-cov">—</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>P2 — Cross-Session</h3><span class="tag tag-blue" id="p2-status">Active</span></div>
+        <div class="upgrade-detail" id="p2-detail">
+          <div class="ud-row"><span class="ud-label">Transfers</span><span class="ud-val mono" id="p2-xfers">—</span></div>
+          <div class="ud-row"><span class="ud-label">Sessions liées</span><span class="ud-val mono" id="p2-linked">—</span></div>
+          <div class="ud-row"><span class="ud-label">WAL mode</span><span class="ud-val mono" id="p2-wal">ON</span></div>
+          <div class="ud-row"><span class="ud-label">Locking</span><span class="ud-val mono" id="p2-lock">msvcrt</span></div>
+          <div class="ud-row"><span class="ud-label">Junction table</span><span class="ud-val mono" id="p2-table">session_chunks</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>P3 — Auto-Store</h3><span class="tag tag-violet" id="p3-status">Ready</span></div>
+        <div class="upgrade-detail" id="p3-detail">
+          <div class="ud-row"><span class="ud-label">Threshold</span><span class="ud-val mono" id="p3-thresh">500 tok</span></div>
+          <div class="ud-row"><span class="ud-label">Hits</span><span class="ud-val mono" id="p3-hits">0</span></div>
+          <div class="ud-row"><span class="ud-label">Decorator</span><span class="ud-val mono" id="p3-deco">@auto_store</span></div>
+          <div class="ud-row"><span class="ud-label">Env var</span><span class="ud-val mono" id="p3-env">LOOM_AUTO_STORE_THRESHOLD</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>17 MCP Tools</h3><span class="chip" id="tools-chip">—</span></div>
+      <table class="data-table">
+        <thead><tr><th>Tool</th><th>Priorité</th><th>Description</th><th>Statut</th></tr></thead>
+        <tbody id="upg-tools-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span id="last-update">—</span> · <span id="db-info">—</span> · Loom MCP Dashboard v4
+  </footer>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -6,6 +6,8 @@
 
 <img src="https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=python&logoColor=white&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/FastMCP-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/SQLite%20%2B%20FTS5-e10600?style=for-the-badge&logo=sqlite&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU%20%C2%B7%200%20paid%20API-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/mlkblk-it-mcp-loom-19dcvu)](https://m8ven.ai/mcp/mlkblk-it-mcp-loom-19dcvu?s=readme) [![M8ven Score](https://m8ven.ai/badge/mcp/mlkblk-it-loom-41lyje)](https://m8ven.ai/mcp/mlkblk-it-loom-41lyje?s=readme)
+
 </div>
 
 > ## ⚠️ WORK IN PROGRESS — NOT READY (2026-10-22)

@@ -6,7 +6,17 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Malik Belkacemi" }]
-keywords = ["mcp", "llm", "context", "tokens", "optimization", "cache"]
+keywords = ["mcp", "llm", "context", "tokens", "optimization", "cache", "mcp-server"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
 dependencies = [
     "mcp>=1.2.0",
@@ -27,7 +37,10 @@ semantic = [
 ]
 
 [project.scripts]
+# What MCP clients spawn: the server itself, on stdio.
 loom-mcp = "loom.server:main"
+# Admin CLI: `loom health`, `loom sessions`, `loom vacuum`, ...
+loom = "loom.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/MlkBlk-IT/Mcp-Loom"
@@ -40,6 +53,36 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/loom"]
+
+# The sdist is the "source of truth" package: it carries the code, the tests and
+# the docs — not the 10 MB benchmark corpus, not the dev dashboard and its
+# .bak/PNG artefacts.
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/scripts",
+    "/docs",
+    "/README.md",
+    "/PROGRESS.md",
+    "/LICENSE",
+    "/pyproject.toml",
+    "/mcp.example.json",
+]
+exclude = [
+    "/dataset",
+    "/dash",
+    "/dist",
+    "/.venv",
+    "/bench-report.json",
+    "/bench_results.json",
+    "**/*.bak",
+    "**/*.bak_*",
+    "**/*.png",
+    "**/*.db",
+    "**/*.db-shm",
+    "**/*.db-wal",
+]
 
 [tool.ruff]
 line-length = 100

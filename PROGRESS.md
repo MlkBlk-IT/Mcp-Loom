@@ -146,6 +146,7 @@ Le bandeau WIP du README (2026-10-22) invalide explicitement les chiffres histor
 | `9044522` | 2026-10-25 | Sync des changements locaux avant merge distant |
 | `30e6e09` | 2026-10-25 | Merge de `main` depuis le remote |
 | `05277f8` | 2026-10-25 | chore : ignorer les artefacts SQLite WAL/SHM |
+| _(ce commit)_ | 2026-10-25 | feat : packaging — CLI d'administration, wrapper npm, sdist allégé |
 
 ### Branche `loom-semantic`
 Branche **stale** : 0 commit unique par rapport à `origin/main` (4 commits en arrière). Elle est
@@ -164,7 +165,54 @@ entièrement contenue dans `main`. Aucun push nécessaire — à supprimer quand
 | `PROJECT_STORY.md` | Récit du projet |
 | `bench_results.json`, `bench-report.json`, `REPORT_FINAL.md` | Contiennent les chiffres invalidés |
 
-## 9. Points de vigilance
+## 9. Distribution et installation [mesuré]
+
+`pyproject.toml` (hatchling) produit deux artefacts :
+
+| Artefact | Taille | Contenu |
+|---|---|---|
+| `dist/loom_mcp-0.1.0-py3-none-any.whl` | ~53 Ko | 17 modules + `entry_points.txt` + LICENSE |
+| `dist/loom_mcp-0.1.0.tar.gz` | ~85 Ko | code + tests + docs (56 fichiers) |
+
+Le sdist exclut volontairement le corpus de benchmark (`dataset/`, ~10 Mo), le
+dashboard de dev (`dash/`, captures PNG + `.bak`) et les `bench-*.json` — le
+sdist est passé de **4,1 Mo à 85 Ko**. Aucun `.db`, `.db-shm`, `.db-wal` non
+plus.
+
+### Points d'entrée
+
+| Commande | Cible | Rôle |
+|---|---|---|
+| `loom-mcp` | `loom.server:main` | Le serveur MCP sur stdio — ce que les clients MCP lancent |
+| `loom` | `loom.cli:main` | CLI d'administration (nouveau) |
+| `python -m loom` | idem | Équivalent de `loom` |
+
+La CLI d'administration expose `health`, `stats`, `sessions`, `search`, `vacuum`,
+`purge`, `purge-expired`, `serve`, `version` — elle appelle les outils MCP
+existants, elle n'invente aucune logique. Elle comble une promesse du README
+qui n'existait pas : `python -m loom <cmd>` était documenté mais aucun CLI
+n'était implémenté.
+
+### Wrapper npm
+
+`package.json` + `bin/loom-mcp.js` — pour les clients Node-only. Le wrapper
+localise un Python capable de lancer Loom, dans cet ordre : `loom-mcp` déjà sur
+le PATH, puis `uv tool run --from git+… loom-mcp`, puis `python -m loom`. Il
+n'écrit **jamais** sur stdout (stdout appartient au JSON-RPC sur stdio).
+
+### Vérifications effectuées [mesuré]
+
+| Contrôle | Résultat |
+|---|---|
+| `pip install` du wheel dans un venv vierge (Python 3.12) | OK, 75 paquets résolus |
+| `pip install` du sdist dans le même venv | OK (build depuis les sources) |
+| Handshake MCP stdio sur `loom-mcp.exe` | OK — **17 outils** listés |
+| Handshake MCP stdio via `node bin/loom-mcp.js` | OK — **17 outils** listés |
+| `loom version` / `loom health` | OK — health lit le vrai `~/.loom/loom.db` |
+| Suite de tests contre le **paquet installé** (cwd hors repo) | 83 passés / 19 échoués — **identique au source** |
+| `npm pack` | 4 fichiers, 8,2 Ko |
+
+## 10. Points de vigilance
 
 1. **La suite de tests ne passe pas en l'état** (19 échecs + 1 erreur de collection). Toute
    affirmation de type « tout est vert » est à corriger avant publication.
@@ -174,8 +222,11 @@ entièrement contenue dans `main`. Aucun push nécessaire — à supprimer quand
    35 % n'a pas été evalué.
 5. `tests/test_allowed_dirs.py` empêche toute exécution de `pytest` sans option additional.
 
-## 10. Prochaines étapes proposées
+## 11. Prochaines étapes proposées
 
+0. **Publier les artefacts** : `dist/` est ignoré par git, donc les wheel/sdist
+   ne sont pas versionnés. Les pousser en GitHub Releases (et/ou PyPI) les rend
+   installables par `pip install loom-mcp` sans cloner le repo.
 1. Réaligner la suite de tests sur le code : corriger l'import `_path_allowed`, la liste d'outils,
    les signatures `_store_impl` / `MAX_NUMBERS_IN_ANCHOR` / `topup`, les schémas `anyOf`, l'encodage
    des fichiers, et le transport HTTP/SSE. → **Objectif : `pytest` vert sans option.**

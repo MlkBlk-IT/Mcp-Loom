@@ -1,0 +1,37 @@
+{
+  "name": "loom-mcp",
+  "version": "0.1.0",
+  "description": "Portable MCP server: weave LLM context without cutting a thread.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MlkBlk-IT/Mcp-Loom.git"
+  },
+  "homepage": "https://github.com/MlkBlk-IT/Mcp-Loom",
+  "bugs": {
+    "url": "https://github.com/MlkBlk-IT/Mcp-Loom/issues"
+  },
+  "bin": {
+    "loom-mcp": "bin/loom-mcp.js"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "llm",
+    "context",
+    "tokens",
+    "cache",
+    "ai"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

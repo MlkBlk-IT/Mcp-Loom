@@ -12,6 +12,8 @@ build/
 .mypy_cache/
 *.db
 *.db-journal
+*.db-shm
+*.db-wal
 data/
 store/
 .DS_Store

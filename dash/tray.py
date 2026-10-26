@@ -14,7 +14,7 @@ def start_server():
     global proc
     if proc is not None and proc.poll() is None:
         return
-    proc = subprocess.Popen([sys.executable, SERVER, "--db", r"D:\Loom\_test\loom_claude.db"], cwd=DASH_DIR,
+    proc = subprocess.Popen([sys.executable, SERVER, "--db", r"C:\Users\Tech\.loom\loom.db"], cwd=DASH_DIR,
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                             creationflags=0x08000000)  # CREATE_NO_WINDOW
 
@@ -27,13 +27,13 @@ def stop_server():
     proc = None
 
 def open_dash(icon, item):
-    webbrowser.open("http://127.0.0.1:8765")
+    webbrowser.open("http://127.0.0.1:8775")
 
 def restart(icon, item):
     stop_server()
     time.sleep(1)
     start_server()
-    webbrowser.open("http://127.0.0.1:8765")
+    webbrowser.open("http://127.0.0.1:8775")
 
 def quit_app(icon, item):
     stop_server()

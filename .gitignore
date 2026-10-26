@@ -22,6 +22,7 @@ store/
 Thumbs.db
 
 # Sauvegardes d'édition (artefacts de travail, pas des livrables)
+*.bak*
 *.bak_p3
 *.new
 *.orig

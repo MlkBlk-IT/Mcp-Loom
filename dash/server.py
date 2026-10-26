@@ -17,7 +17,7 @@ from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
 HOST = "127.0.0.1"
-PORT = 8765
+PORT = int(os.environ.get("LOOM_DASH_PORT", "8775"))
 
 db_path = None
 audit_path = None

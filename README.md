@@ -4,18 +4,21 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:e10600,50:1a0505,100:00ff9c&height=140&section=header&text=Mcp-Loom&fontSize=42&fontColor=e10600&fontAlignY=32&desc=Portable%20MCP%20context%20server%20%E2%80%94%20move%20it%2C%20never%20summarize%20it&descAlignY=53&descSize=15&descColor=00ff9c" width="100%" alt="Mcp-Loom" />
 
+[![version](https://img.shields.io/badge/v0.1.1-e10600?style=for-the-badge&labelColor=0d0d0d)](https://github.com/MlkBlk-IT/Mcp-Loom/releases)
+
 <img src="https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=python&logoColor=white&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/FastMCP-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/SQLite%20%2B%20FTS5-e10600?style=for-the-badge&logo=sqlite&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU%20%C2%B7%200%20paid%20API-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/mlkblk-it-mcp-loom-19dcvu)](https://m8ven.ai/mcp/mlkblk-it-mcp-loom-19dcvu?s=readme) [![M8ven Score](https://m8ven.ai/badge/mcp/mlkblk-it-loom-41lyje)](https://m8ven.ai/mcp/mlkblk-it-loom-41lyje?s=readme)
 
 </div>
 
-> ## ⚠️ WORK IN PROGRESS — NOT READY (2026-10-22)
+> ## ⚠️ WORK IN PROGRESS — NOT READY FOR PRODUCTION (updated 2026-10-26)
 > Loom is under repair and being re-measured. **Do not use in production.**
 > - **No token savings have been demonstrated to date.** The old figures (`saved_pct` 94–99%, `bench-report.json`, `bench_results.json`, `REPORT_FINAL.md`) measured the anchor size alone: they are **invalid**.
 > - Current real measurement (LM Studio, small local models, small documents): Loom costs **more** tokens than the baseline (fixed anchor overhead + tool schemas). The large-context test with a cloud model has not been done yet.
 > - Decision criterion frozen before the bench: same success rate with ≥ 35% fewer total tokens (in+out), retrieval and tool tax included. Otherwise: pivot or stop.
-> - Code state: 72 tests pass. `verify`, `redact`, `audit` and `sandbox` still need to be rewritten. README, listed tools and `dist/` may be stale.
+> - Code state (measured 2026-10-25, see [`PROGRESS.md`](PROGRESS.md)): **83 passed / 19 failed / 1 collection error** across 103 test functions in 20 files. Most failures come from a code refactor that was not followed by a test update, plus 4 real anchor regressions (`port` kind, rare kinds, dates). `verify`, `redact`, `audit` and `sandbox` exist and their tests pass.
+> - The server exposes **17 MCP tools** — this section used to list 13. The tool table below is now the measured list.
 
 > **"Weave the context without cutting the thread."**
 > A portable MCP server that keeps the LLM context small by **moving** it out of the prompt — never by summarizing it.
@@ -40,9 +43,10 @@ Loom moves nothing else. That is the whole thesis of the project.
 
 ## Current state
 
-**v0.1 — working core.** 13 MCP tools exposed, 38 green tests, reproducible benchmark on
-a 21-file corpus. Phase 2 (HTTP transport, rate-limiting and audit wired to the last 5
-tools) in progress.
+**v0.1.1 — working core, honest test state.** **17 MCP tools** exposed, a reproducible benchmark on
+a 21-file corpus, and a test suite that is **not green**: 83 passed / 19 failed / 1 collection error
+(measured 2026-10-25 — [`PROGRESS.md`](PROGRESS.md)). Phase 2 (HTTP transport, rate-limiting and audit
+wired to the last 5 tools) in progress.
 
 ---
 
@@ -72,7 +76,7 @@ LLM context
 
 | Module | Role |
 |--------|------|
-| `server.py` | FastMCP server — 13 tools, thin layer, zero business logic |
+| `server.py` | FastMCP server — 17 tools, thin layer, zero business logic |
 | `anchors.py` | Invariant extractor (numbers, paths, URLs, versions, hashes, ports, constraints) |
 | `compress.py` | Anchor + chunk construction, byte-identical guarantee |
 | `store.py` | SQLite drawer + FTS5 index: chunks, anchors, invariants |
@@ -88,7 +92,7 @@ LLM context
 
 ---
 
-## Exposed MCP tools (13)
+## Exposed MCP tools (17)
 
 | Tool | Role |
 |------|------|
@@ -98,12 +102,16 @@ LLM context
 | `ctx_get` | Retrieves a chunk, byte for byte |
 | `ctx_search` | FTS5 search over stored chunks → `chunk_id`, `score`, `snippet` |
 | `ctx_check` | Verifies no critical invariant was lost (the safety net) |
+| `ctx_verify` | Coverage verification, per session or global |
 | `ctx_stats` | Tokens before/after, hit rate, ratio |
 | `ctx_profile` | Switch profile: `strict` \| `balanced` \| `aggressive` |
 | `ctx_list_sessions` | Lists sessions (including expired) |
 | `ctx_purge_session` | Purges one session |
 | `ctx_purge_expired` | Purges expired sessions (TTL) |
+| `ctx_transfer` | Transfers chunks between two sessions |
 | `ctx_vacuum` | Compacts the SQLite database |
+| `ctx_rebuild_index` | Rebuilds the search index |
+| `ctx_vector_stats` | Statistics of the vector index |
 | `ctx_health` | Drawer health status |
 
 Administration operations (`purge`, `vacuum`, `health`, `list_sessions`) are also available
@@ -178,24 +186,35 @@ retrievable**: exactly the intended trade-off.
 
 | Artifact | File | Proof |
 |----------|------|-------|
-| MCP server | `src/loom/server.py` | 13 tools, 416 lines |
+| MCP server | `src/loom/server.py` | 17 tools, 416 lines |
 | Safety net | `src/loom/verify.py` | coverage + invariants not lost |
 | Encryption | `src/loom/crypto.py` | PBKDF2-HMAC-SHA256 600k iterations → Fernet (AES-128-CBC + HMAC) |
 | Sandbox | `src/loom/sandbox.py` | Windows Job Object (CPU, RAM, process count) / bwrap Linux |
 | Redaction | `src/loom/redact.py` | 5 pattern families, `LOOM_REDACT=1` by default |
 | Corpus | `dataset/` | 21 files, 6.87 MB, 7 types × 3 sizes |
 | Benchmark | `bench_results.json` | 63 measurements, real tokenizer |
-| Tests | `tests/` | 38 tests, 361 lines |
+| Tests | `tests/` | 103 test functions in 20 files — 83 pass, 19 fail, 1 collection error |
 
 ---
 
 ## Test suite
 
+**The suite is not green.** Measured on 2026-10-25 — full breakdown in [`PROGRESS.md`](PROGRESS.md):
+
 ```
-$ .venv/Scripts/python.exe -m pytest -q
-......................................                                  [100%]
-38 passed in 7.35s
+$ .venv/Scripts/python.exe -m pytest -q --ignore=tests/test_allowed_dirs.py
+103 test functions in 20 files  ->  83 passed, 19 failed
 ```
+
+- **1 collection error** — `tests/test_allowed_dirs.py` imports `loom.server._path_allowed`, a helper
+  that was replaced by an inline `LOOM_ALLOWED_DIRS` check. The test is stale, the code is newer.
+- **19 failures** — 15 come from a code refactor that was not followed by a test update (renamed
+  APIs, removed kwargs, the tool list growing from 13 to 17), and **4 are real anchor regressions**
+  (`port` kind no longer produced, rare kinds no longer reaching the `strict` anchor, dates still
+  extracted as numbers).
+- `verify`, `redact`, `audit` and `sandbox` exist and their tests pass.
+
+### The safety-net subset (green)
 
 | File | Tests | Guarantee |
 |------|-------|-----------|
@@ -236,7 +255,7 @@ $ .venv/Scripts/python.exe -m pytest -q
 - No full database encryption on Windows: SQLCipher has no prebuilt wheel (C build failure) → fallback to column-level Fernet, with the FTS5 index remaining in clear for search.
 - `chmod 600` is ignored on NTFS → protect the drawer directory manually.
 - HTTP transport (streamable-http) and token authentication are not yet tested end to end.
-- Rate-limiting and audit are wired to 8 of the 13 tools; 5 remain to be wired.
+- Rate-limiting and audit are wired to 8 of the 17 tools; 9 remain to be wired.
 
 ---
 

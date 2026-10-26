@@ -80,6 +80,8 @@ loom search      # FTS5 search over stored chunks
 
 The HTTP transport (streamable-http) and token authentication are **not yet tested end to end**.
 
+> Building and publishing this package: see [`PUBLISHING.md`](PUBLISHING.md).
+
 ---
 
 ## The problem

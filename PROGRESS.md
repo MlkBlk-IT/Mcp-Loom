@@ -15,9 +15,9 @@ Convention de marquage :
 
 | Champ | Valeur |
 |---|---|
-| Dépôt | https://github.com/MlkBlk-IT/Mcp-Loom |
-| Renommage | `Loom` → `Mcp-Loom` le 2026-10-22 (commit `183afdc`, URLs de `pyproject.toml`) |
-| Paquet | `loom-mcp` 0.1.0 — MIT — Python ≥ 3.11 |
+| Dépôt | https://github.com/MlkBlk-IT/mcp-loom-mcp |
+| Renommage | `Loom` → `Mcp-Loom` le 2026-10-22 (commit `183afdc`) puis `Mcp-Loom` → `mcp-loom-mcp` le 2026-10-26 (nom de paquet : `mcp-loom` est occupé par deux projets sans rapport sur PyPI et npm) |
+| Paquet | `mcp-loom-mcp` 0.1.2 — MIT — Python ≥ 3.11 |
 | Point d'entrée | `loom.server:main` (`loom-mcp` en console) |
 | Dépendances | `mcp>=1.2.0`, `fastmcp>=2.0.0`, `tiktoken>=0.7.0` |
 | Extras | `semantic` (`faiss-cpu`, `sentence-transformers`, `numpy`) · `dev` (`pytest`, `pytest-asyncio`, `ruff`) |
@@ -141,6 +141,7 @@ Le bandeau WIP du README (2026-10-22) invalide explicitement les chiffres histor
 | `a8f052a` | 2026-10-21 | Commit initial : projet Loom complet — serveur MCP de contexte portable |
 | `d62e92c` | 2026-10-22 | WIP (pas prêt) : réparation du cœur, 72 tests, bandeau et ERRATA |
 | `183afdc` | 2026-10-22 | Renommage du dépôt `Loom` → `Mcp-Loom` (URLs `pyproject.toml`) |
+| `9d96111` | 2026-10-26 | Renommage du dépôt `Mcp-Loom` → `mcp-loom-mcp` + paquet PyPI/npm `mcp-loom-mcp` (l'ancienne URL GitHub redirige) |
 | `d5ced73` | 2026-10-22 | README : traduction anglaise + refonte dark neon red/green |
 | `99d8261` | 2026-10-24 | docs : bandeau d'avertissement « rest of the repo in French » |
 | `9044522` | 2026-10-25 | Sync des changements locaux avant merge distant |

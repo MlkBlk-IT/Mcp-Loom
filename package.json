@@ -5,11 +5,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MlkBlk-IT/Mcp-Loom.git"
+    "url": "git+https://github.com/MlkBlk-IT/mcp-loom-mcp.git"
   },
-  "homepage": "https://github.com/MlkBlk-IT/Mcp-Loom",
+  "homepage": "https://github.com/MlkBlk-IT/mcp-loom-mcp",
   "bugs": {
-    "url": "https://github.com/MlkBlk-IT/Mcp-Loom/issues"
+    "url": "https://github.com/MlkBlk-IT/mcp-loom-mcp/issues"
   },
   "bin": {
     "mcp-loom-mcp": "bin/loom-mcp.js"

@@ -44,8 +44,8 @@ The npm package is a thin launcher: it finds a Python that can run Loom
 ### From source
 
 ```bash
-git clone https://github.com/MlkBlk-IT/Mcp-Loom.git
-cd Mcp-Loom
+git clone https://github.com/MlkBlk-IT/mcp-loom-mcp.git
+cd mcp-loom-mcp
 pip install -e ".[dev,semantic]"
 pytest
 ```

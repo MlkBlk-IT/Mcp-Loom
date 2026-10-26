@@ -12,7 +12,7 @@
 
 const { spawn, spawnSync } = require('node:child_process');
 
-const REPO = 'git+https://github.com/MlkBlk-IT/Mcp-Loom.git';
+const REPO = 'git+https://github.com/MlkBlk-IT/mcp-loom-mcp.git';
 
 function which(cmd) {
   const probe = process.platform === 'win32' ? 'where' : 'which';

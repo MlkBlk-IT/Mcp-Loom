@@ -25,6 +25,9 @@
 - npm bin renamed `loom-mcp` → `mcp-loom-mcp`, so `npx mcp-loom-mcp` resolves to this project.
 - The Python console scripts are unchanged: `loom-mcp` (the server MCP clients spawn) and `loom`
   (the admin CLI). The import package is still `loom`.
+- **The GitHub repository was renamed `Mcp-Loom` → `mcp-loom-mcp`**, so the repo, the PyPI
+  distribution and the npm package now carry the same name. The old URL
+  (`github.com/MlkBlk-IT/Mcp-Loom`) redirects automatically; all internal links were updated.
 - Version bumped to 0.1.2.
 
 ### Not changed

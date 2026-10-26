@@ -4,7 +4,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:e10600,50:1a0505,100:00ff9c&height=140&section=header&text=Mcp-Loom&fontSize=42&fontColor=e10600&fontAlignY=32&desc=Portable%20MCP%20context%20server%20%E2%80%94%20move%20it%2C%20never%20summarize%20it&descAlignY=53&descSize=15&descColor=00ff9c" width="100%" alt="Mcp-Loom" />
 
-[![version](https://img.shields.io/badge/v0.1.1-e10600?style=for-the-badge&labelColor=0d0d0d)](https://github.com/MlkBlk-IT/Mcp-Loom/releases)
+[![version](https://img.shields.io/badge/v0.1.2-e10600?style=for-the-badge&labelColor=0d0d0d)](https://github.com/MlkBlk-IT/Mcp-Loom/releases)
 
 <img src="https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=python&logoColor=white&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/FastMCP-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/SQLite%20%2B%20FTS5-e10600?style=for-the-badge&logo=sqlite&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU%20%C2%B7%200%20paid%20API-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
@@ -22,6 +22,62 @@
 
 > **"Weave the context without cutting the thread."**
 > A portable MCP server that keeps the LLM context small by **moving** it out of the prompt — never by summarizing it.
+
+---
+
+## Installation
+
+> **Not published on PyPI or npm yet.** The name `loom-mcp` belongs to **other projects** on both
+> registries (a Loom *video* management server), so `pip install loom-mcp` would install someone
+> else's code. This project therefore ships under **`mcp-loom-mcp`** — a name that is free on both
+> registries — and will be published there.
+
+### From source (works today)
+
+```bash
+pip install "mcp-loom-mcp @ git+https://github.com/MlkBlk-IT/Mcp-Loom.git"
+```
+
+Then point your MCP client at the `loom-mcp` console script:
+
+```json
+{
+  "mcpServers": {
+    "loom": {
+      "command": "loom-mcp"
+    }
+  }
+}
+```
+
+### From source, with the dev extras
+
+```bash
+git clone https://github.com/MlkBlk-IT/Mcp-Loom.git
+cd Mcp-Loom
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1        # Windows
+pip install -e ".[dev]"
+```
+
+### Admin CLI
+
+The same operations are available on the command line, built on top of the MCP tools:
+
+```bash
+loom health      # drawer health status
+loom stats       # token stats for a session
+loom vacuum      # compact the SQLite drawer
+loom search      # FTS5 search over stored chunks
+```
+
+### Transports
+
+| Transport | Command | Target client |
+|-----------|---------|---------------|
+| **stdio** | `loom-mcp` | Claude Desktop, IDEs, any stdio client |
+
+The HTTP transport (streamable-http) and token authentication are **not yet tested end to end**.
 
 ---
 

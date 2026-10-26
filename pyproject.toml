@@ -1,6 +1,6 @@
 [project]
-name = "loom-mcp"
-version = "0.1.1"
+name = "mcp-loom-mcp"
+version = "0.1.2"
 description = "Portable MCP server: weave LLM context without cutting a thread."
 readme = "README.md"
 requires-python = ">=3.11"

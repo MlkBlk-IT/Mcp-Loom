@@ -5,6 +5,35 @@
 
 ---
 
+## v0.1.2 — 2026-10-26
+
+**Package renamed to `mcp-loom-mcp`, and the README finally has an Installation section.**
+
+### Fixed
+
+- **The distribution name was unpublishable.** `loom-mcp` on PyPI is a *Loom video management*
+  MCP server by another author, and `loom-mcp` on npm is `Spongeacer/Loom-MCP-Server`. Publishing
+  under that name is impossible, and `pip install loom-mcp` / `npx loom-mcp` install someone else's
+  code. The distribution is now **`mcp-loom-mcp`** (`pyproject.toml`, `package.json`), a name that is
+  free on both registries — `mcp-loom` is taken on both too.
+- **The README had no installation section at all**, while the project was already published as a
+  GitHub Release. It now documents the install-from-source command, the MCP client snippet, the
+  dev-extras setup and the admin CLI.
+
+### Changed
+
+- npm bin renamed `loom-mcp` → `mcp-loom-mcp`, so `npx mcp-loom-mcp` resolves to this project.
+- The Python console scripts are unchanged: `loom-mcp` (the server MCP clients spawn) and `loom`
+  (the admin CLI). The import package is still `loom`.
+- Version bumped to 0.1.2.
+
+### Not changed
+
+Nothing in the context engine — no code path, no tool, no test. This release only fixes the
+packaging identity and the documentation.
+
+---
+
 ## v0.1.1 — 2026-10-26
 
 **Documentation accuracy + dashboard configuration.** This release contains no change to the

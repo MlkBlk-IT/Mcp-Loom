@@ -1,6 +1,6 @@
 {
-  "name": "loom-mcp",
-  "version": "0.1.1",
+  "name": "mcp-loom-mcp",
+  "version": "0.1.2",
   "description": "Portable MCP server: weave LLM context without cutting a thread.",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
     "url": "https://github.com/MlkBlk-IT/Mcp-Loom/issues"
   },
   "bin": {
-    "loom-mcp": "bin/loom-mcp.js"
+    "mcp-loom-mcp": "bin/loom-mcp.js"
   },
   "files": [
     "bin/",

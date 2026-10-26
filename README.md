@@ -27,11 +27,16 @@
 
 ## Installation
 
-> **Published on PyPI and npm.** The repository, the PyPI distribution and the npm package all carry
-> the same name: **`mcp-loom-mcp`**. The names `mcp-loom` and `loom-mcp` belong to **other projects**
-> on those registries — on PyPI a server for Loom's internal GraphQL API, on npm an unrelated DuckDB
-> proxy — and a registry never releases a name. That is why the repository was renamed from
-> `Mcp-Loom` (the old URL redirects automatically).
+> **The registry publication is pending.** The repository, the PyPI distribution and the npm package
+> all carry the same name — **`mcp-loom-mcp`** — and the packages are built, tagged and ready to
+> publish (`v0.1.3`). The names `mcp-loom` and `loom-mcp` belong to **other projects** on those
+> registries — on PyPI a server for Loom's internal GraphQL API, on npm an unrelated DuckDB proxy —
+> and a registry never releases a name. That is why the repository was renamed from `Mcp-Loom` (the
+> old URL redirects automatically).
+>
+> The registry commands below are the final ones, but they return a 404 until the first publish.
+> Install from source in the meantime:
+> `pip install "mcp-loom-mcp @ git+https://github.com/MlkBlk-IT/mcp-loom-mcp.git"`.
 
 ```bash
 # PyPI

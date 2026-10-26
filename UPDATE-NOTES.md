@@ -7,15 +7,16 @@
 
 ## v0.1.3 — 2026-10-26
 
-**Published on PyPI and npm.**
+**Prepared for publication — the first registry publish is still pending.**
 
 ### Added
 
-- **The package is on PyPI and npm.** The repository, the PyPI distribution and the npm package all
-  carry the same name — `mcp-loom-mcp` — and the README now gives the registry install commands
-  (`uv tool install mcp-loom-mcp`, `pip install mcp-loom-mcp`, `npx -y mcp-loom-mcp`) with links to
-  both registry pages.
-- **PyPI publication uses trusted publishing (OIDC).** The `Publish` workflow mints a short-lived
+- **The packages are built, tagged and ready to publish.** The repository, the PyPI distribution and
+  the npm package all carry the same name — `mcp-loom-mcp` — and the README now gives the registry
+  install commands (`uv tool install mcp-loom-mcp`, `pip install mcp-loom-mcp`,
+  `npx -y mcp-loom-mcp`) with links to both registry pages. Those commands return a 404 until the
+  first publish happens; install from source until then.
+- **PyPI publication will use trusted publishing (OIDC).** The `Publish` workflow mints a short-lived
   token from the GitHub Actions identity: no PyPI API token is stored on any machine.
 - The install guide now states which name is the package and which one is the console script
   (`mcp-loom-mcp` vs `loom-mcp`), and the `uvx` snippets pass `--from mcp-loom-mcp`.

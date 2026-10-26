@@ -227,7 +227,7 @@ n'écrit **jamais** sur stdout (stdout appartient au JSON-RPC sur stdio).
 
 0. **Publier les artefacts** : `dist/` est ignoré par git, donc les wheel/sdist
    ne sont pas versionnés. Les pousser en GitHub Releases (et/ou PyPI) les rend
-   installables par `pip install loom-mcp` sans cloner le repo.
+   installables par `pip install mcp-loom-mcp` sans cloner le repo.
 1. Réaligner la suite de tests sur le code : corriger l'import `_path_allowed`, la liste d'outils,
    les signatures `_store_impl` / `MAX_NUMBERS_IN_ANCHOR` / `topup`, les schémas `anyOf`, l'encodage
    des fichiers, et le transport HTTP/SSE. → **Objectif : `pytest` vert sans option.**

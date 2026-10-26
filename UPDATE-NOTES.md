@@ -85,6 +85,8 @@ context engine itself — it fixes the documentation and the local dashboard wir
 
 ## v0.1.0 — 2026-10-25
 
-- First installable release: `pip install loom-mcp`, `npx loom-mcp`.
+- First installable release — **published as a GitHub Release only**. The distribution was named
+  `loom-mcp` at the time, but that name belongs to other projects on PyPI and npm, so this version
+  was never pushed to a registry; it was renamed to `mcp-loom-mcp` in v0.1.2.
 - Portable MCP server — 17 tools, SQLite + FTS5 drawer, admin CLI (`loom health`, `loom stats`,
   `loom vacuum`, `loom search`…), wheel + sdist + npm wrapper.

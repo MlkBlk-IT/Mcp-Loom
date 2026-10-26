@@ -1,6 +1,6 @@
 {
   "name": "mcp-loom-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Portable MCP server: weave LLM context without cutting a thread.",
   "license": "MIT",
   "repository": {

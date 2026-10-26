@@ -5,6 +5,41 @@
 
 ---
 
+## v0.1.3 — 2026-10-26
+
+**Published on PyPI and npm.**
+
+### Added
+
+- **The package is on PyPI and npm.** The repository, the PyPI distribution and the npm package all
+  carry the same name — `mcp-loom-mcp` — and the README now gives the registry install commands
+  (`uv tool install mcp-loom-mcp`, `pip install mcp-loom-mcp`, `npx -y mcp-loom-mcp`) with links to
+  both registry pages.
+- **PyPI publication uses trusted publishing (OIDC).** The `Publish` workflow mints a short-lived
+  token from the GitHub Actions identity: no PyPI API token is stored on any machine.
+- The install guide now states which name is the package and which one is the console script
+  (`mcp-loom-mcp` vs `loom-mcp`), and the `uvx` snippets pass `--from mcp-loom-mcp`.
+
+### Fixed
+
+- **`docs/INSTALL.md` still told users to install `loom-mcp`** — a name that belongs to other
+  projects on PyPI and npm. The install commands, the Claude Desktop / Hermes / Node-only client
+  snippets and the wheel + sdist filenames now use the real names.
+- The v0.1.0 notes claimed `pip install loom-mcp` / `npx loom-mcp`: v0.1.0 was a GitHub Release
+  only and never reached a registry.
+
+### Changed
+
+- Version bumped to 0.1.3 — `pyproject.toml` and `package.json` now match the `v0.1.3` tag and this
+  release.
+
+### Not changed
+
+No code, no tool, no test — the context engine is untouched. This release publishes the package and
+fixes the documentation.
+
+---
+
 ## v0.1.2 — 2026-10-26
 
 **Package renamed to `mcp-loom-mcp`, and the README finally has an Installation section.**

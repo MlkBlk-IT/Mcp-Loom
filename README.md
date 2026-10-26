@@ -4,7 +4,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:e10600,50:1a0505,100:00ff9c&height=140&section=header&text=mcp-loom-mcp&fontSize=42&fontColor=e10600&fontAlignY=32&desc=Portable%20MCP%20context%20server%20%E2%80%94%20move%20it%2C%20never%20summarize%20it&descAlignY=53&descSize=15&descColor=00ff9c" width="100%" alt="mcp-loom-mcp" />
 
-[![version](https://img.shields.io/badge/v0.1.2-e10600?style=for-the-badge&labelColor=0d0d0d)](https://github.com/MlkBlk-IT/mcp-loom-mcp/releases)
+[![version](https://img.shields.io/badge/v0.1.3-e10600?style=for-the-badge&labelColor=0d0d0d)](https://github.com/MlkBlk-IT/mcp-loom-mcp/releases)
 
 <img src="https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=python&logoColor=white&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/FastMCP-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/SQLite%20%2B%20FTS5-e10600?style=for-the-badge&logo=sqlite&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU%20%C2%B7%200%20paid%20API-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
@@ -27,19 +27,27 @@
 
 ## Installation
 
-> **Not published on PyPI or npm yet.** The name `mcp-loom` belongs to **other projects** on both
-> registries — on PyPI it is a server for Loom's internal GraphQL API, on npm it is an unrelated
-> DuckDB proxy — and a registry never releases a name. So the repo, the PyPI distribution and the
-> npm package all carry the same name: **`mcp-loom-mcp`**. The old `Mcp-Loom` GitHub URL redirects
-> automatically.
-
-### From source (works today)
+> **Published on PyPI and npm.** The repository, the PyPI distribution and the npm package all carry
+> the same name: **`mcp-loom-mcp`**. The names `mcp-loom` and `loom-mcp` belong to **other projects**
+> on those registries — on PyPI a server for Loom's internal GraphQL API, on npm an unrelated DuckDB
+> proxy — and a registry never releases a name. That is why the repository was renamed from
+> `Mcp-Loom` (the old URL redirects automatically).
 
 ```bash
-pip install "mcp-loom-mcp @ git+https://github.com/MlkBlk-IT/mcp-loom-mcp.git"
+# PyPI
+uv tool install mcp-loom-mcp          # or: pip install mcp-loom-mcp
+
+# npm
+npx -y mcp-loom-mcp
 ```
 
-Then point your MCP client at the `loom-mcp` console script:
+| Registry | Package | Page |
+|---|---|---|
+| PyPI | `mcp-loom-mcp` | [pypi.org/project/mcp-loom-mcp](https://pypi.org/project/mcp-loom-mcp/) |
+| npm | `mcp-loom-mcp` | [npmjs.com/package/mcp-loom-mcp](https://www.npmjs.com/package/mcp-loom-mcp) |
+
+The package installs the `loom-mcp` console script (the server MCP clients spawn) and the `loom`
+admin CLI. Point your MCP client at `loom-mcp`:
 
 ```json
 {
@@ -49,6 +57,12 @@ Then point your MCP client at the `loom-mcp` console script:
     }
   }
 }
+```
+
+### From source
+
+```bash
+pip install "mcp-loom-mcp @ git+https://github.com/MlkBlk-IT/mcp-loom-mcp.git"
 ```
 
 ### From source, with the dev extras

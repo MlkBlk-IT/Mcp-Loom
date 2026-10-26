@@ -72,7 +72,7 @@ dashboard (`dash/`) and the `*.bak` artefacts — they are not needed to build.
 Install a built artifact:
 
 ```bash
-pip install dist/mcp_loom_mcp-0.1.2-py3-none-any.whl
+pip install dist/mcp_loom_mcp-0.1.3-py3-none-any.whl
 ```
 
 ## 3. Wire it into an MCP client
